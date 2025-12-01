@@ -32,11 +32,11 @@ body, html {
   display: block;
 }
 
-/* Top Menu */
+/* Top Menu Full Width */
 .top-menu {
   position: fixed;
   top: 0;
-  left: 200px;
+  left: 0;           /* changed from 200px */
   right: 0;
   height: 60px;
   background: #333;
@@ -46,12 +46,19 @@ body, html {
   align-items: center;
   padding: 0 20px;
   z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
-.top-menu a {
-  color: white;
-  margin-left: 15px;
-  text-decoration: none;
+
+/* Top Menu Left Text */
+.top-left {
+  font-weight: bold;        /* makes it bold */
+  font-size: 24px;
+  font-family: 'Cinzel', 'Times New Roman', serif;  /* cinematic style */
 }
+
+/* Import cinematic font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap');
+
 
 /* Main Content */
 .main-content {
