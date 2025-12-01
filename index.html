@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fahed Dehchar Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Menu</h2>
+    <a href="works.html">Works</a>
+    <a href="about.html">About</a>
+    <div class="contact-menu">
+      <span>Contact</span>
+      <div class="contact-info">
+        <p>Email: <span id="email">fahed@example.com</span> <button onclick="copyText('email')">Copy</button></p>
+        <p>Phone: <span id="phone">+123456789</span> <button onclick="copyText('phone')">Copy</button></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Menu -->
+  <div class="top-menu">
+    <div class="top-left">Fahed Dehchar Portfolio</div>
+    <div class="top-right">
+      <a href="works.html">Works</a>
+      <a href="about.html">About</a>
+      <div class="contact-menu-top">
+        <span>Contact</span>
+        <div class="contact-info">
+          <p>Email: <span id="email-top">fahed@example.com</span> <button onclick="copyText('email-top')">Copy</button></p>
+          <p>Phone: <span id="phone-top">+123456789</span> <button onclick="copyText('phone-top')">Copy</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content: Comic Squares -->
+  <div class="main-content">
+    <div class="comic-square" style="background: url('video1.mp4') center/cover no-repeat;">
+      <div class="square-text">Music Videos</div>
+    </div>
+    <div class="comic-square">
+      <div class="square-text">3D</div>
+    </div>
+    <div class="comic-square">
+      <div class="square-text">2D</div>
+    </div>
+    <div class="comic-square">
+      <div class="square-text">Storytelling</div>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
