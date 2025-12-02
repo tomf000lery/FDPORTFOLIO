@@ -74,12 +74,13 @@ body, html {
 
 /* Main Content */
 .main-content {
-  margin-left: 200px;
-  padding-top: 80px;
+  margin-left: 150px;   /* space for smaller sidebar */
+  padding-top: 80px;    /* space for top menu */
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
+
 .comic-square {
   width: 300px;
   height: 300px;
