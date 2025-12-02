@@ -52,7 +52,7 @@ body, html {
 .top-left {
   font-weight: bold;        /* makes it bold */
   font-size: 24px;
-  font-family: 'Cinzel', serif;  /* cinematic style */
+ font-family: 'Lora', serif; /* cinematic style */
 }
 
 /* Import cinematic font from Google Fonts */
