@@ -32,11 +32,10 @@ body, html {
   display: block;
 }
 
-/* Top Menu Full Width */
 .top-menu {
   position: fixed;
   top: 0;
-  left: 0;           /* changed from 200px */
+  left: 200px;        /* Push the top menu to the right so it doesn't cover the sidebar */
   right: 0;
   height: 60px;
   background: #333;
