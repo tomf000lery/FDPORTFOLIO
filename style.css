@@ -194,12 +194,13 @@ body, html {
   min-height: 100%;
   transform: translate(-50%, -50%);
   pointer-events: none;
+  transition: all 0.3s ease; /* smooth resize on window change */
 }
 
-/* 3D square vertical video fix - responsive */
+/* Responsive adjustments */
 @media (max-width: 1200px) {
   .comic-square-3d .square-video-container iframe {
-    min-width: 120%;   /* slightly larger to fill narrower squares */
+    min-width: 120%;
     min-height: 120%;
   }
 }
@@ -210,4 +211,3 @@ body, html {
     min-height: 140%;
   }
 }
-
