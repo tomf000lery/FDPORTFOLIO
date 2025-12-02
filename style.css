@@ -190,8 +190,8 @@ body, html {
   position: absolute;
   top: 50%;
   left: 50%;
-  min-width: 100%;
-  min-height: 100%;
+  min-width: 150%;
+  min-height: 150%;
   transform: translate(-50%, -50%);
   pointer-events: none;
   transition: all 0.3s ease; /* smooth resize on window change */
