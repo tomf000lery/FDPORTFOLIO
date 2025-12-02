@@ -47,10 +47,10 @@ body, html {
 .top-menu {
   position: fixed;
   top: 0;
-  left: 200px;        /* Push the top menu to the right so it doesn't cover the sidebar */
+  left: 150px;                  /* push right to sidebar width */
   right: 0;
   height: 60px;
-  background: #333;
+  background-color: #5ab7d8;    /* lighter marine blue */
   color: white;
   display: flex;
   justify-content: space-between;
@@ -60,15 +60,15 @@ body, html {
   box-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
 
-/* Top Menu Left Text */
 .top-left {
-  font-weight: regular;       
+  font-weight: bold;
   font-size: 24px;
- font-family: 'Lora', serif; /* cinematic style */
+  font-family: 'Lora', serif;
 }
 
+
 /* Import cinematic font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap');
 
 
 /* Main Content */
