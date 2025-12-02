@@ -224,3 +224,28 @@ body, html {
   pointer-events: none;
 }
 
+/* Portrait video square for About page */
+.portrait-square {
+  width: 300px;           /* fixed width like comic squares */
+  height: 300px;          /* fixed height to make it square */
+  overflow: hidden;       /* crop any overflow */
+  position: relative;
+  flex-shrink: 0;         /* prevent shrinking in flex layout */
+}
+
+.about-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* fill the square, crop black bars */
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 800px) {
+  .portrait-square {
+    width: 200px;
+    height: 200px;
+  }
+}
