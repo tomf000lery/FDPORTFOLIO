@@ -125,3 +125,18 @@ body, html {
 .video-item {
   margin-bottom: 40px;
 }
+
+/* ===== Responsive squares for smaller screens ===== */
+@media (max-width: 1200px) {
+  .comic-square {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 800px) {
+  .comic-square {
+    width: 200px;
+    height: 200px;
+  }
+}
