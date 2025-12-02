@@ -5,32 +5,44 @@ body, html {
  font-family: 'Lora', serif;
 }
 
+/* Import Lora font */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap');
+
 /* Sidebar */
 .sidebar {
   position: fixed;
   left: 0;
   top: 0;
-  width: 200px;
+  width: 150px;                /* smaller width */
   height: 100%;
-  background: #222;
-  color: white;
-  padding: 20px;
+  background-color: #4ca6c7;   /* light marine blue */
+  display: flex;
+  flex-direction: column;
+  align-items: center;          /* center text horizontally */
+  padding-top: 50px;            /* space at top */
 }
+
 .sidebar a, .sidebar span {
   display: block;
   color: white;
-  margin: 15px 0;
+  margin: 20px 0;               /* space between items */
   text-decoration: none;
-  cursor: pointer;
+  font-family: 'Lora', serif;  /* Lora font */
+  font-weight: 700;             /* Bold */
+  text-align: center;
+  width: 100%;                  /* fills sidebar width */
 }
 .contact-info {
   display: none;
   margin-top: 10px;
+  text-align: center;
 }
 .contact-menu:hover .contact-info,
 .contact-menu-top:hover .contact-info {
   display: block;
 }
+
+
 
 .top-menu {
   position: fixed;
