@@ -74,12 +74,15 @@ body, html {
 
 /* Main Content */
 .main-content {
-  margin-left: 150px;   /* space for smaller sidebar */
+  margin-left: 150px;   /* space for sidebar */
   padding-top: 80px;    /* space for top menu */
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  flex-wrap: wrap;      /* wrap squares to next row if needed */
+  gap: 20px;            /* space between squares */
+  justify-content: flex-start; /* left-align squares */
+  transition: all 0.5s ease; /* smooth transition when resizing */
 }
+
 
 .comic-square {
   width: 300px;
@@ -93,7 +96,7 @@ body, html {
   border: 5px solid black;   /* black edges for comic frame */
   border-radius: 5px;         /* optional: slightly rounded corners */
   box-sizing: border-box;     /* ensure border is included in size */
-  transition: transform 0.3s ease; /* smooth hover effect if needed */
+  transition: all 0.5s ease; /* smooth slide when window changes */
 }
 
 .square-video {
