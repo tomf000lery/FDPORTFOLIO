@@ -3,19 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About</title>
+  <title>About Me</title>
+  
+  <!-- Lora font -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Your CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Sidebar -->
   <div class="sidebar">
     <a href="index.html">Home</a>
     <a href="works.html">Works</a>
+    <div class="contact-menu">
+      <span>Contact</span>
+      <div class="contact-info">
+        <p>Email: <span id="email">fahed.dehchar@gmail.com</span> <button onclick="copyText('email')">Copy</button></p>
+        <p>Phone: <span id="phone">+46733541193</span> <button onclick="copyText('phone')">Copy</button></p>
+      </div>
+    </div>
   </div>
 
-  <div class="main-content">
-    <h1>About Me</h1>
-    <p> testingtestingtesting.</p>
-    <img src="create_or_die.JPG" alt="About Image" width="400">
+  <!-- Top Menu -->
+  <div class="top-menu">
+    <div class="top-left">Fahed Dehchar - Portfolio</div>
+    <div class="top-right">
+      <a href="works.html" title="Works"><i class="fas fa-video"></i></a>
+      <a href="about.html" title="About"><i class="fas fa-user"></i></a>
+      <div class="contact-menu-top">
+        <span><i class="fas fa-envelope"></i></span>
+        <div class="contact-info">
+          <p>Email: <span id="email-top">fahed.dehchar@gmail.com</span> <button onclick="copyText('email-top')">Copy</button></p>
+          <p>Phone: <span id="phone-top">+46733541193</span> <button onclick="copyText('phone-top')">Copy</button></p>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- Main Content -->
+  <div class="main-content" style="margin-top: 80px; display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start;">
+
+    <!-- Left side: text -->
+    <div style="flex: 1; min-width: 300px;">
+      <h1>Who's that?</h1>
+      <p>This is an example bio/about me text that you can change later.</p>
+    </div>
+
+    <!-- Right side: video -->
+    <div style="flex: 1; min-width: 300px; position: relative;">
+      <video autoplay muted loop playsinline style="width: 100%; height: auto; max-height: 400px; object-fit: cover;">
+        <source src="portrait.mp4" type="video/mp4">
+      </video>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
