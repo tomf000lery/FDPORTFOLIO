@@ -140,3 +140,38 @@ body, html {
     height: 200px;
   }
 }
+
+/* ===== Top Menu Right Icons ===== */
+.top-right {
+  display: flex;           /* arrange items in a row */
+  align-items: center;
+  gap: 20px;               /* space between icons */
+}
+
+.top-right a, .top-right span {
+  color: white;
+  font-size: 20px;         /* size of icons */
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.contact-menu-top {
+  position: relative;
+}
+
+.contact-info {
+  display: none;
+  position: absolute;
+  top: 30px;               /* below icon */
+  right: 0;
+  background: rgba(0,0,0,0.8);
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  white-space: nowrap;
+}
+
+.contact-menu-top:hover .contact-info {
+  display: block;
+}
