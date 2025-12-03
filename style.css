@@ -188,3 +188,23 @@ body, html {
     height: 200px;
   }
 }
+
+/* Works page video layout */
+.works-video {
+  width: 100%;
+  max-width: 700px;
+  border-radius: 10px;
+  display: block;
+  margin-top: 10px;
+}
+
+.video-item h2 {
+  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.video-description {
+  margin-top: 10px;
+  font-size: 16px;
+}
