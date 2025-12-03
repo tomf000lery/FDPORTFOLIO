@@ -3,7 +3,7 @@ body, html {
   margin: 0;
   padding: 0;
   font-family: 'Lora', serif;
-  background-color: #034f84; /* light marine blue for main page */
+  background-color: #034f84; /* light marine blue */
 }
 
 /* Import Lora font */
@@ -189,30 +189,17 @@ body, html {
   }
 }
 
-/* Works page video layout */
-.works-video {
-  width: 100%;
-  max-width: 700px;
-  border-radius: 10px;
-  display: block;
-  margin-top: 10px;
-}
-
-.video-item h2 {
-  margin-bottom: 10px;
-  font-size: 22px;
-  font-weight: 700;
-}
-
-.video-description {
-  margin-top: 10px;
-  font-size: 16px;
+/* ===== Works Page Fullscreen YouTube Videos ===== */
+.works-container {
+  margin-left: 150px;   /* space for sidebar */
+  padding-top: 100px;   /* below fixed title bar */
+  padding-right: 40px;  /* margin from right edge */
 }
 
 .works-title-bar {
   position: fixed;
   top: 0;
-  left: 150px; /* same as your sidebar width */
+  left: 150px;
   right: 0;
   height: 70px;
   background-color: #012f4a;
@@ -230,26 +217,23 @@ body, html {
   margin: 0;
 }
 
-.works-container {
-  margin-left: 150px;    /* sidebar space */
-  padding-top: 100px;    /* space below fixed title bar */
-}
-
 .video-item {
   width: 100%;
-  min-height: 90vh; /* nearly whole screen */
+  min-height: 100vh; /* full screen */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 60px 0;
+  padding: 80px 0;
 }
 
 .works-video {
   width: 90%;
   max-width: 1400px;
-  height: auto;
+  height: 70vh; /* cinematic height */
   border-radius: 12px;
+  border: 6px solid black; /* comic-square border */
+  box-sizing: border-box;
 }
 
 .video-heading {
@@ -269,6 +253,7 @@ body, html {
   line-height: 1.6;
 }
 
+/* ===== Fade-in animation for sections ===== */
 .fade-section {
   opacity: 0;
   transform: translateY(40px);
@@ -279,3 +264,4 @@ body, html {
   opacity: 1;
   transform: translateY(0);
 }
+
