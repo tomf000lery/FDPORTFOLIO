@@ -4,28 +4,89 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Works</title>
+
+  <!-- Lora font -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Your CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Sidebar -->
   <div class="sidebar">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
   </div>
 
-  <div class="main-content">
-    <h1>Works</h1>
-    <div class="video-item">
-      <video width="400" controls>
-        <source src="video1.mp4" type="video/mp4">
-      </video>
-      <p>Video 1 description</p>
-    </div>
-    <div class="video-item">
-      <video width="400" controls>
-        <source src="video2.mp4" type="video/mp4">
-      </video>
-      <p>Video 2 description</p>
+  <!-- Top Menu -->
+  <div class="top-menu">
+    <div class="top-left">Fahed Dehchar - Portfolio</div>
+    <div class="top-right">
+      <a href="works.html" title="Works"><i class="fas fa-video"></i></a>
+      <a href="about.html" title="About"><i class="fas fa-user"></i></a>
+      <div class="contact-menu-top">
+        <span><i class="fas fa-envelope"></i></span>
+        <div class="contact-info">
+          <p>Email: <span id="email-top">fahed.dehchar@gmail.com</span> <button onclick="copyText('email-top')">Copy</button></p>
+          <p>Phone: <span id="phone-top">+46733541193</span> <button onclick="copyText('phone-top')">Copy</button></p>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- Main Content -->
+  <div class="main-content" style="margin-top: 80px; padding-left: 20px; font-family: 'Lora', serif;">
+
+    <h1 style="margin-bottom: 30px;">Works</h1>
+
+    <!-- Video 1 -->
+    <div class="video-item" style="margin-bottom: 60px;">
+      <h2>Title for Video 1</h2>
+      <video class="works-video" controls playsinline>
+        <source src="video1.mp4" type="video/mp4">
+      </video>
+      <p class="video-description">Description for video 1.</p>
+    </div>
+
+    <!-- Video 2 -->
+    <div class="video-item" style="margin-bottom: 60px;">
+      <h2>Title for Video 2</h2>
+      <video class="works-video" controls playsinline>
+        <source src="video2.mp4" type="video/mp4">
+      </video>
+      <p class="video-description">Description for video 2.</p>
+    </div>
+
+    <!-- Video 3 -->
+    <div class="video-item" style="margin-bottom: 60px;">
+      <h2>Title for Video 3</h2>
+      <video class="works-video" controls playsinline>
+        <source src="video3.mp4" type="video/mp4">
+      </video>
+      <p class="video-description">Description for video 3.</p>
+    </div>
+
+    <!-- Video 4 -->
+    <div class="video-item" style="margin-bottom: 60px;">
+      <h2>Title for Video 4</h2>
+      <video class="works-video" controls playsinline>
+        <source src="video4.mp4" type="video/mp4">
+      </video>
+      <p class="video-description">Description for video 4.</p>
+    </div>
+
+  </div>
+
+  <script>
+    // Auto-unmute only when clicked
+    document.querySelectorAll('.works-video').forEach(video => {
+      video.addEventListener('click', () => {
+        video.muted = false;
+      });
+    });
+  </script>
+
 </body>
 </html>
