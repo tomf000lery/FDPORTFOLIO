@@ -1,57 +1,57 @@
-/* Basic Reset */
+/* ===== Basic Reset ===== */
 body, html {
   margin: 0;
   padding: 0;
- font-family: 'Lora', serif;
- background-color: #034f84;   /* light marine blue for main page */
+  font-family: 'Lora', serif;
+  background-color: #034f84; /* light marine blue for main page */
 }
 
 /* Import Lora font */
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap');
 
-/* Sidebar */
+/* ===== Sidebar ===== */
 .sidebar {
   position: fixed;
   left: 0;
   top: 0;
-  width: 150px;                /* smaller width */
+  width: 150px;
   height: 100%;
-  background-color: #000000;   /* light marine blue */
+  background-color: #000000; /* black */
   display: flex;
   flex-direction: column;
-  align-items: center;          /* center text horizontally */
-  padding-top: 50px;            /* space at top */
+  align-items: center;
+  padding-top: 50px;
 }
 
 .sidebar a, .sidebar span {
   display: block;
   color: white;
-  margin: 20px 0;               /* space between items */
+  margin: 20px 0;
   text-decoration: none;
-  font-family: 'Lora', serif;  /* Lora font */
-  font-weight: 700;             /* Bold */
+  font-weight: 700;
   text-align: center;
-  width: 100%;                  /* fills sidebar width */
+  width: 100%;
 }
+
 .contact-info {
   display: none;
   margin-top: 10px;
   text-align: center;
 }
+
 .contact-menu:hover .contact-info,
 .contact-menu-top:hover .contact-info {
   display: block;
 }
 
-
-
+/* ===== Top Menu ===== */
 .top-menu {
   position: fixed;
   top: 0;
-  left: 150px;                  /* push right to sidebar width */
+  left: 150px; /* push right to sidebar width */
   right: 0;
   height: 60px;
-  background-color: #012f4a;    /* lighter marine blue */
+  background-color: #012f4a;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -64,93 +64,17 @@ body, html {
 .top-left {
   font-weight: bold;
   font-size: 24px;
-  font-family: 'Lora', serif;
 }
 
-
-/* Import cinematic font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap');
-
-
-/* Main Content */
-.main-content {
-  margin-left: 150px;   /* space for sidebar */
-  padding-top: 80px;    /* space for top menu */
-  display: flex;
-  flex-wrap: wrap;      /* wrap squares to next row if needed */
-  gap: 20px;            /* space between squares */
-  justify-content: flex-start; /* left-align squares */
-  transition: all 0.5s ease; /* smooth transition when resizing */
-}
-
-
-.comic-square {
-  width: 300px;
-  height: 300px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 20px;
-  border: 5px solid black;   /* black edges for comic frame */
-  border-radius: 5px;         /* optional: slightly rounded corners */
-  box-sizing: border-box;     /* ensure border is included in size */
-  transition: all 0.5s ease; /* smooth slide when window changes */
-}
-
-.square-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* fill the square */
-  z-index: 1;
-  pointer-events: none;
-}
-
-.square-text {
-  position: relative;
-  z-index: 2;
-  font-family: Lora, serif;
-  font-weight: bold;
-  color: white;
-  text-shadow: 2px 2px 4px black;
-  font-size: 2rem;
-}
-
-
-/* Video items on works page */
-.video-item {
-  margin-bottom: 40px;
-}
-
-/* ===== Responsive squares for smaller screens ===== */
-@media (max-width: 1200px) {
-  .comic-square {
-    width: 250px;
-    height: 250px;
-  }
-}
-
-@media (max-width: 800px) {
-  .comic-square {
-    width: 200px;
-    height: 200px;
-  }
-}
-
-/* ===== Top Menu Right Icons ===== */
 .top-right {
-  display: flex;           /* arrange items in a row */
+  display: flex;
   align-items: center;
-  gap: 20px;               /* space between icons */
+  gap: 20px;
 }
 
 .top-right a, .top-right span {
   color: white;
-  font-size: 20px;         /* size of icons */
+  font-size: 20px;
   text-decoration: none;
   position: relative;
   cursor: pointer;
@@ -160,10 +84,10 @@ body, html {
   position: relative;
 }
 
-.contact-info {
+.contact-menu-top .contact-info {
   display: none;
   position: absolute;
-  top: 30px;               /* below icon */
+  top: 30px;
   right: 0;
   background: rgba(0,0,0,0.8);
   padding: 10px;
@@ -176,74 +100,88 @@ body, html {
   display: block;
 }
 
-/* 3D square vertical video fix */
-.comic-square-3d .square-video-container {
-  width: 100%;
-  height: 100%;
+/* ===== Main Content / Comic Squares ===== */
+.main-content {
+  margin-left: 150px; /* space for sidebar */
+  padding-top: 80px;  /* space for top menu */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+  transition: all 0.5s ease;
+}
+
+.comic-square {
+  width: 300px;
+  height: 300px;
+  position: relative;
   overflow: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  border: 5px solid black;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: all 0.5s ease;
 }
 
-.comic-square-3d .square-video-container iframe {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  transform: translate(-50%, -50%) scale(2); /* zoom the video */
-  pointer-events: none;
-  transition: all 0.3s ease;
-}
-
-
-/* Responsive adjustments */
-@media (max-width: 1200px) {
-  .comic-square-3d .square-video-container iframe {
-    min-width: 120%;
-    min-height: 120%;
-  }
-}
-
-@media (max-width: 800px) {
-  .comic-square-3d .square-video-container iframe {
-    min-width: 140%;
-    min-height: 140%;
-  }
-}
-
-.about-video {
+.square-video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;  /* fills square, crops excess */
+  object-fit: cover;
   z-index: 1;
   pointer-events: none;
 }
 
-/* Portrait video square for About page */
-.portrait-square {
-  width: 300px;           /* fixed width like comic squares */
-  height: 300px;          /* fixed height to make it square */
-  overflow: hidden;       /* crop any overflow */
+.square-text {
   position: relative;
-  flex-shrink: 0;         /* prevent shrinking in flex layout */
+  z-index: 2;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px black;
+  font-size: 2rem;
+}
+
+/* ===== About Page Portrait Video ===== */
+.portrait-square {
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
 }
 
 .about-video {
   width: 100%;
   height: 100%;
-  object-fit: cover;      /* fill the square, crop black bars */
+  object-fit: cover; /* fills square, crops black bars */
   position: absolute;
   top: 0;
   left: 0;
   pointer-events: none;
 }
 
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 1200px) {
+  .comic-square {
+    width: 250px;
+    height: 250px;
+  }
+  .portrait-square {
+    width: 250px;
+    height: 250px;
+  }
+}
+
 @media (max-width: 800px) {
+  .comic-square {
+    width: 200px;
+    height: 200px;
+  }
   .portrait-square {
     width: 200px;
     height: 200px;
