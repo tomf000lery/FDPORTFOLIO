@@ -4,12 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Works</title>
-
-  <!-- Lora font -->
-  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <!-- Your CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,71 +14,64 @@
     <a href="about.html">About</a>
   </div>
 
-  <!-- Top Menu -->
-  <div class="top-menu">
-    <div class="top-left">Fahed Dehchar - Portfolio</div>
-    <div class="top-right">
-      <a href="works.html" title="Works"><i class="fas fa-video"></i></a>
-      <a href="about.html" title="About"><i class="fas fa-user"></i></a>
-      <div class="contact-menu-top">
-        <span><i class="fas fa-envelope"></i></span>
-        <div class="contact-info">
-          <p>Email: <span id="email-top">fahed.dehchar@gmail.com</span> <button onclick="copyText('email-top')">Copy</button></p>
-          <p>Phone: <span id="phone-top">+46733541193</span> <button onclick="copyText('phone-top')">Copy</button></p>
-        </div>
-      </div>
-    </div>
+  <!-- Top title bar FIXED -->
+  <div class="works-title-bar">
+    <h1>Works</h1>
   </div>
 
-  <!-- Main Content -->
-  <div class="main-content" style="margin-top: 80px; padding-left: 20px; font-family: 'Lora', serif;">
+  <!-- Main content (now just stacked sections) -->
+  <div class="works-container">
 
-    <h1 style="margin-bottom: 30px;">Works</h1>
-
-    <!-- Video 1 -->
-    <div class="video-item" style="margin-bottom: 60px;">
-      <h2>Title for Video 1</h2>
-      <video class="works-video" controls playsinline>
+    <!-- VIDEO SECTION 1 -->
+    <section class="video-item fade-section">
+      <h2 class="video-heading">Title for Video 1</h2>
+      <video class="works-video" controls>
         <source src="video1.mp4" type="video/mp4">
       </video>
-      <p class="video-description">Description for video 1.</p>
-    </div>
+      <p class="video-description">Your description for video 1.</p>
+    </section>
 
-    <!-- Video 2 -->
-    <div class="video-item" style="margin-bottom: 60px;">
-      <h2>Title for Video 2</h2>
-      <video class="works-video" controls playsinline>
+    <!-- VIDEO SECTION 2 -->
+    <section class="video-item fade-section">
+      <h2 class="video-heading">Title for Video 2</h2>
+      <video class="works-video" controls>
         <source src="video2.mp4" type="video/mp4">
       </video>
-      <p class="video-description">Description for video 2.</p>
-    </div>
+      <p class="video-description">Your description for video 2.</p>
+    </section>
 
-    <!-- Video 3 -->
-    <div class="video-item" style="margin-bottom: 60px;">
-      <h2>Title for Video 3</h2>
-      <video class="works-video" controls playsinline>
+    <!-- VIDEO SECTION 3 -->
+    <section class="video-item fade-section">
+      <h2 class="video-heading">Title for Video 3</h2>
+      <video class="works-video" controls>
         <source src="video3.mp4" type="video/mp4">
       </video>
-      <p class="video-description">Description for video 3.</p>
-    </div>
+      <p class="video-description">Your description for video 3.</p>
+    </section>
 
-    <!-- Video 4 -->
-    <div class="video-item" style="margin-bottom: 60px;">
-      <h2>Title for Video 4</h2>
-      <video class="works-video" controls playsinline>
+    <!-- VIDEO SECTION 4 -->
+    <section class="video-item fade-section">
+      <h2 class="video-heading">Title for Video 4</h2>
+      <video class="works-video" controls>
         <source src="video4.mp4" type="video/mp4">
       </video>
-      <p class="video-description">Description for video 4.</p>
-    </div>
+      <p class="video-description">Your description for video 4.</p>
+    </section>
 
   </div>
 
+  <!-- Fade-in JS -->
   <script>
-    // Auto-unmute only when clicked
-    document.querySelectorAll('.works-video').forEach(video => {
-      video.addEventListener('click', () => {
-        video.muted = false;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-visible');
+        }
       });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.fade-section').forEach(sec => {
+      observer.observe(sec);
     });
   </script>
 
