@@ -241,7 +241,7 @@ body, html {
   font-size: 30px;
   font-weight: 700;
   margin-bottom: 20px;
-  text-align: center;
+  text-align: left;
 }
 
 .video-description {
@@ -249,7 +249,7 @@ body, html {
   font-size: 18px;
   margin-top: 20px;
   max-width: 900px;
-  text-align: center;
+  text-align: left;
   line-height: 1.6;
 }
 
