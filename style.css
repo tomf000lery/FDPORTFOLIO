@@ -278,3 +278,65 @@ body, html {
 .work-square:hover video {
   display: block;
 }
+
+/* Lightbox full-page */
+.video-lightbox {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.95);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 5000;
+  padding: 40px 20px; /* space for title & description */
+  box-sizing: border-box;
+}
+
+/* Lightbox content container */
+.lightbox-content {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* title on top, video middle, desc bottom */
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 36px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Video inside lightbox */
+.lightbox-video {
+  width: 100%;
+  flex-grow: 1;       /* video fills available vertical space */
+  border: none;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Title & description */
+.lightbox-title {
+  font-size: 28px;
+  font-weight: 300;  /* thin */
+  margin-bottom: 10px;
+}
+
+.lightbox-description {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-top: 10px;
+}
