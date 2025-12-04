@@ -7,7 +7,6 @@
 
   <!-- Montserrat -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,7 +16,7 @@
     <h1>Fahed Dehchar – Portfolio</h1>
   </div>
 
-  <!-- FULLSCREEN REEL -->
+  <!-- HERO REEL -->
   <section class="hero-reel">
     <video autoplay muted loop playsinline class="hero-video">
       <source src="yourreel.mp4" type="video/mp4">
@@ -55,7 +54,6 @@
       </div>
     </div>
 
-    <!-- CONTACT INFO -->
     <div class="contact-block">
       <h3>Contact</h3>
       <p><strong>Email:</strong> fahed.dehchar@gmail.com</p>
@@ -63,92 +61,62 @@
     </div>
   </section>
 
- <!-- WORKS GRID -->
-<section class="works-grid-section">
-  <h2 class="grid-title">Selected Works</h2>
+  <!-- WORKS GRID -->
+  <section class="works-grid-section">
+    <h2 class="grid-title">Selected Works</h2>
 
-  <div class="works-grid">
-    <!-- VIDEO 1 -->
-    <a class="work-square" href="#" 
-       data-video="https://www.youtube.com/embed/6VDtdjAB3Aw?rel=0&showinfo=0&modestbranding=1"
-       data-title="LUJAIN - ENEMI"
-       data-description="In collaboration with Lujain for the release of her EP 'Vanguard' I produced this 1.5 minute long fight-scene visualizer for the song ENEMI.">
-      <div class="square-thumb" style="background-image: url('https://img.youtube.com/vi/6VDtdjAB3Aw/hqdefault.jpg');"></div>
-    </a>
+    <div class="works-grid">
+      <!-- VIDEO 1 -->
+      <a class="work-square" href="#"
+         data-video="https://www.youtube.com/embed/6VDtdjAB3Aw?rel=0&showinfo=0&modestbranding=1"
+         data-title="LUJAIN - ENEMI"
+         data-description="In collaboration with Lujain for the release of her EP 'Vanguard' I produced this 1.5 minute long fight-scene visualizer for the song ENEMI.">
+        <div class="square-thumb" style="background-image: url('https://img.youtube.com/vi/6VDtdjAB3Aw/hqdefault.jpg');"></div>
+      </a>
 
-    <!-- VIDEO 2 -->
-    <a class="work-square" href="#"
-       data-video="https://www.youtube.com/embed/X7d4j2ZaKD8?rel=0&showinfo=0&modestbranding=1"
-       data-title='"The Boot-Licker Agenda"'
-       data-description="Made during a course where the assignment was to communicate a thought through any chosen artform. This project is about the ethical question of billionaires.">
-      <div class="square-thumb" style="background-image: url('https://img.youtube.com/vi/X7d4j2ZaKD8/hqdefault.jpg');"></div>
-    </a>
+      <!-- VIDEO 2 -->
+      <a class="work-square" href="#"
+         data-video="https://www.youtube.com/embed/X7d4j2ZaKD8?rel=0&showinfo=0&modestbranding=1"
+         data-title='"The Boot-Licker Agenda"'
+         data-description="Made during a course where the assignment was to communicate a thought through any chosen artform. This project is about the ethical question of billionaires.">
+        <div class="square-thumb" style="background-image: url('https://img.youtube.com/vi/X7d4j2ZaKD8/hqdefault.jpg');"></div>
+      </a>
 
-    <!-- VIDEO 3 -->
-    <a class="work-square" href="#"
-       data-video="https://www.youtube.com/embed/7WwnRqQLVBk?rel=0&showinfo=0&modestbranding=1"
-       data-title="Det Osagda - Kristin Rosendahl"
-       data-description="In collaboration between Beckmans School of Design x The Royal College of Music in Stockholm I created a minute-long visualizer for one of her pieces.">
-      <div class="square-thumb" style="background-image: url('https://img.youtube.com/vi/7WwnRqQLVBk/hqdefault.jpg');"></div>
-    </a>
+      <!-- VIDEO 3 -->
+      <a class="work-square" href="#"
+         data-video="https://www.youtube.com/embed/7WwnRqQLVBk?rel=0&showinfo=0&modestbranding=1"
+         data-title="Det Osagda - Kristin Rosendahl"
+         data-description="In collaboration between Beckmans College of Design x The Royal College of Music in Stockholm I created a minute-long visualizer for one of her pieces.">
+        <div class="square-thumb" style="background-image: url('https://img.youtube.com/vi/7WwnRqQLVBk/hqdefault.jpg');"></div>
+      </a>
 
-    <!-- VIDEO 4 -->
-    <a class="work-square" href="#"
-       data-video="https://www.youtube.com/embed/Kg_Hz3ugPvg?rel=0&showinfo=0&modestbranding=1"
-       data-title="VI, NI OCH DEM"
-       data-description="For an assignment in school we were tasked with curating 100 pictures regarding any subject. I chose to include it in my portfolio to showcase my ability in writing and storytelling.">
-      <div class="square-thumb" style="background-image: url('https://img.youtube.com/vi/Kg_Hz3ugPvg/hqdefault.jpg');"></div>
-    </a>
+      <!-- VIDEO 4 -->
+      <a class="work-square" href="#"
+         data-video="https://www.youtube.com/embed/Kg_Hz3ugPvg?rel=0&showinfo=0&modestbranding=1"
+         data-title="VI, NI OCH DEM"
+         data-description="For an assignment in school we were tasked with curating 100 pictures regarding any subject. I chose to include it in my portfolio to showcase my ability in writing and storytelling.">
+        <div class="square-thumb" style="background-image: url('https://img.youtube.com/vi/Kg_Hz3ugPvg/hqdefault.jpg');"></div>
+      </a>
 
-  
+      <!-- Empty placeholders -->
+      <div class="work-square empty-square"></div>
+      <div class="work-square empty-square"></div>
+      <div class="work-square empty-square"></div>
+      <div class="work-square empty-square"></div>
+      <div class="work-square empty-square"></div>
+    </div>
+  </section>
 
+  <!-- VIDEO LIGHTBOX -->
+  <div id="video-lightbox" class="video-lightbox">
+    <div class="lightbox-content">
+      <span class="close-btn" id="lightbox-close">&times;</span>
+      <h2 class="lightbox-title"></h2>
+      <iframe class="lightbox-video" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <p class="lightbox-description"></p>
+    </div>
   </div>
-</section>
-
-<!-- VIDEO LIGHTBOX -->
-<div id="video-lightbox" class="video-lightbox">
-  <div class="lightbox-content">
-    <span class="close-btn" id="lightbox-close">&times;</span>
-    <h2 class="lightbox-title"></h2>
-    <iframe class="lightbox-video" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    <p class="lightbox-description"></p>
-  </div>
-</div>
-
-
-
-<script>
-/* ===== Topbar show/hide on scroll ===== */
-let lastScroll = 0;
-const topbar = document.getElementById("topbar");
-
-window.addEventListener("scroll", () => {
-  let currentScroll = window.pageYOffset;
-
-  if (currentScroll > lastScroll) {
-    topbar.classList.add("hide-topbar");
-  } else {
-    topbar.classList.remove("hide-topbar");
-  }
-
-  lastScroll = currentScroll;
-});
-</script>
 
   <script src="script.js"></script>
-
-<!-- Lightbox for fullscreen video -->
-<div class="video-lightbox">
-  <div class="lightbox-content">
-    <span class="close-btn">&times;</span>
-    <h2 class="lightbox-title"></h2>
-    <iframe class="lightbox-video" src="" frameborder="0" allowfullscreen></iframe>
-    <p class="lightbox-description"></p>
-  </div>
-</div>
-
-
-  
 </body>
 </html>
-
