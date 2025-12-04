@@ -22,7 +22,7 @@ body, html {
   top: 0;
   left: 0;
   width: 100%;
-  height: 50px; /* smaller height for minimal top/bottom gap */
+  height: 90px; /* smaller height for minimal top/bottom gap */
   background: black;
   display: flex;
   align-items: center;
@@ -39,7 +39,7 @@ body, html {
 }
 
 .topbar h1 {
-  font-size: 26px; /* larger text */
+  font-size: 32px; /* larger text */
   font-weight: 300; /* Montserrat thin */
   color: white;
   margin: 0;
