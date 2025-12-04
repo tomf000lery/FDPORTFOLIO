@@ -3,100 +3,111 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Lora font from Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
-  
-  <!-- Your own CSS file -->
+  <title>Fahed Dehchar - Portfolio</title>
+
+  <!-- Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
-
-  <title>Fahed Dehchar Portfolio</title>
 </head>
-
 <body>
 
-  <!-- Sidebar -->
-<div class="sidebar">
-    <a href="works.html">Works</a>
-    <a href="about.html">About</a>
-    <div class="contact-menu">
-      <span>Contact</span>
-      <div class="contact-info">
-        <p>Email: <span id="email">fahed.dehchar@gmail.com</span> <button onclick="copyText('email')">Copy</button></p>
-        <p>Phone: <span id="phone">+46733541193</span> <button onclick="copyText('phone')">Copy</button></p>
-      </div>
-    </div>
-</div>
-
-
-  <!-- Top Menu -->
-  <div class="top-menu">
-  <div class="top-left">Fahed Dehchar - Portfolio</div>
-  <div class="top-right">
-    <a href="works.html" title="Works"><i class="fas fa-video"></i></a>
-    <a href="about.html" title="About"><i class="fas fa-user"></i></a>
-    <div class="contact-menu-top">
-      <span><i class="fas fa-envelope"></i></span>
-      <div class="contact-info">
-        <p>Email: <span id="email-top">fahed.dehchar@gmail.com</span> 
-           <button onclick="copyText('email-top')">Copy</button></p>
-        <p>Phone: <span id="phone-top">+46733541193</span> 
-           <button onclick="copyText('phone-top')">Copy</button></p>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-  <!-- Main Content: Comic Squares -->
-
-<div class="main-content">
-  <!-- Music Videos -->
-  <div class="comic-square">
-    <iframe 
-      class="square-video"
-      src="https://www.youtube.com/embed/6VDtdjAB3Aw?autoplay=1&mute=1&controls=0&loop=1&playlist=6VDtdjAB3Aw"
-      frameborder="0"
-      allow="autoplay; encrypted-media"
-      allowfullscreen>
-    </iframe>
-    <div class="square-text">Music Videos</div>
+  <!-- Top Bar -->
+  <div class="topbar" id="topbar">
+    <h1>Fahed Dehchar – Portfolio</h1>
   </div>
 
-<!-- 3D local video -->
-<div class="comic-square">
-  <video class="square-video" autoplay muted loop playsinline>
-    <source src="runit.mp4" type="video/mp4">
-  </video>
-  <div class="square-text">3D</div>
-</div>
+  <!-- FULLSCREEN REEL -->
+  <section class="hero-reel">
+    <video autoplay muted loop playsinline class="hero-video">
+      <source src="yourreel.mp4" type="video/mp4">
+    </video>
+  </section>
 
+  <!-- ABOUT SECTION -->
+  <section class="about-section">
+    <div class="about-inner">
+      <div class="about-text">
+        <h2>Who's That?</h2>
 
+        <p><strong>
+          I think it’s through storytelling that you best can communicate anything – whether it’s ideas,
+          an emotion or a brand. I use it as my tool to craft lasting impressions and to spark conversation.
+        </strong></p>
 
-  <!-- 2D local video -->
-<div class="comic-square">
-  <video class="square-video" autoplay muted loop playsinline>
-    <source src="toadingscreen.mp4" type="video/mp4">
-  </video>
-  <div class="square-text">2D</div>
-</div>
+        <p>
+          My name is Fahed Dehchar – I'm a born-and-raised renaissance man from Stockholm.
+          I am an illustrator, a graphic designer, animator, filmmaker and writer.
+          I work both digitally and analog and dream of running my own publishing studio.
+        </p>
 
+        <p>
+          Feel free to hit me up if you want to collaborate, need help with a project or want to bounce ideas!
+        </p>
+      </div>
 
-  <!-- Storytelling -->
-<div class="comic-square">
-  <iframe class="square-video"
-    src="https://www.youtube.com/embed/7WwnRqQLVBk?autoplay=1&mute=1&controls=0&loop=1&playlist=7WwnRqQLVBk"
-    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-  </iframe>
-  <div class="square-text">Storytelling</div>
-</div>
+      <div class="about-portrait">
+        <div class="portrait-square">
+          <video autoplay muted loop playsinline>
+            <source src="portrait.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
 
+    <!-- CONTACT INFO -->
+    <div class="contact-block">
+      <h3>Contact</h3>
+      <p><strong>Email:</strong> fahed.dehchar@gmail.com</p>
+      <p><strong>Phone:</strong> +46 73 354 11 93</p>
+    </div>
+  </section>
 
+  <!-- WORKS GRID -->
+  <section class="works-grid-section">
+    <h2 class="grid-title">Selected Works</h2>
 
+    <div class="works-grid">
 
-<script src="script.js"></script>
+      <!-- Example YOUTUBE LINKS -->
+      <a class="work-square" href="https://www.youtube.com/watch?v=6VDtdjAB3Aw" target="_blank">
+        <div class="square-thumb" style="background-image: url('https://img.youtube.com/vi/6VDtdjAB3Aw/hqdefault.jpg');"></div>
+      </a>
+
+      <a class="work-square" href="https://www.youtube.com/watch?v=7WwnRqQLVBk" target="_blank">
+        <div class="square-thumb" style="background-image: url('https://img.youtube.com/vi/7WwnRqQLVBk/hqdefault.jpg');"></div>
+      </a>
+
+      <!-- 7 Empty placeholders -->
+      <div class="work-square empty-square"></div>
+      <div class="work-square empty-square"></div>
+      <div class="work-square empty-square"></div>
+      <div class="work-square empty-square"></div>
+      <div class="work-square empty-square"></div>
+      <div class="work-square empty-square"></div>
+      <div class="work-square empty-square"></div>
+
+    </div>
+  </section>
+
+<script>
+/* ===== Topbar show/hide on scroll ===== */
+let lastScroll = 0;
+const topbar = document.getElementById("topbar");
+
+window.addEventListener("scroll", () => {
+  let currentScroll = window.pageYOffset;
+
+  if (currentScroll > lastScroll) {
+    topbar.classList.add("hide-topbar");
+  } else {
+    topbar.classList.remove("hide-topbar");
+  }
+
+  lastScroll = currentScroll;
+});
+</script>
+
 </body>
 </html>
+
