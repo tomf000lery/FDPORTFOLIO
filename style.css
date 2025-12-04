@@ -1,282 +1,139 @@
-/* ===== Basic Reset ===== */
-body, html {
+/* ===== GLOBAL RESET ===== */
+* {
   margin: 0;
   padding: 0;
-  font-family: 'Lora', serif;
-  background-color: #000000; /* light marine blue */
+  box-sizing: border-box;
 }
 
-/* Import Lora font */
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap');
-
-/* ===== Sidebar ===== */
-.sidebar {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 150px;
-  height: 100%;
-  background-color: #000000; /* black */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 50px;
-}
-
-.sidebar a, .sidebar span {
-  display: block;
-  color: white;
-  margin: 20px 0;
-  text-decoration: none;
-  font-weight: 700;
-  text-align: center;
+body, html {
   width: 100%;
+  height: 100%;
+  background: #000;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  overflow-x: hidden;
 }
 
-.contact-info {
-  display: none;
-  margin-top: 10px;
-  text-align: center;
-}
-
-.contact-menu:hover .contact-info,
-.contact-menu-top:hover .contact-info {
-  display: block;
-}
-
-/* ===== Top Menu ===== */
-.top-menu {
+/* ===== TOP BAR ===== */
+.topbar {
   position: fixed;
   top: 0;
-  left: 150px; /* push right to sidebar width */
-  right: 0;
-  height: 60px;
-  background-color: #012f4a;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-}
-
-.top-left {
-  font-weight: bold;
-  font-size: 24px;
-}
-
-.top-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.top-right a, .top-right span {
-  color: white;
-  font-size: 20px;
-  text-decoration: none;
-  position: relative;
-  cursor: pointer;
-}
-
-.contact-menu-top {
-  position: relative;
-}
-
-.contact-menu-top .contact-info {
-  display: none;
-  position: absolute;
-  top: 30px;
-  right: 0;
-  background: rgba(0,0,0,0.8);
-  padding: 10px;
-  border-radius: 5px;
-  color: white;
-  white-space: nowrap;
-}
-
-.contact-menu-top:hover .contact-info {
-  display: block;
-}
-
-/* ===== Main Content / Comic Squares ===== */
-.main-content {
-  margin-left: 150px; /* space for sidebar */
-  padding-top: 80px;  /* space for top menu */
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: flex-start;
-  transition: all 0.5s ease;
-}
-
-.comic-square {
-  width: 300px;
-  height: 300px;
-  position: relative;
-  overflow: hidden;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: black;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 20px;
-  border: 5px solid black;
-  border-radius: 5px;
-  box-sizing: border-box;
-  transition: all 0.5s ease;
+  z-index: 1000;
+  transition: transform 0.4s ease;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-.square-video {
-  position: absolute;
-  top: 0;
-  left: 0;
+.topbar.hide-topbar {
+  transform: translateY(-100%);
+}
+
+.topbar h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 1px;
+}
+
+/* ===== HERO REEL ===== */
+.hero-reel {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 1;
-  pointer-events: none;
 }
 
-.square-text {
+/* ===== ABOUT SECTION ===== */
+.about-section {
+  background: white;
+  color: black;
+  padding: 120px 10% 80px;
   position: relative;
-  z-index: 2;
-  font-weight: bold;
-  color: white;
-  text-shadow: 2px 2px 4px black;
-  font-size: 2rem;
+  margin-top: -60px; /* slight overlap behind reel */
+  border-radius: 40px 40px 0 0;
 }
 
-/* ===== About Page Portrait Video ===== */
-.portrait-square {
-  width: 300px;
-  height: 300px;
+.about-inner {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-text h2 {
+  font-size: 40px;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+.about-text p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  font-weight: 400;
+}
+
+/* Portrait video */
+.about-portrait .portrait-square {
+  width: 320px;
+  height: 320px;
+  border-radius: 12px;
   overflow: hidden;
-  position: relative;
-  flex-shrink: 0;
-  margin-left: 40px; /* adds space between text and video */
+  background: black;
 }
 
-.about-video {
+.about-portrait video {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* fills square, crops black bars */
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
+  object-fit: cover;
 }
 
-/* ===== Responsive Adjustments ===== */
-@media (max-width: 1200px) {
-  .comic-square {
-    width: 250px;
-    height: 250px;
-  }
-  .portrait-square {
-    width: 250px;
-    height: 250px;
-  }
+/* ===== CONTACT BLOCK ===== */
+.contact-block {
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 2px solid #ccc;
 }
 
-@media (max-width: 800px) {
-  .comic-square {
-    width: 200px;
-    height: 200px;
-  }
-  .portrait-square {
-    width: 200px;
-    height: 200px;
-  }
+.contact-block h3 {
+  font-size: 28px;
+  margin-bottom: 10px;
 }
 
-/* ===== Works Page Fullscreen YouTube Videos ===== */
-.works-container {
-  margin-left: 150px;   /* space for sidebar */
-  padding-top: 100px;   /* below fixed title bar */
-  padding-right: 40px;  /* margin from right edge */
-}
-
-.works-title-bar {
-  position: fixed;
-  top: 0;
-  left: 150px;
-  right: 0;
-  height: 70px;
-  background-color: #012f4a;
-  display: flex;
-  align-items: center;
-  padding-left: 20px;
-  z-index: 2000;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-}
-
-.works-title-bar h1 {
-  color: white;
-  font-family: 'Lora', serif;
-  font-weight: 700;
-  margin: 0;
-}
-
-.video-item {
-  width: 100%;
-  min-height: 100vh; /* full screen */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 80px 0;
-}
-
-.works-video {
-  width: 90%;
-  max-width: 1400px;
-  height: 70vh; /* cinematic height */
-  border-radius: 12px;
-  border: 6px solid black; /* comic-square border */
-  box-sizing: border-box;
-}
-
-.video-heading {
-  font-family: 'Lora', serif;
-  font-size: 30px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-.video-description {
-  font-family: 'Lora', serif;
+.contact-block p {
   font-size: 18px;
-  margin-top: 20px;
-  max-width: 900px;
-  text-align: left;
-  line-height: 1.6;
-}
-
-/* ===== Fade-in animation for sections ===== */
-.fade-section {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-
-.fade-visible {
-  opacity: 1;
-  transform: translateY(0);
+  margin: 5px 0;
 }
 
 /* ===== WORKS GRID ===== */
-
 .works-grid-section {
-  padding: 100px 10%;
   background: #f5f5f5;
+  padding: 80px 10%;
+  color: black;
 }
 
 .grid-title {
   font-size: 36px;
   font-weight: 700;
-  margin-bottom: 40px;
   text-align: center;
+  margin-bottom: 40px;
 }
 
 .works-grid {
@@ -287,10 +144,10 @@ body, html {
 
 .work-square {
   width: 100%;
-  padding-bottom: 100%; /* keeps squares 1:1 */
+  padding-bottom: 100%;
   position: relative;
   background: #ddd;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -310,21 +167,5 @@ body, html {
 }
 
 .empty-square {
-  background: #bbbbbb;
-}
-
-.contact-block {
-  margin-top: 60px;
-  padding-top: 40px;
-  border-top: 2px solid #e6e6e6;
-}
-
-.contact-block h3 {
-  font-size: 28px;
-  margin-bottom: 10px;
-}
-
-.contact-block p {
-  font-size: 18px;
-  margin: 5px 0;
+  background: #bbb;
 }
