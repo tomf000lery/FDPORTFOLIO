@@ -5,6 +5,7 @@ function copyText(id) {
   });
 }
 
+// Lightbox
 const squares = document.querySelectorAll('.work-square');
 const lightbox = document.getElementById('video-lightbox');
 const lightboxVideo = lightbox.querySelector('.lightbox-video');
@@ -13,17 +14,42 @@ const lightboxDescription = lightbox.querySelector('.lightbox-description');
 const lightboxClose = document.getElementById('lightbox-close');
 
 squares.forEach(square => {
+  // Hover preview scrubbing
+  const hoverVideo = document.createElement('video');
+  hoverVideo.src = square.dataset.video ? square.dataset.video.replace('/embed/', '/') + ".mp4" : '';
+  hoverVideo.autoplay = true;
+  hoverVideo.muted = true;
+  hoverVideo.loop = true;
+  hoverVideo.style.display = 'none';
+  square.appendChild(hoverVideo);
+
+  square.addEventListener('mousemove', e => {
+    if (!hoverVideo.src) return;
+    const rect = square.getBoundingClientRect();
+    const pct = (e.clientX - rect.left) / rect.width;
+    hoverVideo.currentTime = pct * hoverVideo.duration;
+  });
+
+  square.addEventListener('mouseenter', () => {
+    if (hoverVideo.src) hoverVideo.style.display = 'block';
+  });
+
+  square.addEventListener('mouseleave', () => {
+    hoverVideo.style.display = 'none';
+  });
+
+  // Click to open lightbox
   square.addEventListener('click', e => {
     e.preventDefault();
-    const videoSrc = square.getAttribute('data-video');
-    const title = square.getAttribute('data-title');
-    const description = square.getAttribute('data-description');
+    const videoSrc = square.dataset.video;
+    const title = square.dataset.title;
+    const desc = square.dataset.description;
 
     if (!videoSrc) return;
 
     lightboxVideo.src = videoSrc + "&autoplay=1";
     lightboxTitle.textContent = title;
-    lightboxDescription.textContent = description;
+    lightboxDescription.textContent = desc;
     lightbox.style.display = 'flex';
   });
 });
@@ -40,28 +66,13 @@ lightbox.addEventListener('click', e => {
   }
 });
 
-const lightbox = document.querySelector(".video-lightbox");
-const lightboxVideo = document.querySelector(".lightbox-video");
-const lightboxTitle = document.querySelector(".lightbox-title");
-const lightboxDescription = document.querySelector(".lightbox-description");
-const closeBtn = document.querySelector(".close-btn");
+// Topbar scroll hide
+let lastScroll = 0;
+const topbar = document.getElementById("topbar");
 
-document.querySelectorAll(".work-square").forEach(square => {
-  square.addEventListener("click", e => {
-    e.preventDefault();
-    const videoSrc = square.dataset.video;
-    const title = square.dataset.title;
-    const desc = square.dataset.description;
-
-    lightboxVideo.src = videoSrc + "?autoplay=1&rel=0";
-    lightboxTitle.textContent = title;
-    lightboxDescription.textContent = desc;
-
-    lightbox.style.display = "flex";
-  });
-});
-
-closeBtn.addEventListener("click", () => {
-  lightbox.style.display = "none";
-  lightboxVideo.src = ""; // stop playback
+window.addEventListener("scroll", () => {
+  let currentScroll = window.pageYOffset;
+  if (currentScroll > lastScroll) topbar.classList.add("hide-topbar");
+  else topbar.classList.remove("hide-topbar");
+  lastScroll = currentScroll;
 });
