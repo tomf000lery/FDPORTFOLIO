@@ -68,28 +68,39 @@
   <h2 class="grid-title">Selected Works</h2>
 
   <div class="works-grid">
-
     <!-- VIDEO 1 -->
-    <a class="work-square" href="https://www.youtube.com/watch?v=6VDtdjAB3Aw" target="_blank" title="LUJAIN - ENEMI">
+    <a class="work-square" href="#" 
+       data-video="https://www.youtube.com/embed/6VDtdjAB3Aw?rel=0&showinfo=0&modestbranding=1"
+       data-title="LUJAIN - ENEMI"
+       data-description="In collaboration with Lujain for the release of her EP 'Vanguard' I produced this 1.5 minute long fight-scene visualizer for the song ENEMI.">
       <div class="square-thumb" style="background-image: url('https://img.youtube.com/vi/6VDtdjAB3Aw/hqdefault.jpg');"></div>
     </a>
 
     <!-- VIDEO 2 -->
-    <a class="work-square" href="https://www.youtube.com/watch?v=X7d4j2ZaKD8" target="_blank" title='"The Boot-Licker Agenda"'>
+    <a class="work-square" href="#"
+       data-video="https://www.youtube.com/embed/X7d4j2ZaKD8?rel=0&showinfo=0&modestbranding=1"
+       data-title='"The Boot-Licker Agenda"'
+       data-description="Made during a course where the assignment was to communicate a thought through any chosen artform. This project is about the ethical question of billionaires.">
       <div class="square-thumb" style="background-image: url('https://img.youtube.com/vi/X7d4j2ZaKD8/hqdefault.jpg');"></div>
     </a>
 
     <!-- VIDEO 3 -->
-    <a class="work-square" href="https://www.youtube.com/watch?v=7WwnRqQLVBk" target="_blank" title="Det Osagda - Kristin Rosendahl">
+    <a class="work-square" href="#"
+       data-video="https://www.youtube.com/embed/7WwnRqQLVBk?rel=0&showinfo=0&modestbranding=1"
+       data-title="Det Osagda - Kristin Rosendahl"
+       data-description="In collaboration between Beckmans School of Design x The Royal College of Music in Stockholm I created a minute-long visualizer for one of her pieces.">
       <div class="square-thumb" style="background-image: url('https://img.youtube.com/vi/7WwnRqQLVBk/hqdefault.jpg');"></div>
     </a>
 
     <!-- VIDEO 4 -->
-    <a class="work-square" href="https://www.youtube.com/watch?v=Kg_Hz3ugPvg" target="_blank" title="VI, NI OCH DEM">
+    <a class="work-square" href="#"
+       data-video="https://www.youtube.com/embed/Kg_Hz3ugPvg?rel=0&showinfo=0&modestbranding=1"
+       data-title="VI, NI OCH DEM"
+       data-description="For a school assignment, we curated 100 pictures to explore identity and social criticism. This showcases my storytelling and writing skills.">
       <div class="square-thumb" style="background-image: url('https://img.youtube.com/vi/Kg_Hz3ugPvg/hqdefault.jpg');"></div>
     </a>
 
-    <!-- 5 Empty placeholders -->
+    <!-- 5–9 Empty placeholders -->
     <div class="work-square empty-square"></div>
     <div class="work-square empty-square"></div>
     <div class="work-square empty-square"></div>
@@ -98,6 +109,17 @@
 
   </div>
 </section>
+
+<!-- VIDEO LIGHTBOX -->
+<div id="video-lightbox" class="video-lightbox">
+  <div class="lightbox-content">
+    <span class="close-btn" id="lightbox-close">&times;</span>
+    <h2 class="lightbox-title"></h2>
+    <iframe class="lightbox-video" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <p class="lightbox-description"></p>
+  </div>
+</div>
+
 
 
 <script>
@@ -118,6 +140,9 @@ window.addEventListener("scroll", () => {
 });
 </script>
 
+  <script src="script.js"></script>
+
+  
 </body>
 </html>
 
