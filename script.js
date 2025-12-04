@@ -39,3 +39,29 @@ lightbox.addEventListener('click', e => {
     lightbox.style.display = 'none';
   }
 });
+
+const lightbox = document.querySelector(".video-lightbox");
+const lightboxVideo = document.querySelector(".lightbox-video");
+const lightboxTitle = document.querySelector(".lightbox-title");
+const lightboxDescription = document.querySelector(".lightbox-description");
+const closeBtn = document.querySelector(".close-btn");
+
+document.querySelectorAll(".work-square").forEach(square => {
+  square.addEventListener("click", e => {
+    e.preventDefault();
+    const videoSrc = square.dataset.video;
+    const title = square.dataset.title;
+    const desc = square.dataset.description;
+
+    lightboxVideo.src = videoSrc + "?autoplay=1&rel=0";
+    lightboxTitle.textContent = title;
+    lightboxDescription.textContent = desc;
+
+    lightbox.style.display = "flex";
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  lightbox.style.display = "none";
+  lightboxVideo.src = ""; // stop playback
+});
