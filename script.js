@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  /* ===== WORKS GRID LIGHTBOX & HOVER PREVIEW ===== */
   const squares = document.querySelectorAll('.work-square');
   const lightbox = document.getElementById('video-lightbox');
   const lightboxVideo = lightbox.querySelector('.lightbox-video');
@@ -7,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const lightboxClose = document.getElementById('lightbox-close');
 
   squares.forEach(square => {
-    // Lightbox click
+    // Click to open lightbox
     square.addEventListener('click', e => {
       e.preventDefault();
       const videoSrc = square.dataset.video;
@@ -22,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
       lightbox.style.display = 'flex';
     });
 
-    // Hover preview (optional: requires short mp4 or webm inside each square)
+    // Hover preview (optional: short mp4 or webm inside square)
     const previewVideo = square.querySelector('video');
     if (previewVideo) {
       square.addEventListener('mouseenter', () => previewVideo.play());
@@ -30,18 +31,44 @@ document.addEventListener("DOMContentLoaded", () => {
         previewVideo.pause(); 
         previewVideo.currentTime = 0;
       });
+
+      // Optional: hover scrub (move video time depending on horizontal mouse position)
+      square.addEventListener('mousemove', e => {
+        const rect = square.getBoundingClientRect();
+        const x = e.clientX - rect.left; // mouse X inside square
+        const percent = x / rect.width;
+        previewVideo.currentTime = percent * previewVideo.duration;
+      });
     }
   });
 
+  // Close lightbox
   lightboxClose.addEventListener('click', () => {
     lightboxVideo.src = "";
     lightbox.style.display = 'none';
   });
 
+  // Close by clicking outside video
   lightbox.addEventListener('click', e => {
     if (e.target === lightbox) {
       lightboxVideo.src = "";
       lightbox.style.display = 'none';
     }
+  });
+
+  /* ===== TOPBAR SLIDE ON SCROLL ===== */
+  const topbar = document.getElementById("topbar");
+  let lastScroll = 0;
+
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > lastScroll && currentScroll > 50) {
+      // scrolling down
+      topbar.classList.add("hide-topbar");
+    } else {
+      // scrolling up
+      topbar.classList.remove("hide-topbar");
+    }
+    lastScroll = currentScroll;
   });
 });
