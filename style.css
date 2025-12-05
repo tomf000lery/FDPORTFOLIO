@@ -170,7 +170,7 @@ body, html {
   height: 100%;
   background-size: cover;
   background-position: center;
-  z-index: 1; /* below hover video if present */
+  z-index: 3; /* below hover video if present */
 }
 
 /* Hover preview video (optional) */
