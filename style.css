@@ -14,24 +14,21 @@ body, html {
   overflow-x: hidden;
 }
 
-
-
 /* ===== TOP BAR ===== */
 .topbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 90px; /* smaller height for minimal top/bottom gap */
+  height: 90px;
   background: black;
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* align text to left */
-  padding: 0 30px; /* space from left and right edges */
+  justify-content: flex-start;
+  padding: 0 30px;
   z-index: 1000;
   transition: transform 0.4s ease;
   border-bottom: 1px solid rgba(255,255,255,0.1);
-  font-family: 'Montserrat', sans-serif;
 }
 
 .topbar.hide-topbar {
@@ -39,11 +36,12 @@ body, html {
 }
 
 .topbar h1 {
-  font-size: 32px; /* larger text */
-  font-weight: 300; /* Montserrat thin */
+  font-size: 32px;
+  font-weight: 300; /* thin */
   color: white;
   margin: 0;
   letter-spacing: 1px;
+  line-height: 90px; /* vertically center text */
 }
 
 /* ===== HERO REEL ===== */
@@ -68,7 +66,6 @@ body, html {
   position: relative;
   margin-top: -60px;
   border-radius: 40px 40px 0 0;
-  font-family: 'Montserrat', sans-serif;
 }
 
 .about-inner {
@@ -150,7 +147,6 @@ body, html {
   gap: 30px;
 }
 
-/* WORKS GRID */
 .work-square {
   width: 100%;
   padding-bottom: 100%;
@@ -166,7 +162,36 @@ body, html {
   transform: scale(1.03);
 }
 
-/* Lightbox */
+/* Thumbnail image for each square */
+.square-thumb {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 1; /* below hover video if present */
+}
+
+/* Hover preview video (optional) */
+.work-square video {
+  display: none;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 2;
+}
+
+.work-square:hover video {
+  display: block;
+}
+
+.empty-square {
+  background: #555;
+}
+
+/* ===== LIGHTBOX ===== */
 .video-lightbox {
   position: fixed;
   top: 0; left: 0;
@@ -175,10 +200,10 @@ body, html {
   background: rgba(0,0,0,0.95);
   display: none;
   flex-direction: column;
-  justify-content: space-between; /* title top, video middle, desc bottom */
+  justify-content: space-between;
   align-items: center;
   z-index: 5000;
-  padding: 20px 40px;
+  padding: 60px 40px; /* space for title & description */
   box-sizing: border-box;
 }
 
@@ -190,7 +215,6 @@ body, html {
   flex-direction: column;
   justify-content: space-between;
   color: white;
-  font-family: 'Montserrat', sans-serif;
 }
 
 .lightbox-video {
