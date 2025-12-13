@@ -3,73 +3,153 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fahed Dehchar</title>
+  <title>Works Grid</title>
+  <style>
+    /* ===== WORKS GRID ===== */
+    .works-grid-section {
+      background: #111;
+      padding: 80px 10%;
+      color: white;
+    }
 
-  <!-- Montserrat -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    .grid-title {
+      font-size: 36px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    /* WORKS GRID SQUARES */
+    .work-square {
+      width: 100%;
+      padding-bottom: 100%; /* square ratio */
+      position: relative;
+      background: #333; /* fallback if thumbnail missing */
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .work-square:hover {
+      transform: scale(1.03);
+    }
+
+    .square-thumb {
+      position: absolute;
+      top: 0; 
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+    }
+
+    /* Lightbox for fullscreen video */
+    .video-lightbox {
+      position: fixed;
+      top: 0; 
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      display: none;
+      flex-direction: column;
+      justify-content: space-between; /* title top, video middle, desc bottom */
+      align-items: center;
+      z-index: 5000;
+      padding: 20px 40px;
+      box-sizing: border-box;
+    }
+
+    .lightbox-content {
+      width: 100%;
+      max-width: 1400px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .lightbox-video {
+      width: 100%;
+      flex-grow: 1; /* video fills vertical space */
+      border: none;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .lightbox-title {
+      font-size: 28px;
+      font-weight: 300; /* thin */
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .lightbox-description {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.6;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 36px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    /* ===== WORK CATEGORIES ===== */
+    .works-category {
+      margin-bottom: 80px;
+    }
+
+    .category-title {
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #ddd;
+    }
+
+    /* Placeholder squares for upcoming works */
+    .work-square.placeholder {
+      background: #222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+    }
+
+    .placeholder-label {
+      color: #888;
+      font-size: 16px;
+      font-weight: 400;
+      text-align: center;
+      padding: 20px;
+      line-height: 1.4;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Top Bar -->
-  <div class="topbar" id="topbar">
-    <h1>Fahed Dehchar</h1>
-  </div>
-
-  <!-- HERO REEL -->
-
-<section class="hero-reel">
-  <div class="hero-video-wrapper">
-    <iframe
-      src="https://www.youtube.com/embed/stlL3egCfIg?autoplay=1&mute=1&loop=1&controls=0&rel=0&modestbranding=1&showinfo=0&playsinline=1&playlist=stlL3egCfIg"
-      frameborder="0"
-      allow="autoplay; fullscreen"
-      allowfullscreen>
-    </iframe>
-  </div>
-</section>
-
-
-
-  <!-- ABOUT SECTION -->
-  <section class="about-section">
-    <div class="about-inner">
-      <div class="about-text">
-        <h2>Who's That?</h2>
-
-        <p><strong>
-          I think it’s through storytelling that you best can communicate anything – whether it’s ideas,
-          an emotion or a brand. I use it as my tool to craft lasting impressions and to spark conversation.
-        </strong></p>
-
-        <p>
-          My name is Fahed Dehchar – I'm a born-and-raised renaissance man from Stockholm. 
-            But jokes aside and to be more specific: I am an illustrator, a graphic designer, animator, filmmaker and writer.
-          I work both digitally and analog and my dream is to one day run my own publishing studio.
-        </p>
-
-        <p>
-          Feel free to hit me up if you want to collaborate, need help with a project or want to bounce ideas!
-        </p>
-      </div>
-
-      <div class="about-portrait">
-        <div class="portrait-square">
-          <video autoplay muted loop playsinline>
-            <source src="portrait.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-
-    <div class="contact-block">
-      <h3>Contact</h3>
-      <p><strong>Email:</strong> fahed.dehchar@gmail.com</p>
-      <p><strong>Phone:</strong> +46 73 354 11 93</p>
-    </div>
-  </section>
-
-  <!-- WORKS GRID -->
+<!-- WORKS GRID -->
 <section class="works-grid-section">
   <h2 class="grid-title">Selected Works</h2>
 
@@ -77,23 +157,11 @@
   <div class="works-category">
     <h3 class="category-title">Concept Design</h3>
     <div class="works-grid">
-
-      <div class="work-square placeholder">
-        <span class="placeholder-label">5innen (new)</span>
-      </div>
-      <div class="work-square placeholder">
-        <span class="placeholder-label">Ant Venture (new)</span>
-      </div>
-      <div class="work-square placeholder">
-        <span class="placeholder-label">F.I.S.H (new)</span>
-      </div>
-      <div class="work-square placeholder">
-        <span class="placeholder-label">Keyboard Warrior (new)</span>
-      </div>
-      <div class="work-square placeholder">
-        <span class="placeholder-label">Chase the Cheese (new)</span>
-      </div>
-
+      <div class="work-square placeholder"><span class="placeholder-label">5innen (new)</span></div>
+      <div class="work-square placeholder"><span class="placeholder-label">Ant Venture (new)</span></div>
+      <div class="work-square placeholder"><span class="placeholder-label">F.I.S.H (new)</span></div>
+      <div class="work-square placeholder"><span class="placeholder-label">Keyboard Warrior (new)</span></div>
+      <div class="work-square placeholder"><span class="placeholder-label">Chase the Cheese (new)</span></div>
     </div>
   </div>
 
@@ -101,10 +169,7 @@
   <div class="works-category">
     <h3 class="category-title">Music Videos</h3>
     <div class="works-grid">
-
-      <div class="work-square placeholder">
-        <span class="placeholder-label">CARPETEATER (new)</span>
-      </div>
+      <div class="work-square placeholder"><span class="placeholder-label">CARPETEATER (new)</span></div>
 
       <!-- ENEMI -->
       <a class="work-square" href="#"
@@ -122,10 +187,7 @@
         <div class="square-thumb" style="background-image: url('DETOSAGDAtn.png');"></div>
       </a>
 
-      <div class="work-square placeholder">
-        <span class="placeholder-label">Electric Eye (new)</span>
-      </div>
-
+      <div class="work-square placeholder"><span class="placeholder-label">Electric Eye (new)</span></div>
     </div>
   </div>
 
@@ -133,7 +195,6 @@
   <div class="works-category">
     <h3 class="category-title">Short Film</h3>
     <div class="works-grid">
-
       <!-- THE BOOT-LICKER AGENDA -->
       <a class="work-square" href="#"
          data-video="https://www.youtube.com/embed/X7d4j2ZaKD8"
@@ -149,7 +210,6 @@
          data-description="For an assignment in school we were tasked with curating 100 pictures regarding any subject. I chose to include this work in my portfolio to showcase my ability in writing and storytelling.">
         <div class="square-thumb" style="background-image: url('VINIOCHDEMtn.png');"></div>
       </a>
-
     </div>
   </div>
 
@@ -157,17 +217,61 @@
   <div class="works-category">
     <h3 class="category-title">Graphic Design</h3>
     <div class="works-grid">
-
-      <div class="work-square placeholder">
-        <span class="placeholder-label">Kungliga Postverket (new)</span>
-      </div>
-      <div class="work-square placeholder">
-        <span class="placeholder-label">C2NC (new)</span>
-      </div>
-      <div class="work-square placeholder">
-        <span class="placeholder-label">etc (new)</span>
-      </div>
-
+      <div class="work-square placeholder"><span class="placeholder-label">Kungliga Postverket (new)</span></div>
+      <div class="work-square placeholder"><span class="placeholder-label">C2NC (new)</span></div>
+      <div class="work-square placeholder"><span class="placeholder-label">etc (new)</span></div>
     </div>
   </div>
 </section>
+
+<!-- VIDEO LIGHTBOX -->
+<div id="video-lightbox" class="video-lightbox">
+  <div class="lightbox-content">
+    <span class="close-btn" id="lightbox-close">&times;</span>
+    <h2 class="lightbox-title"></h2>
+    <iframe class="lightbox-video" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <p class="lightbox-description"></p>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const squares = document.querySelectorAll('a.work-square[data-video]');
+  const lightbox = document.getElementById('video-lightbox');
+  const lightboxVideo = lightbox.querySelector('.lightbox-video');
+  const lightboxTitle = lightbox.querySelector('.lightbox-title');
+  const lightboxDescription = lightbox.querySelector('.lightbox-description');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  squares.forEach(square => {
+    square.addEventListener('click', e => {
+      e.preventDefault();
+      const videoSrc = square.dataset.video;
+      const title = square.dataset.title;
+      const description = square.dataset.description;
+
+      if (!videoSrc) return;
+
+      lightboxVideo.src = videoSrc + "?autoplay=1&rel=0";
+      lightboxTitle.textContent = title;
+      lightboxDescription.textContent = description;
+      lightbox.style.display = 'flex';
+    });
+  });
+
+  lightboxClose.addEventListener('click', () => {
+    lightboxVideo.src = "";
+    lightbox.style.display = 'none';
+  });
+
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) {
+      lightboxVideo.src = "";
+      lightbox.style.display = 'none';
+    }
+  });
+});
+</script>
+
+</body>
+</html>
