@@ -53,18 +53,27 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* remove clip-path if you want full video */
 }
 
-.hero-reel .hero-video {
+.hero-video-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;   /* ensures full coverage */
+  height: 120%;
+  transform: translate(-50%, -50%);
+  pointer-events: none; /* DISABLES ALL INTERACTIONS */
+}
+
+.hero-video-wrapper iframe {
   width: 100%;
   height: 100%;
   border: none;
-  object-fit: cover;   /* fills screen, crops edges */
-  pointer-events: none; /* disables any clicking or interaction */
+  object-fit: cover;      /* fill container */
+  object-position: center;/* center video */
+  pointer-events: none;   /* ensures iframe cannot be clicked */
 }
-
-
-
 
 
 
