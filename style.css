@@ -255,3 +255,35 @@ body, html {
   cursor: pointer;
   z-index: 10;
 }
+
+/* ===== WORK CATEGORIES ===== */
+.works-category {
+  margin-bottom: 80px;
+}
+
+.category-title {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ddd;
+}
+
+/* Placeholder squares for upcoming works */
+.work-square.placeholder {
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+.placeholder-label {
+  color: #888;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  padding: 20px;
+  line-height: 1.4;
+}
