@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   /* ===== WORKS GRID LIGHTBOX & HOVER PREVIEW ===== */
-  const squares = document.querySelectorAll('.work-square');
+  const squares = document.querySelectorAll('a.work-square[data-video]'); // only real videos
   const lightbox = document.getElementById('video-lightbox');
   const lightboxVideo = lightbox.querySelector('.lightbox-video');
   const lightboxTitle = lightbox.querySelector('.lightbox-title');
@@ -15,15 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const title = square.dataset.title;
       const description = square.dataset.description;
 
-      if (!videoSrc) return;
-
       lightboxVideo.src = videoSrc + "?autoplay=1&rel=0";
       lightboxTitle.textContent = title;
       lightboxDescription.textContent = description;
       lightbox.style.display = 'flex';
     });
 
-    // Hover preview (optional: short mp4 or webm inside square)
+    // Hover preview (optional)
     const previewVideo = square.querySelector('video');
     if (previewVideo) {
       square.addEventListener('mouseenter', () => previewVideo.play());
@@ -32,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         previewVideo.currentTime = 0;
       });
 
-      // Optional: hover scrub (move video time depending on horizontal mouse position)
+      // Optional: hover scrub
       square.addEventListener('mousemove', e => {
         const rect = square.getBoundingClientRect();
         const x = e.clientX - rect.left; // mouse X inside square
@@ -63,10 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", () => {
     const currentScroll = window.pageYOffset;
     if (currentScroll > lastScroll && currentScroll > 50) {
-      // scrolling down
       topbar.classList.add("hide-topbar");
     } else {
-      // scrolling up
       topbar.classList.remove("hide-topbar");
     }
     lastScroll = currentScroll;
