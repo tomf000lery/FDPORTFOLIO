@@ -56,12 +56,14 @@ body, html {
   align-items: center;
 }
 
-.hero-reel video {
+.hero-reel .hero-video {
   width: 100%;
   height: 100%;
-  object-fit: contain;     /* show full video without cropping */
-  object-position: center; /* keep video centered */
+  border: none;
+  object-fit: contain;      /* shows full video */
+  object-position: center;
 }
+
 
 
 
