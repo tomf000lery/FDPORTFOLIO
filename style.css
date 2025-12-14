@@ -191,7 +191,6 @@ body, html {
   height: 100%;
   background-size: cover;   
   background-position: center; /* center image inside box */
-  background-repeat: no-repeat; /* avoid tiling if image smaller than box */
   z-index: 1;
 }
 
