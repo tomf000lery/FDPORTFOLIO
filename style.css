@@ -189,7 +189,7 @@ body, html {
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: contain;   /* fit entire image without cropping */
+  background-size: cover;   
   background-position: center; /* center image inside box */
   background-repeat: no-repeat; /* avoid tiling if image smaller than box */
   z-index: 1;
