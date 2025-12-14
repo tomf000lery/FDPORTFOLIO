@@ -70,147 +70,7 @@
   </section>
 
   
-  /* ===== WORKS GRID ===== */
-  
-    .works-grid-section {
-      background: #111;
-      padding: 80px 10%;
-      color: white;
-    }
-
-    .grid-title {
-      font-size: 36px;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .works-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-    }
-
-    /* WORKS GRID SQUARES */
-    .work-square {
-      width: 100%;
-      padding-bottom: 100%; /* square ratio */
-      position: relative;
-      background: #333; /* fallback if thumbnail missing */
-      border-radius: 12px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .work-square:hover {
-      transform: scale(1.03);
-    }
-
-    .square-thumb {
-      position: absolute;
-      top: 0; 
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      z-index: 1;
-    }
-
-    /* Lightbox for fullscreen video */
-    .video-lightbox {
-      position: fixed;
-      top: 0; 
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.95);
-      display: none;
-      flex-direction: column;
-      justify-content: space-between; /* title top, video middle, desc bottom */
-      align-items: center;
-      z-index: 5000;
-      padding: 20px 40px;
-      box-sizing: border-box;
-    }
-
-    .lightbox-content {
-      width: 100%;
-      max-width: 1400px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      color: white;
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    .lightbox-video {
-      width: 100%;
-      flex-grow: 1; /* video fills vertical space */
-      border: none;
-      border-radius: 12px;
-      object-fit: cover;
-    }
-
-    .lightbox-title {
-      font-size: 28px;
-      font-weight: 300; /* thin */
-      margin-bottom: 10px;
-      text-align: center;
-    }
-
-    .lightbox-description {
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 1.6;
-      text-align: center;
-      margin-top: 10px;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 36px;
-      font-weight: bold;
-      color: white;
-      cursor: pointer;
-      z-index: 10;
-    }
-
-    /* ===== WORK CATEGORIES ===== */
-    .works-category {
-      margin-bottom: 80px;
-    }
-
-    .category-title {
-      font-size: 24px;
-      font-weight: 500;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #ddd;
-    }
-
-    /* Placeholder squares for upcoming works */
-    .work-square.placeholder {
-      background: #222;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: default;
-    }
-
-    .placeholder-label {
-      color: #888;
-      font-size: 16px;
-      font-weight: 400;
-      text-align: center;
-      padding: 20px;
-      line-height: 1.4;
-    }
+ 
   </style>
 </head>
 <body>
@@ -223,11 +83,11 @@
   <div class="works-category">
     <h3 class="category-title">Concept Design</h3>
     <div class="works-grid">
-      <div class="work-square placeholder"><span class="placeholder-label">5innen (new)</span></div>
-      <div class="work-square placeholder"><span class="placeholder-label">Ant Venture (new)</span></div>
-      <div class="work-square placeholder"><span class="placeholder-label">F.I.S.H (new)</span></div>
-      <div class="work-square placeholder"><span class="placeholder-label">Keyboard Warrior (new)</span></div>
-      <div class="work-square placeholder"><span class="placeholder-label">Chase the Cheese (new)</span></div>
+      <div class="work-square placeholder"><span class="placeholder-label">5innen</span></div>
+      <div class="work-square placeholder"><span class="placeholder-label">Antventure</span></div>
+      <div class="work-square placeholder"><span class="placeholder-label">F.I.S.H</span></div>
+      <div class="work-square placeholder"><span class="placeholder-label">keyboard_warrior</span></div>
+      <div class="work-square placeholder"><span class="placeholder-label">chase the cheese</span></div>
     </div>
   </div>
 
@@ -235,7 +95,7 @@
   <div class="works-category">
     <h3 class="category-title">Music Videos</h3>
     <div class="works-grid">
-      <div class="work-square placeholder"><span class="placeholder-label">CARPETEATER (new)</span></div>
+      <div class="work-square placeholder"><span class="placeholder-label">CARPETEATER</span></div>
 
       <!-- ENEMI -->
       <a class="work-square" href="#"
@@ -253,7 +113,7 @@
         <div class="square-thumb" style="background-image: url('DETOSAGDAtn.png');"></div>
       </a>
 
-      <div class="work-square placeholder"><span class="placeholder-label">Electric Eye (new)</span></div>
+      <div class="work-square placeholder"><span class="placeholder-label">Electric Eye</span></div>
     </div>
   </div>
 
@@ -283,9 +143,9 @@
   <div class="works-category">
     <h3 class="category-title">Graphic Design</h3>
     <div class="works-grid">
-      <div class="work-square placeholder"><span class="placeholder-label">Kungliga Postverket (new)</span></div>
-      <div class="work-square placeholder"><span class="placeholder-label">C2NC (new)</span></div>
-      <div class="work-square placeholder"><span class="placeholder-label">etc (new)</span></div>
+      <div class="work-square placeholder"><span class="placeholder-label">Kungliga Postverket</span></div>
+      <div class="work-square placeholder"><span class="placeholder-label">C2NC</span></div>
+      <div class="work-square placeholder"><span class="placeholder-label">etc</span></div>
     </div>
   </div>
 </section>
