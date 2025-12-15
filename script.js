@@ -68,3 +68,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // ALWAYS hide side scroll
   document.body.style.overflowY = 'hidden';
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector('.works-grid').addEventListener('click', e => {
+    const square = e.target.closest('.work-square[data-pdf]');
+    if (!square) return;
+
+    window.open(square.dataset.pdf, '_blank');
+  });
+});
