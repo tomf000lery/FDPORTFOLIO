@@ -5,19 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const lightboxDescription = lightbox.querySelector('.lightbox-description');
   const lightboxClose = document.getElementById('lightbox-close');
 
+  // Select video and PDF squares
   const videoSquares = document.querySelectorAll('a.work-square[data-video]');
   const pdfSquares = document.querySelectorAll('.works-grid .work-square[data-pdf]');
 
+  // Disable/enable page scroll
+  const disableScroll = () => document.body.style.overflow = 'hidden';
+  const enableScroll = () => document.body.style.overflow = '';
 
-  // Disable page scroll when lightbox is open
-  function disableScroll() {
-    document.body.style.overflow = 'hidden';
-  }
-  function enableScroll() {
-    document.body.style.overflow = '';
-  }
-
-  // VIDEO SQUARES
+  // Open video squares
   videoSquares.forEach(square => {
     square.addEventListener('click', e => {
       e.preventDefault();
@@ -29,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       lightboxVideo.style.display = "block";
       lightboxVideo.src = videoSrc + "?autoplay=1&rel=0&mute=0";
-
       lightboxTitle.textContent = title;
       lightboxDescription.textContent = description;
 
@@ -38,16 +33,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // PDF SQUARES (e.g., 5innen)
+  // Open PDF squares
   pdfSquares.forEach(square => {
     square.addEventListener('click', () => {
       const pdfSrc = square.dataset.pdf;
       const title = square.querySelector('.placeholder-label')?.textContent || "PDF";
-      const description = square.dataset.description || "Placeholder description text for this PDF.";
+      const description = square.dataset.description || "Placeholder text for PDF description.";
 
       lightboxVideo.style.display = "none";
       lightboxVideo.src = "";
-
       lightboxTitle.textContent = title;
       lightboxDescription.innerHTML = `
         <p>${description}</p>
@@ -60,18 +54,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Close lightbox
-  lightboxClose.addEventListener('click', () => {
+  const closeLightbox = () => {
     lightboxVideo.src = "";
     lightbox.style.display = 'none';
     enableScroll();
+  };
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) closeLightbox();
   });
 
-  // Close by clicking outside content
-  lightbox.addEventListener('click', e => {
-    if (e.target === lightbox) {
-      lightboxVideo.src = "";
-      lightbox.style.display = 'none';
-      enableScroll();
-    }
-  });
+  // ALWAYS hide side scroll
+  document.body.style.overflowY = 'hidden';
 });
