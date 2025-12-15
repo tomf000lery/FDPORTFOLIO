@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const lightboxClose = document.getElementById('lightbox-close');
 
   const videoSquares = document.querySelectorAll('a.work-square[data-video]');
-  const pdfSquares = document.querySelectorAll('div.work-square[data-pdf]');
+  const pdfSquares = document.querySelectorAll('.works-grid .work-square[data-pdf]');
+
 
   // Disable page scroll when lightbox is open
   function disableScroll() {
