@@ -193,6 +193,7 @@ body, html {
   background-position: center; /* centers image */
   background-repeat: no-repeat;
   z-index: 1;
+  pointer-events: none; /* allow clicks to pass through to parent */
 }
 
 
