@@ -189,8 +189,6 @@ body, html {
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: contain;   
-  background-position: center;
   background-size: cover;     /* makes image fill the box completely */
   background-position: center; /* centers image */
   background-repeat: no-repeat;
