@@ -218,30 +218,29 @@ body, html {
 .lightbox-content {
   width: 100%;
   max-width: 1400px;
-  padding: 20px 0;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;  /* spacing between title, video, and description */
   color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.lightbox-title {
+  font-size: 28px;
+  font-weight: 300;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 .lightbox-video {
   display: block;
   width: 100%;
-  max-width: 1200px;   /* optional, keeps video from being too wide */
-  aspect-ratio: 16 / 9; /* maintains correct video ratio */
+  max-width: 1200px;
+  aspect-ratio: 16 / 9; /* keeps proper video proportions */
   border: none;
   border-radius: 12px;
-}
-
-
-
-.lightbox-title {
-  font-size: 28px;
-  font-weight: 300; /* thin */
-  margin-bottom: 10px;
-  text-align: center;
+  margin: 10px 0; /* space between title and description */
 }
 
 .lightbox-description {
@@ -251,6 +250,7 @@ body, html {
   text-align: center;
   margin-top: 10px;
 }
+
 
 .close-btn {
   position: absolute;
