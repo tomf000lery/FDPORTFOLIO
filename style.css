@@ -167,12 +167,12 @@ body, html {
   gap: 30px;
 }
 
-/* WORKS GRID SQUARES */
+/* ===== WORKS GRID SQUARES ===== */
 .work-square {
   width: 100%;
   padding-bottom: 100%; /* square ratio */
   position: relative;
-  background: #333; /* fallback if thumbnail missing */
+  background: #333;
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
@@ -189,17 +189,24 @@ body, html {
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: cover;     /* makes image fill the box completely */
-  background-position: center; /* centers image */
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   z-index: 1;
   pointer-events: none; /* allow clicks to pass through to parent */
 }
 
+.placeholder-label {
+  color: #888;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  padding: 20px;
+  line-height: 1.4;
+  pointer-events: none; /* allow clicks to pass through to parent */
+}
 
-
-
-/* Lightbox for fullscreen video */
+/* ===== LIGHTBOX ===== */
 .video-lightbox {
   position: fixed;
   top: 0; 
@@ -209,22 +216,21 @@ body, html {
   background: rgba(0,0,0,0.95);
   display: none;
   flex-direction: column;
-  justify-content: space-between; /* title top, video middle, desc bottom */
+  justify-content: center; /* vertically center */
   align-items: center;
   z-index: 5000;
   padding: 20px 40px;
   box-sizing: border-box;
+  overflow-y: auto; /* in case description is long */
 }
 
 .lightbox-content {
   width: 100%;
-  max-width: 1400px;
-  height: auto;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: white;
-  font-family: 'Montserrat', sans-serif;
 }
 
 .lightbox-title {
@@ -238,10 +244,10 @@ body, html {
   display: block;
   width: 100%;
   max-width: 1200px;
-  aspect-ratio: 16 / 9; /* keeps proper video proportions */
+  aspect-ratio: 16/9;
   border: none;
   border-radius: 12px;
-  margin: 10px 0; /* space between title and description */
+  margin: 10px 0;
 }
 
 .lightbox-description {
@@ -249,9 +255,8 @@ body, html {
   font-weight: 400;
   line-height: 1.6;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 5px; /* smaller margin to keep description visible */
 }
-
 
 .close-btn {
   position: absolute;
@@ -263,6 +268,7 @@ body, html {
   cursor: pointer;
   z-index: 10;
 }
+
 
 /* ===== WORK CATEGORIES ===== */
 .works-category {
