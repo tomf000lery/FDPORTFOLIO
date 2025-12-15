@@ -104,7 +104,58 @@
   <span class="placeholder-label">Chase the Cheese</span>
 </div>
 
-@@ -151,7 +153,8 @@
+  </div>
+
+  <!-- CATEGORY 2: MUSIC VIDEOS -->
+  <div class="works-category">
+    <h3 class="category-title">Music Videos</h3>
+    <div class="works-grid">
+      <div class="work-square placeholder"><span class="placeholder-label">CARPETEATER</span></div>
+
+      <!-- ENEMI -->
+      <a class="work-square" href="#"
+         data-video="https://www.youtube.com/embed/6VDtdjAB3Aw"
+         data-title="LUJAIN - ENEMI"
+         data-description="In collaboration with Lujain for the release of her EP 'Vanguard' I produced this 1.5 minute long fight-scene visualizer for the song ENEMI.">
+        <div class="square-thumb" style="background-image: url('ENEMItn.png');"></div>
+      </a>
+
+      <!-- DET OSAGDA -->
+      <a class="work-square" href="#"
+         data-video="https://www.youtube.com/embed/7WwnRqQLVBk"
+         data-title="Det Osagda - Kristin Rosendahl"
+         data-description='In a collaboration between Beckmans College of Design x The Royal College of Music in Stockholm I created a minute-long visualizer for one of Kristin Rosendahl\'s musical pieces; "Det Osagda".'>
+        <div class="square-thumb" style="background-image: url('DETOSAGDAtn.png');"></div>
+      </a>
+
+      <div class="work-square placeholder"><span class="placeholder-label">Electric Eye</span></div>
+    </div>
+  </div>
+
+  <!-- CATEGORY 3: SHORT FILM -->
+  <div class="works-category">
+    <h3 class="category-title">Short Film</h3>
+    <div class="works-grid">
+      <!-- THE BOOT-LICKER AGENDA -->
+      <a class="work-square" href="#"
+         data-video="https://www.youtube.com/embed/X7d4j2ZaKD8"
+         data-title="The Boot-Licker Agenda"
+         data-description="Made during a course where the assignment was to communicate a thought through any chosen artform. Perhaps controversial but I chose to formulate my thoughts on the (ethical) question about if billionaires should exist or not. This is the end result.">
+        <div class="square-thumb" style="background-image: url('TBLAtn.png');"></div>
+      </a>
+
+      <!-- VI, NI OCH DEM -->
+      <a class="work-square" href="#"
+         data-video="https://www.youtube.com/embed/Kg_Hz3ugPvg"
+         data-title="VI, NI OCH DEM"
+         data-description="For an assignment in school we were tasked with curating 100 pictures regarding any subject. I chose to include this work in my portfolio to showcase my ability in writing and storytelling.">
+        <div class="square-thumb" style="background-image: url('VINIOCHDEMtn.png');"></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- CATEGORY 4: GRAPHIC DESIGN -->
+  <div class="works-category">
     <h3 class="category-title">Graphic Design</h3>
     <div class="works-grid">
       <div class="work-square placeholder"><span class="placeholder-label">Kungliga Postverket</span></div>
@@ -113,3 +164,60 @@
   <div class="square-thumb" style="background-image: url('c2nctn.jpg');"></div>
   <span class="placeholder-label">C2NC</span>
 </div>
+
+      <div class="work-square placeholder"><span class="placeholder-label">etc</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO LIGHTBOX -->
+<div id="video-lightbox" class="video-lightbox">
+  <div class="lightbox-content">
+    <span class="close-btn" id="lightbox-close">&times;</span>
+    <h2 class="lightbox-title"></h2>
+    <iframe class="lightbox-video" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <p class="lightbox-description"></p>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const squares = document.querySelectorAll('a.work-square[data-video]');
+  const lightbox = document.getElementById('video-lightbox');
+  const lightboxVideo = lightbox.querySelector('.lightbox-video');
+  const lightboxTitle = lightbox.querySelector('.lightbox-title');
+  const lightboxDescription = lightbox.querySelector('.lightbox-description');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  squares.forEach(square => {
+    square.addEventListener('click', e => {
+      e.preventDefault();
+      const videoSrc = square.dataset.video;
+      const title = square.dataset.title;
+      const description = square.dataset.description;
+
+      if (!videoSrc) return;
+
+      lightboxVideo.src = videoSrc + "?autoplay=1&rel=0";
+      lightboxTitle.textContent = title;
+      lightboxDescription.textContent = description;
+      lightbox.style.display = 'flex';
+    });
+  });
+
+  lightboxClose.addEventListener('click', () => {
+    lightboxVideo.src = "";
+    lightbox.style.display = 'none';
+  });
+
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) {
+      lightboxVideo.src = "";
+      lightbox.style.display = 'none';
+    }
+  });
+});
+</script>
+
+</body>
+</html>
