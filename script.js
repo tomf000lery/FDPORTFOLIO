@@ -31,6 +31,18 @@ document.addEventListener("DOMContentLoaded", () => {
       lightbox.style.display = 'flex';
       disableScroll();
     });
+
+      // ===== PDF SQUARES (like 5innen) =====
+  document.addEventListener('click', e => {
+    const pdfSquare = e.target.closest('.work-square[data-pdf]');
+    if (!pdfSquare) return;
+
+    const pdfFile = pdfSquare.dataset.pdf;
+    if (!pdfFile) return;
+
+    // Open PDF in new tab
+    window.open(pdfFile, '_blank');
+  });
   });
 
   // Open PDF squares
@@ -69,11 +81,3 @@ document.addEventListener("DOMContentLoaded", () => {
   document.body.style.overflowY = 'hidden';
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector('.works-grid').addEventListener('click', e => {
-    const square = e.target.closest('.work-square[data-pdf]');
-    if (!square) return;
-
-    window.open(square.dataset.pdf, '_blank');
-  });
-});
