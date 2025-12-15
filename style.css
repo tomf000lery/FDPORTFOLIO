@@ -218,21 +218,23 @@ body, html {
 .lightbox-content {
   width: 100%;
   max-width: 1400px;
-  height: 100%;
+  padding: 20px 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  gap: 20px;  /* spacing between title, video, and description */
   color: white;
-  font-family: 'Montserrat', sans-serif;
 }
 
 .lightbox-video {
-  display: block;       /* ensure iframe is visible when lightbox opens */
-  width: 100%;          /* fills the width of the lightbox container */
-  height: 100%;         /* fills the height of the lightbox container */
-  border: none;         /* remove default iframe border */
-  border-radius: 12px;  /* optional, matches your squares */
+  display: block;
+  width: 100%;
+  max-width: 1200px;   /* optional, keeps video from being too wide */
+  aspect-ratio: 16 / 9; /* maintains correct video ratio */
+  border: none;
+  border-radius: 12px;
 }
+
 
 
 .lightbox-title {
