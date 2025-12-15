@@ -5,11 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const lightboxDescription = lightbox.querySelector('.lightbox-description');
   const lightboxClose = document.getElementById('lightbox-close');
 
-  // Select both video links and PDF squares
-  const videoSquares = document.querySelectorAll('a.work-square[data-video]');
-  const pdfSquares = document.querySelectorAll('div.work-square[data-pdf]');
-
   // VIDEO SQUARES
+  const videoSquares = document.querySelectorAll('a.work-square[data-video]');
   videoSquares.forEach(square => {
     square.addEventListener('click', e => {
       e.preventDefault();
@@ -19,23 +16,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (!videoSrc) return;
 
+      // Set iframe dimensions and show
       lightboxVideo.style.display = "block";
-      lightboxVideo.src = videoSrc + "?autoplay=1&rel=0";
+      lightboxVideo.width = "100%";
+      lightboxVideo.height = "100%";
+      lightboxVideo.src = videoSrc + "?autoplay=1&rel=0&mute=0";
       lightboxTitle.textContent = title;
       lightboxDescription.textContent = description;
       lightbox.style.display = 'flex';
     });
   });
 
-  // PDF SQUARES
+  // PDF SQUARES (like 5innen)
+  const pdfSquares = document.querySelectorAll('div.work-square[data-pdf]');
   pdfSquares.forEach(square => {
     square.addEventListener('click', () => {
       const pdfSrc = square.dataset.pdf;
+      // Try to get the title from placeholder-label
       const title = square.querySelector('.placeholder-label')?.textContent || "PDF";
       const description = square.dataset.description || ""; // optional description
 
-      lightboxVideo.style.display = "none"; // hide video
-      lightboxVideo.src = "";               // clear previous video
+      lightboxVideo.style.display = "none";
+      lightboxVideo.src = "";
       lightboxTitle.textContent = title;
       lightboxDescription.innerHTML = `
         <p>${description}</p>
