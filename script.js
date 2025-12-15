@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const videoSquares = document.querySelectorAll('a.work-square[data-video]');
   const pdfSquares = document.querySelectorAll('div.work-square[data-pdf]');
 
-  // Functions to disable/enable page scroll
   function disableScroll() {
     document.body.style.overflow = 'hidden';
   }
@@ -25,37 +24,29 @@ document.addEventListener("DOMContentLoaded", () => {
       const title = square.dataset.title || "Video";
       const description = square.dataset.description || "";
 
-      if (!videoSrc) return;
-
       lightboxVideo.style.display = "block";
-      lightboxVideo.width = "100%";
-      lightboxVideo.height = "100%";
       lightboxVideo.src = videoSrc + "?autoplay=1&rel=0&mute=0";
-
       lightboxTitle.textContent = title;
       lightboxDescription.textContent = description;
-
       lightbox.style.display = 'flex';
       disableScroll();
     });
   });
 
-  // PDF SQUARES (like 5innen)
+  // PDF SQUARES
   pdfSquares.forEach(square => {
     square.addEventListener('click', () => {
       const pdfSrc = square.dataset.pdf;
       const title = square.querySelector('.placeholder-label')?.textContent || "PDF";
-      const description = square.dataset.description || "Placeholder description text for this PDF.";
+      const description = square.dataset.description || "Placeholder description text.";
 
       lightboxVideo.style.display = "none";
       lightboxVideo.src = "";
-
       lightboxTitle.textContent = title;
       lightboxDescription.innerHTML = `
         <p>${description}</p>
         <p><a href="${pdfSrc}" target="_blank" style="color:#0af; text-decoration:underline;">Open PDF</a></p>
       `;
-
       lightbox.style.display = 'flex';
       disableScroll();
     });
@@ -77,4 +68,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
