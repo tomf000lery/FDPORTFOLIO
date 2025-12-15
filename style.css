@@ -227,12 +227,13 @@ body, html {
 }
 
 .lightbox-video {
-  width: 100%;
-  flex-grow: 1; /* video fills vertical space */
-  border: none;
-  border-radius: 12px;
-  object-fit: cover;
+  display: block;       /* ensure iframe is visible when lightbox opens */
+  width: 100%;          /* fills the width of the lightbox container */
+  height: 100%;         /* fills the height of the lightbox container */
+  border: none;         /* remove default iframe border */
+  border-radius: 12px;  /* optional, matches your squares */
 }
+
 
 .lightbox-title {
   font-size: 28px;
