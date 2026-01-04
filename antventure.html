@@ -1,178 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Antventure</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Antventure</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Montserrat -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<!-- Montserrat -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body, html { width: 100%; height: 100%; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  background: black;
+  color: white;
+  overflow-x: hidden;
+}
 
-    /* Fullscreen video background */
-    .hero-video-wrapper {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: -1;
-    }
-    .hero-video-wrapper iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
+/* ===== BACKGROUND VIDEO ===== */
+.hero-video-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+.hero-video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
 
-    /* Main content container */
-    .container {
-      position: relative;
-      z-index: 1;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 40px 20px 80px;
-      color: white;
-    }
+/* ===== CONTENT ===== */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 80px 20px 100px;
+}
 
-    h1, h2, h3, p { color: white; }
+/* ===== LOGO + INTRO ===== */
+.intro {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.intro img {
+  max-width: 220px;
+  margin-bottom: 30px;
+}
+.intro p {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
 
-    /* PDFs */
-    .pdf-wrapper {
-      width: 100%;
-      height: 90vh;
-      margin-bottom: 40px;
-    }
-    .pdf-wrapper iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
+/* ===== SECTION TITLES ===== */
+.section-title {
+  font-size: 26px;
+  font-weight: 600;
+  margin: 80px 0 30px;
+  text-align: center;
+  letter-spacing: 1px;
+}
 
-    /* Worlds section (one image visible at a time) */
-    .worlds {
-      position: relative;
-      width: 100%;
-      height: 400px;
-      margin-bottom: 40px;
-      overflow: hidden;
-    }
-    .worlds img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-    .worlds img.active {
-      opacity: 1;
-    }
+/* ===== CONCEPT (STATIC IMAGE) ===== */
+.concept-image img {
+  width: 100vw;
+  height: 90vh;
+  object-fit: cover;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
-    /* Ladybugs image */
-    .ladybugs img {
-      width: 100%;
-      max-width: 500px;
-      display: block;
-      margin: 0 auto 40px;
-    }
+/* ===== CAST ===== */
+.cast img {
+  width: 100%;
+  height: auto;
+  max-height: 90vh;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
 
-    /* Navigation buttons for worlds */
-    .worlds-nav {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .worlds-nav button {
-      background: rgba(255,255,255,0.3);
-      border: none;
-      color: white;
-      font-size: 16px;
-      margin: 0 5px;
-      padding: 8px 12px;
-      cursor: pointer;
-    }
-  </style>
+/* ===== WORLDS ===== */
+.worlds {
+  position: relative;
+  height: 400px;
+  margin-bottom: 30px;
+}
+.world {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.world.active {
+  opacity: 1;
+}
+.world img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.world-name {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.5);
+  padding: 8px 16px;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+/* Worlds nav */
+.worlds-nav {
+  text-align: center;
+}
+.worlds-nav button {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+/* ===== LADYBUGS ===== */
+.ladybugs img {
+  max-width: 500px;
+  width: 100%;
+  display: block;
+  margin: 80px auto 0;
+}
+</style>
 </head>
+
 <body>
 
-  <!-- Background video -->
-  <div class="hero-video-wrapper">
-    <iframe src="https://www.youtube.com/watch?v=4-IjujVwQwk" 
-            frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
-    </iframe>
+<!-- BACKGROUND VIDEO -->
+<div class="hero-video-wrapper">
+  <iframe
+    src="https://www.youtube.com/embed/4-IjujVwQwk?autoplay=1&mute=1&loop=1&playlist=4-IjujVwQwk&controls=0&modestbranding=1&rel=0&playsinline=1"
+    allow="autoplay; fullscreen"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<div class="container">
+
+  <!-- INTRO -->
+  <div class="intro">
+    <!-- ADD LOGO LATER -->
+    <!-- <img src="antventure-logo.png" alt="Antventure logo"> -->
+
+    <p>MYRÄVENTYR / ANTVENTURE</p>
+    <p>Tasked with creating a video-game for children this concept was developed based on the analogy of Platon’s cave except that you play as an ant. The ant has his whole life lived in the underground colony where he was born.</p>
+    <p>The story line consists of the ant going through underground tunnel, reaching the surface and climbing a tree until he reaches the crown in the pursuit of the suns light.</p>
+    <p>Except reaching the top there is a score system based on how much ’sunlight’ you’ve collected.</p>
   </div>
 
-  <div class="container">
-    <!-- Top descriptive text -->
-    <div class="description">
-      <p>MYRÄVENTYR / ANTVENTURE</p>
+  <!-- CONCEPT -->
+  <h2 class="section-title">Concept</h2>
+  <div class="concept-image">
+    <img src="ant-concept.jpg" alt="Antventure concept">
+  </div>
 
-<p>Tasked with creating a video-game for children this concept was developed based on the analogy of Platon’s cave except that you play as an ant. The ant has his whole life lived in the underground colony where he was born. Hearing legend and tales about something called the surface and ’The Sun’ he started to dream about getting out of the colony and out on an adventure.</p> 
+  <!-- CAST -->
+  <h2 class="section-title">Characters</h2>
+  <div class="cast">
+    <img src="antcast.png" alt="Antventure cast">
+  </div>
 
-<p>The story line consists of the ant going through underground tunnel, reaching the surface and climbing a tree until he reaches the crown in the pursuit of the suns light. The levels are made up of small puzzles and obstacles that you have to pass to get to the next level.</p>
+  <!-- WORLDS -->
+  <h2 class="section-title">Worlds</h2>
 
- <p>Except reaching the top there is a score system based on how much ’sunlight’ you’ve collected that you’ve found scattered throughout the levels.</p>
+  <div class="worlds">
+    <div class="world active">
+      <img src="world1.jpg">
+      <div class="world-name">Ant Colony</div>
     </div>
-
-    <!-- Concept PDF -->
-    <div class="pdf-wrapper">
-      <iframe src="antconcept.pdf#toolbar=0&navpanes=0&scrollbar=0" loading="lazy"></iframe>
+    <div class="world">
+      <img src="world2.jpg">
+      <div class="world-name">Tunnels</div>
     </div>
-
-    <!-- Cast PDF -->
-    <div class="pdf-wrapper">
-      <iframe src="antcast.png" loading="lazy"></iframe>
+    <div class="world">
+      <img src="world3.jpg">
+      <div class="world-name">Cave</div>
     </div>
-
-    <!-- Worlds section -->
-    <div class="worlds">
-      <img src="world1.jpg" class="active" alt="Ant Colony">
-      <img src="world2.jpg" alt="Tunnels">
-      <img src="world3.jpg" alt="Cave">
-      <img src="world4.jpg" alt="Surface">
-      <img src="world5.jpg" alt="Roots">
-      <img src="world6.jpg" alt="Trunk">
-      <img src="world7.jpg" alt="Branch">
-      <img src="world8.jpg" alt="Crown">
+    <div class="world">
+      <img src="world4.jpg">
+      <div class="world-name">Surface</div>
     </div>
-
-    <div class="worlds-nav">
-      <button onclick="prevWorld()">Previous</button>
-      <button onclick="nextWorld()">Next</button>
+    <div class="world">
+      <img src="world5.jpg">
+      <div class="world-name">Roots</div>
     </div>
-
-    <!-- Ladybugs image -->
-    <div class="ladybugs">
-      <img src="ladybugs.png" alt="Ladybugs">
+    <div class="world">
+      <img src="world6.jpg">
+      <div class="world-name">Trunk</div>
+    </div>
+    <div class="world">
+      <img src="world7.jpg">
+      <div class="world-name">Branch</div>
+    </div>
+    <div class="world">
+      <img src="world8.jpg">
+      <div class="world-name">Crown</div>
     </div>
   </div>
 
-  <script>
-    // Worlds navigation
-    let currentWorld = 0;
-    const worlds = document.querySelectorAll('.worlds img');
+  <div class="worlds-nav">
+    <button onclick="prevWorld()">Prev</button>
+    <button onclick="nextWorld()">Next</button>
+  </div>
 
-    function showWorld(index) {
-      worlds.forEach((img, i) => {
-        img.classList.toggle('active', i === index);
-      });
-    }
+  <!-- LADYBUGS -->
+  <div class="ladybugs">
+    <img src="ladybugs.jpg" alt="Ladybugs">
+  </div>
 
-    function nextWorld() {
-      currentWorld = (currentWorld + 1) % worlds.length;
-      showWorld(currentWorld);
-    }
+</div>
 
-    function prevWorld() {
-      currentWorld = (currentWorld - 1 + worlds.length) % worlds.length;
-      showWorld(currentWorld);
-    }
-  </script>
+<script>
+let currentWorld = 0;
+const worlds = document.querySelectorAll('.world');
+
+function showWorld(index) {
+  worlds.forEach((w, i) => w.classList.toggle('active', i === index));
+}
+
+function nextWorld() {
+  currentWorld = (currentWorld + 1) % worlds.length;
+  showWorld(currentWorld);
+}
+
+function prevWorld() {
+  currentWorld = (currentWorld - 1 + worlds.length) % worlds.length;
+  showWorld(currentWorld);
+}
+</script>
 
 </body>
 </html>
