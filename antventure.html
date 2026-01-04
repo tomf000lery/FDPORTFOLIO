@@ -15,26 +15,29 @@ html, body {
   width: 100%;
   font-family: 'Montserrat', sans-serif;
   background: White;
-  color: Black; /* dark brown text */
+  color: #6B4F3F; /* dark brown text */
   overflow-x: hidden;
+}
+
+/* ===== TOPBAR ===== */
+.topbar {
+  width: 100%;
+  height: 120px;
+  background: url('antventuretn.jpg') center/cover no-repeat;
+  display: block;
 }
 
 /* ===== CONTENT ===== */
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 80px 20px 120px;
+  padding: 40px 20px 120px;
 }
 
 /* ===== INTRO ===== */
 .intro {
   text-align: center;
   margin-bottom: 100px;
-}
-
-.intro img {
-  max-width: 240px;
-  margin-bottom: 30px;
 }
 
 .intro h1 {
@@ -180,11 +183,13 @@ html, body {
 
 <body>
 
+<!-- TOPBAR -->
+<div class="topbar"></div>
+
 <div class="container">
 
   <!-- INTRO -->
   <div class="intro">
-    <img src="antlogo.png" alt="Antventure logo">
     <h1>MYRÄVENTYR / ANTVENTURE</h1>
 
     <p>Tasked with creating a video-game for children this concept was developed based on the analogy of Platon’s cave except that you play as an ant. The ant has his whole life lived in the underground colony where he was born.</p>
