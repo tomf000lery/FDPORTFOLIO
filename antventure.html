@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Antventure</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html { width: 100%; height: 100%; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+
+    /* Fullscreen video background */
+    .hero-video-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+    .hero-video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Main content container */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+      color: white;
+    }
+
+    h1, h2, h3, p { color: white; }
+
+    /* PDFs */
+    .pdf-wrapper {
+      width: 100%;
+      height: 90vh;
+      margin-bottom: 40px;
+    }
+    .pdf-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Worlds section (one image visible at a time) */
+    .worlds {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      margin-bottom: 40px;
+      overflow: hidden;
+    }
+    .worlds img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .worlds img.active {
+      opacity: 1;
+    }
+
+    /* Ladybugs image */
+    .ladybugs img {
+      width: 100%;
+      max-width: 500px;
+      display: block;
+      margin: 0 auto 40px;
+    }
+
+    /* Navigation buttons for worlds */
+    .worlds-nav {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .worlds-nav button {
+      background: rgba(255,255,255,0.3);
+      border: none;
+      color: white;
+      font-size: 16px;
+      margin: 0 5px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background video -->
+  <div class="hero-video-wrapper">
+    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=YOUR_VIDEO_ID&controls=0&modestbranding=1&rel=0&showinfo=0&playsinline=1" 
+            frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="container">
+    <!-- Top descriptive text -->
+    <div class="description">
+      <p>Top descriptive text goes here (you’ll add later).</p>
+    </div>
+
+    <!-- Concept PDF -->
+    <div class="pdf-wrapper">
+      <iframe src="concept.pdf#toolbar=0&navpanes=0&scrollbar=0" loading="lazy"></iframe>
+    </div>
+
+    <!-- Cast PDF -->
+    <div class="pdf-wrapper">
+      <iframe src="cast.pdf#toolbar=0&navpanes=0&scrollbar=0" loading="lazy"></iframe>
+    </div>
+
+    <!-- Worlds section -->
+    <div class="worlds">
+      <img src="world1.jpg" class="active" alt="World 1">
+      <img src="world2.jpg" alt="World 2">
+      <img src="world3.jpg" alt="World 3">
+      <img src="world4.jpg" alt="World 4">
+      <img src="world5.jpg" alt="World 5">
+      <img src="world6.jpg" alt="World 6">
+      <img src="world7.jpg" alt="World 7">
+      <img src="world8.jpg" alt="World 8">
+    </div>
+
+    <div class="worlds-nav">
+      <button onclick="prevWorld()">Previous</button>
+      <button onclick="nextWorld()">Next</button>
+    </div>
+
+    <!-- Ladybugs image -->
+    <div class="ladybugs">
+      <img src="ladybugs.jpg" alt="Ladybugs">
+    </div>
+  </div>
+
+  <script>
+    // Worlds navigation
+    let currentWorld = 0;
+    const worlds = document.querySelectorAll('.worlds img');
+
+    function showWorld(index) {
+      worlds.forEach((img, i) => {
+        img.classList.toggle('active', i === index);
+      });
+    }
+
+    function nextWorld() {
+      currentWorld = (currentWorld + 1) % worlds.length;
+      showWorld(currentWorld);
+    }
+
+    function prevWorld() {
+      currentWorld = (currentWorld - 1 + worlds.length) % worlds.length;
+      showWorld(currentWorld);
+    }
+  </script>
+
+</body>
+</html>
