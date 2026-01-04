@@ -14,8 +14,8 @@
 html, body {
   width: 100%;
   font-family: 'Montserrat', sans-serif;
-  background: #311f10; /* earthy brown */
-  color: #6B4F3F;       /* dark brown main text */
+  background: White; /* earthy brown */
+  color: Black;       /* dark brown main text */
   overflow-x: hidden;
 }
 
@@ -260,64 +260,68 @@ html, body {
     <img src="ladybugs.png" alt="Ladybugs">
   </div>
 
-  <!-- PLAYTHROUGH VIDEO -->
-  <div class="playthrough">
-    <h2>Playthrough</h2>
-    <div class="video-wrapper" style="position: relative; max-width: 1000px; margin: 0 auto;">
-      <!-- Thumbnail with play button -->
-      <div id="video-thumbnail" style="position: relative; cursor: pointer;">
-        <img src="playthrough-thumbnail.jpg" alt="Playthrough thumbnail" style="width: 100%; display: block; border-radius: 12px;">
-        <div style="
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          font-size: 64px;
-          color: white;
-          opacity: 0.8;
-          pointer-events: none;
-        ">
-          ▶
-        </div>
+ 
+<!-- PLAYTHROUGH VIDEO -->
+<div class="playthrough">
+  <h2>Playthrough</h2>
+  <div class="video-wrapper" style="position: relative; max-width: 1000px; margin: 0 auto;">
+    <!-- Thumbnail with play button -->
+    <div id="video-thumbnail" style="position: relative; cursor: pointer;">
+      <img src="playthrough-thumbnail.jpg" alt="Playthrough thumbnail" style="width: 100%; display: block; border-radius: 12px;">
+      <div style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 64px;
+        color: white;
+        opacity: 0.8;
+        pointer-events: none;
+      ">
+        ▶
       </div>
     </div>
   </div>
-
 </div>
 
 <script>
-let currentWorld = 0;
-const worlds = document.querySelectorAll('.world');
+document.addEventListener('DOMContentLoaded', () => {
+  // Worlds navigation
+  let currentWorld = 0;
+  const worlds = document.querySelectorAll('.world');
 
-function showWorld(index) {
-  worlds.forEach((world, i) => {
-    world.classList.toggle('active', i === index);
-  });
-}
+  function showWorld(index) {
+    worlds.forEach((world, i) => {
+      world.classList.toggle('active', i === index);
+    });
+  }
 
-function nextWorld() {
-  currentWorld = (currentWorld + 1) % worlds.length;
-  showWorld(currentWorld);
-}
+  window.nextWorld = function() {
+    currentWorld = (currentWorld + 1) % worlds.length;
+    showWorld(currentWorld);
+  }
 
-function prevWorld() {
-  currentWorld = (currentWorld - 1 + worlds.length) % worlds.length;
-  showWorld(currentWorld);
-}
+  window.prevWorld = function() {
+    currentWorld = (currentWorld - 1 + worlds.length) % worlds.length;
+    showWorld(currentWorld);
+  }
 
-// Playthrough video click
-const thumbnail = document.getElementById('video-thumbnail');
-thumbnail.addEventListener('click', () => {
-  const iframe = document.createElement('iframe');
-  iframe.src = "https://www.youtube.com/embed/4-IjujVwQwk?autoplay=1&loop=1&playlist=4-IjujVwQwk&controls=1&modestbranding=1&rel=0";
-  iframe.frameBorder = "0";
-  iframe.allow = "autoplay; encrypted-media";
-  iframe.allowFullscreen = true;
-  iframe.style.width = "100%";
-  iframe.style.height = "560px";
-  iframe.style.borderRadius = "12px";
+  // Playthrough video click
+  const thumbnail = document.getElementById('video-thumbnail');
+  if (thumbnail) {
+    thumbnail.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = "https://www.youtube.com/embed/4-IjujVwQwk?autoplay=1&loop=1&playlist=4-IjujVwQwk&controls=1&modestbranding=1&rel=0";
+      iframe.frameBorder = "0";
+      iframe.allow = "autoplay; encrypted-media";
+      iframe.allowFullscreen = true;
+      iframe.style.width = "100%";
+      iframe.style.height = "560px";
+      iframe.style.borderRadius = "12px";
 
-  thumbnail.replaceWith(iframe);
+      thumbnail.replaceWith(iframe);
+    });
+  }
 });
 </script>
 
