@@ -251,40 +251,46 @@ html, body {
     <img src="ladybugs.png" alt="Ladybugs">
   </div>
 
-  <!-- PLAYTHROUGH VIDEO -->
-  <div class="playthrough">
-    <h2>Playthrough</h2>
-    <div class="video-wrapper">
-      <iframe 
-        src="https://www.youtube.com/embed/4-IjujVwQwk?autoplay=1&mute=1&loop=1&playlist=4-IjujVwQwk&controls=1&modestbranding=1&rel=0"
-        allow="autoplay; encrypted-media"
-        allowfullscreen>
-      </iframe>
+<!-- PLAYTHROUGH VIDEO -->
+<div class="playthrough">
+  <h2>Playthrough</h2>
+  
+  <div class="video-wrapper" style="position: relative; max-width: 1000px; margin: 0 auto;">
+    <!-- Thumbnail with play button -->
+    <div id="video-thumbnail" style="position: relative; cursor: pointer;">
+      <img src="playthrough-thumbnail.jpg" alt="Playthrough thumbnail" style="width: 100%; display: block; border-radius: 12px;">
+      <div style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 64px;
+        color: white;
+        opacity: 0.8;
+        pointer-events: none;
+      ">
+        ▶
+      </div>
     </div>
   </div>
-
 </div>
 
 <script>
-let currentWorld = 0;
-const worlds = document.querySelectorAll('.world');
+  const thumbnail = document.getElementById('video-thumbnail');
+  thumbnail.addEventListener('click', () => {
+    const iframe = document.createElement('iframe');
+    iframe.src = "https://www.youtube.com/embed/4-IjujVwQwk?autoplay=1&loop=1&playlist=4-IjujVwQwk&controls=1&modestbranding=1&rel=0";
+    iframe.frameBorder = "0";
+    iframe.allow = "autoplay; encrypted-media";
+    iframe.allowFullscreen = true;
+    iframe.style.width = "100%";
+    iframe.style.height = "560px";
+    iframe.style.borderRadius = "12px";
 
-function showWorld(index) {
-  worlds.forEach((world, i) => {
-    world.classList.toggle('active', i === index);
+    thumbnail.replaceWith(iframe);
   });
-}
-
-function nextWorld() {
-  currentWorld = (currentWorld + 1) % worlds.length;
-  showWorld(currentWorld);
-}
-
-function prevWorld() {
-  currentWorld = (currentWorld - 1 + worlds.length) % worlds.length;
-  showWorld(currentWorld);
-}
 </script>
+
 
 </body>
 </html>
