@@ -14,29 +14,38 @@
 html, body {
   width: 100%;
   font-family: 'Montserrat', sans-serif;
-  background: White;
-  color: Black; /* dark brown text */
+  background: white;
+  color: #6B4F3F; /* dark brown text */
   overflow-x: hidden;
 }
 
 /* ===== TOPBAR ===== */
 .topbar {
   width: 100%;
-  height: 120px;
+  height: 300px; /* show almost full image */
   background: url('antventuretn.jpg') center/cover no-repeat;
-  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  transition: transform 0.5s ease;
+}
+
+/* ===== SCROLL EFFECT ===== */
+body.scrolled .topbar {
+  transform: translateY(-200px); /* slides up when scrolling */
 }
 
 /* ===== CONTENT ===== */
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 40px 20px 120px;
+  padding: 320px 20px 120px; /* space for topbar */
 }
 
 /* ===== INTRO ===== */
 .intro {
-  text-align: center;
+  text-align: left;
   margin-bottom: 100px;
 }
 
@@ -45,7 +54,7 @@ html, body {
   letter-spacing: 2px;
   font-weight: 600;
   margin-bottom: 40px;
-  color: Black; /* dark brown */
+  color: #311f10; /* dark brown */
 }
 
 .intro p {
@@ -55,16 +64,16 @@ html, body {
 }
 
 /* ===== SECTION TITLES ===== */
-.section-title, .playthrough-title {
+.section-title {
   font-size: 26px;
   font-weight: 600;
   margin: 80px 0 30px;
-  text-align: right;
+  text-align: left; /* left-aligned titles */
   letter-spacing: 1px;
-  color: Black; /* black/dark brown */
+  color: #311f10;
 }
 
-/* ===== CONCEPT IMAGE (FULLY VISIBLE) ===== */
+/* ===== CONCEPT IMAGE ===== */
 .concept-image {
   width: 100vw;
   position: relative;
@@ -116,8 +125,7 @@ html, body {
 .world-name {
   position: absolute;
   bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 20px; /* left-aligned names */
   background: rgba(0,0,0,0.55);
   padding: 8px 18px;
   font-size: 14px;
@@ -128,14 +136,14 @@ html, body {
 
 /* Worlds navigation */
 .worlds-nav {
-  text-align: center;
+  text-align: left;
   margin-bottom: 60px;
 }
 
 .worlds-nav button {
   background: rgba(255,255,255,0.25);
   border: none;
-  color: #311f10; /* dark brown buttons */
+  color: #311f10;
   padding: 8px 14px;
   margin: 0 6px;
   cursor: pointer;
@@ -147,36 +155,6 @@ html, body {
   width: 100%;
   display: block;
   margin: 120px auto 0;
-}
-
-/* ===== PLAYTHROUGH HERO REEL ===== */
-.playthrough {
-  margin-top: 100px;
-}
-
-.playthrough h2 {
-  font-size: 26px;
-  font-weight: 600;
-  margin-bottom: 30px;
-  text-align: right;
-  color: Black;
-}
-
-.video-wrapper {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
-  overflow: hidden;
-  margin: 0 auto 80px;
-}
-
-.video-wrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
 }
 </style>
 </head>
@@ -258,23 +236,11 @@ html, body {
     <img src="ladybugs.png" alt="Ladybugs">
   </div>
 
-  <!-- PLAYTHROUGH HERO REEL -->
-  <div class="playthrough">
-    <h2 class="playthrough-title">Playthrough</h2>
-    <div class="video-wrapper">
-      <iframe 
-        src="https://www.youtube.com/embed/4-IjujVwQwk?autoplay=1&loop=1&playlist=4-IjujVwQwk&controls=0&modestbranding=1&rel=0&mute=1&playsinline=1" 
-        frameborder="0" 
-        allow="autoplay; fullscreen" 
-        allowfullscreen>
-      </iframe>
-    </div>
-  </div>
-
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+  // Worlds navigation
   let currentWorld = 0;
   const worlds = document.querySelectorAll('.world');
 
@@ -293,6 +259,16 @@ document.addEventListener('DOMContentLoaded', () => {
     currentWorld = (currentWorld - 1 + worlds.length) % worlds.length;
     showWorld(currentWorld);
   }
+
+  // Topbar scroll effect
+  const topbar = document.querySelector('.topbar');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 50) {
+      document.body.classList.add('scrolled');
+    } else {
+      document.body.classList.remove('scrolled');
+    }
+  });
 });
 </script>
 
