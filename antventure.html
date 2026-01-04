@@ -10,6 +10,7 @@
 
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
 html, body {
   width: 100%;
   font-family: 'Montserrat', sans-serif;
@@ -35,18 +36,27 @@ html, body {
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 80px 20px 100px;
+  padding: 80px 20px 120px;
 }
 
-/* ===== LOGO + INTRO ===== */
+/* ===== INTRO ===== */
 .intro {
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 100px;
 }
+
 .intro img {
-  max-width: 220px;
+  max-width: 240px;
   margin-bottom: 30px;
 }
+
+.intro h1 {
+  font-size: 28px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
 .intro p {
   font-size: 18px;
   line-height: 1.7;
@@ -57,25 +67,30 @@ html, body {
 .section-title {
   font-size: 26px;
   font-weight: 600;
-  margin: 80px 0 30px;
+  margin: 100px 0 30px;
   text-align: center;
   letter-spacing: 1px;
 }
 
-/* ===== CONCEPT (STATIC IMAGE) ===== */
-.concept-image img {
+/* ===== CONCEPT IMAGE (FULLY VISIBLE) ===== */
+.concept-image {
   width: 100vw;
-  height: 90vh;
-  object-fit: cover;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
 }
 
+.concept-image img {
+  width: 100%;
+  height: auto;
+  max-height: 95vh;
+  object-fit: contain;
+  display: block;
+}
+
 /* ===== CAST ===== */
 .cast img {
   width: 100%;
-  height: auto;
   max-height: 90vh;
   object-fit: contain;
   display: block;
@@ -85,52 +100,58 @@ html, body {
 /* ===== WORLDS ===== */
 .worlds {
   position: relative;
-  height: 400px;
+  height: 420px;
   margin-bottom: 30px;
 }
+
 .world {
   position: absolute;
   inset: 0;
   opacity: 0;
   transition: opacity 0.4s ease;
 }
+
 .world.active {
   opacity: 1;
 }
+
 .world img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 .world-name {
   position: absolute;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0,0,0,0.5);
-  padding: 8px 16px;
+  background: rgba(0,0,0,0.55);
+  padding: 8px 18px;
   font-size: 14px;
   letter-spacing: 1px;
 }
 
-/* Worlds nav */
+/* Worlds navigation */
 .worlds-nav {
   text-align: center;
 }
+
 .worlds-nav button {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.25);
   border: none;
   color: white;
   padding: 8px 14px;
+  margin: 0 6px;
   cursor: pointer;
 }
 
 /* ===== LADYBUGS ===== */
 .ladybugs img {
-  max-width: 500px;
+  max-width: 520px;
   width: 100%;
   display: block;
-  margin: 80px auto 0;
+  margin: 120px auto 0;
 }
 </style>
 </head>
@@ -150,12 +171,13 @@ html, body {
 
   <!-- INTRO -->
   <div class="intro">
-    <!-- ADD LOGO LATER -->
-    <!-- <img src="antventure-logo.png" alt="Antventure logo"> -->
+    <img src="antlogo.png" alt="Antventure logo">
+    <h1>MYRÄVENTYR / ANTVENTURE</h1>
 
-    <p>MYRÄVENTYR / ANTVENTURE</p>
     <p>Tasked with creating a video-game for children this concept was developed based on the analogy of Platon’s cave except that you play as an ant. The ant has his whole life lived in the underground colony where he was born.</p>
+
     <p>The story line consists of the ant going through underground tunnel, reaching the surface and climbing a tree until he reaches the crown in the pursuit of the suns light.</p>
+
     <p>Except reaching the top there is a score system based on how much ’sunlight’ you’ve collected.</p>
   </div>
 
@@ -165,10 +187,10 @@ html, body {
     <img src="ant-concept.jpg" alt="Antventure concept">
   </div>
 
-  <!-- CAST -->
+  <!-- CHARACTERS -->
   <h2 class="section-title">Characters</h2>
   <div class="cast">
-    <img src="antcast.png" alt="Antventure cast">
+    <img src="antcast.png" alt="Antventure characters">
   </div>
 
   <!-- WORLDS -->
@@ -216,7 +238,7 @@ html, body {
 
   <!-- LADYBUGS -->
   <div class="ladybugs">
-    <img src="ladybugs.jpg" alt="Ladybugs">
+    <img src="ladybugs.png" alt="Ladybugs">
   </div>
 
 </div>
@@ -226,7 +248,9 @@ let currentWorld = 0;
 const worlds = document.querySelectorAll('.world');
 
 function showWorld(index) {
-  worlds.forEach((w, i) => w.classList.toggle('active', i === index));
+  worlds.forEach((world, i) => {
+    world.classList.toggle('active', i === index);
+  });
 }
 
 function nextWorld() {
