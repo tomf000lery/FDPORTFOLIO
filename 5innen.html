@@ -14,6 +14,7 @@
       font-family: 'Montserrat', sans-serif;
       background: white;
       color: black;
+      overflow-x: hidden;
     }
 
     .container {
@@ -33,11 +34,16 @@
       height: auto;
     }
 
-    /* PDF embed */
+    /* FULL-WIDTH PDF */
     .pdf-wrapper {
-      width: 100%;
-      aspect-ratio: 3 / 4;
-      margin-bottom: 40px;
+      width: 100vw;
+      height: min(90vh, 1200px);
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      margin-bottom: 60px;
     }
 
     .pdf-wrapper iframe {
@@ -74,19 +80,19 @@
 
     <!-- LOGO -->
     <div class="logo">
-      <!-- replace src later -->
-      <img src="5innen-logo.png" alt="5innen logo">
+      <img src="5innenlogo.jpg" alt="5innen logo">
     </div>
 
     <!-- PDF -->
     <div class="pdf-wrapper">
-      <!-- replace src later -->
-      <iframe src="5innenCV.pdf"></iframe>
+      <iframe
+        src="5innenCV.pdf#toolbar=0&navpanes=0&scrollbar=0"
+        loading="lazy">
+      </iframe>
     </div>
 
     <!-- TEXT -->
     <div class="description">
-      <!-- replace text later -->
       <p>
         Project description goes here.  
         This text will explain the concept, vision, and background of 5innen.
@@ -95,8 +101,7 @@
 
     <!-- INSTAGRAM -->
     <div class="instagram">
-      <a href="https://instagram.com/5innen" target="_blank">
-        <!-- replace src later -->
+      <a href="https://instagram.com/5innen" target="_blank" rel="noopener">
         <img src="instagram-icon.png" alt="Instagram">
       </a>
     </div>
