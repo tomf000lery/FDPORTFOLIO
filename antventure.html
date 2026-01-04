@@ -15,7 +15,7 @@ html, body {
   width: 100%;
   font-family: 'Montserrat', sans-serif;
   background: #311f10; /* earthy brown */
-  color: #a56f53;       /* dark brown text */
+  color: #6B4F3F;       /* dark brown main text */
   overflow-x: hidden;
 }
 
@@ -42,12 +42,14 @@ html, body {
   letter-spacing: 2px;
   font-weight: 600;
   margin-bottom: 40px;
+  color: white; /* title white */
 }
 
 .intro p {
   font-size: 18px;
   line-height: 1.7;
   margin-bottom: 18px;
+  color: #6B4F3F; /* dark brown */
 }
 
 /* ===== SECTION TITLES ===== */
@@ -57,6 +59,7 @@ html, body {
   margin: 100px 0 30px;
   text-align: center;
   letter-spacing: 1px;
+  color: white;
 }
 
 /* ===== CONCEPT IMAGE (FULLY VISIBLE) ===== */
@@ -117,8 +120,8 @@ html, body {
   padding: 8px 18px;
   font-size: 14px;
   letter-spacing: 1px;
-  z-index: 2; /* ensure name is on top of image */
-  color: white;
+  z-index: 2;
+  color: white; /* world names white */
 }
 
 /* Worlds navigation */
@@ -129,7 +132,7 @@ html, body {
 .worlds-nav button {
   background: rgba(255,255,255,0.25);
   border: none;
-  color: white;
+  color: white; /* button text white */
   padding: 8px 14px;
   margin: 0 6px;
   cursor: pointer;
@@ -144,48 +147,179 @@ html, body {
 }
 
 /* ===== PLAYTHROUGH VIDEO ===== */
-<!-- PLAYTHROUGH VIDEO -->
-<div class="playthrough">
-  <h2>Playthrough</h2>
-  
-  <div class="video-wrapper" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 1100px; margin: 0 auto;">
-    <!-- Thumbnail with play button -->
-    <div id="video-thumbnail" style="position: absolute; top:0; left:0; width:100%; height:100%; cursor: pointer;">
-      <img src="playthrough-thumbnail.jpg" alt="Playthrough thumbnail" style="width:100%; height:100%; object-fit: cover; border-radius:12px;">
-      <div style="
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 64px;
-        color: white;
-        opacity: 0.8;
-        pointer-events: none;
-      ">▶</div>
+.playthrough {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.playthrough h2 {
+  margin-bottom: 30px;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: white;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.playthrough div[style*="position: absolute"] {
+  color: white; /* play button overlay */
+  opacity: 0.8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- INTRO -->
+  <div class="intro">
+    <img src="antlogo.png" alt="Antventure logo">
+    <h1>MYRÄVENTYR / ANTVENTURE</h1>
+
+    <p>Tasked with creating a video-game for children this concept was developed based on the analogy of Platon’s cave except that you play as an ant. The ant has his whole life lived in the underground colony where he was born.</p>
+
+    <p>The story line consists of the ant going through underground tunnel, reaching the surface and climbing a tree until he reaches the crown in the pursuit of the suns light.</p>
+
+    <p>Except reaching the top there is a score system based on how much ’sunlight’ you’ve collected.</p>
+  </div>
+
+  <!-- CONCEPT -->
+  <h2 class="section-title">Concept</h2>
+  <div class="concept-image">
+    <img src="ant-concept.jpg" alt="Antventure concept">
+  </div>
+
+  <!-- CHARACTERS -->
+  <h2 class="section-title">Characters</h2>
+  <div class="cast">
+    <img src="antcast.png" alt="Antventure characters">
+  </div>
+
+  <!-- WORLDS -->
+  <h2 class="section-title">Worlds</h2>
+  <div class="worlds">
+    <div class="world active">
+      <img src="world1.jpg">
+      <div class="world-name">Ant Colony</div>
+    </div>
+    <div class="world">
+      <img src="world2.jpg">
+      <div class="world-name">Tunnels</div>
+    </div>
+    <div class="world">
+      <img src="world3.jpg">
+      <div class="world-name">Cave</div>
+    </div>
+    <div class="world">
+      <img src="world4.jpg">
+      <div class="world-name">Surface</div>
+    </div>
+    <div class="world">
+      <img src="world5.jpg">
+      <div class="world-name">Roots</div>
+    </div>
+    <div class="world">
+      <img src="world6.jpg">
+      <div class="world-name">Trunk</div>
+    </div>
+    <div class="world">
+      <img src="world7.jpg">
+      <div class="world-name">Branch</div>
+    </div>
+    <div class="world">
+      <img src="world8.jpg">
+      <div class="world-name">Crown</div>
     </div>
   </div>
+
+  <div class="worlds-nav">
+    <button onclick="prevWorld()">Prev</button>
+    <button onclick="nextWorld()">Next</button>
+  </div>
+
+  <!-- LADYBUGS -->
+  <div class="ladybugs">
+    <img src="ladybugs.png" alt="Ladybugs">
+  </div>
+
+  <!-- PLAYTHROUGH VIDEO -->
+  <div class="playthrough">
+    <h2>Playthrough</h2>
+    <div class="video-wrapper" style="position: relative; max-width: 1000px; margin: 0 auto;">
+      <!-- Thumbnail with play button -->
+      <div id="video-thumbnail" style="position: relative; cursor: pointer;">
+        <img src="playthrough-thumbnail.jpg" alt="Playthrough thumbnail" style="width: 100%; display: block; border-radius: 12px;">
+        <div style="
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 64px;
+          color: white;
+          opacity: 0.8;
+          pointer-events: none;
+        ">
+          ▶
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <script>
-  const thumbnail = document.getElementById('video-thumbnail');
-  thumbnail.addEventListener('click', () => {
-    const iframe = document.createElement('iframe');
-    iframe.src = "https://www.youtube.com/embed/4-IjujVwQwk?autoplay=1&loop=1&playlist=4-IjujVwQwk&controls=1&modestbranding=1&rel=0";
-    iframe.frameBorder = "0";
-    iframe.allow = "autoplay; encrypted-media";
-    iframe.allowFullscreen = true;
-    iframe.style.position = "absolute";
-    iframe.style.top = "0";
-    iframe.style.left = "0";
-    iframe.style.width = "100%";
-    iframe.style.height = "100%";
-    iframe.style.borderRadius = "12px";
+let currentWorld = 0;
+const worlds = document.querySelectorAll('.world');
 
-    thumbnail.replaceWith(iframe);
+function showWorld(index) {
+  worlds.forEach((world, i) => {
+    world.classList.toggle('active', i === index);
   });
+}
+
+function nextWorld() {
+  currentWorld = (currentWorld + 1) % worlds.length;
+  showWorld(currentWorld);
+}
+
+function prevWorld() {
+  currentWorld = (currentWorld - 1 + worlds.length) % worlds.length;
+  showWorld(currentWorld);
+}
+
+// Playthrough video click
+const thumbnail = document.getElementById('video-thumbnail');
+thumbnail.addEventListener('click', () => {
+  const iframe = document.createElement('iframe');
+  iframe.src = "https://www.youtube.com/embed/4-IjujVwQwk?autoplay=1&loop=1&playlist=4-IjujVwQwk&controls=1&modestbranding=1&rel=0";
+  iframe.frameBorder = "0";
+  iframe.allow = "autoplay; encrypted-media";
+  iframe.allowFullscreen = true;
+  iframe.style.width = "100%";
+  iframe.style.height = "560px";
+  iframe.style.borderRadius = "12px";
+
+  thumbnail.replaceWith(iframe);
+});
 </script>
-
-
 
 </body>
 </html>
