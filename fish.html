@@ -5,18 +5,11 @@
 <title>F.I.S.H</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Montserrat -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-
-<!-- Three.js (stable non-module build) -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -25,17 +18,15 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== HEADER ===== */
 .header {
   padding: 80px 20px 40px;
   text-align: center;
 }
 
 .header img {
-  max-width: 150px; /* ~⅓ smaller */
+  max-width: 150px;
 }
 
-/* ===== 3D VIEWER ===== */
 .viewer-section {
   width: 100%;
   height: 520px;
@@ -51,7 +42,6 @@ body {
   cursor: grabbing;
 }
 
-/* ===== DESCRIPTION ===== */
 .description {
   max-width: 900px;
   margin: 80px auto;
@@ -60,7 +50,6 @@ body {
   line-height: 1.7;
 }
 
-/* ===== MOCKUPS ===== */
 .mockups {
   max-width: 1100px;
   margin: 60px auto;
@@ -75,7 +64,6 @@ body {
   border-radius: 12px;
 }
 
-/* ===== FULL WIDTH DECK IMAGE ===== */
 .deck-full {
   margin-top: 100px;
 }
@@ -112,7 +100,6 @@ body {
 </section>
 
 <script>
-/* === THREE.JS SCENE === */
 const container = document.getElementById("three-container");
 
 const scene = new THREE.Scene();
@@ -133,25 +120,39 @@ container.appendChild(renderer.domElement);
 
 /* LIGHTING */
 scene.add(new THREE.AmbientLight(0xffffff, 0.9));
-
 const light = new THREE.DirectionalLight(0xffffff, 0.7);
 light.position.set(5, 5, 5);
 scene.add(light);
 
 /* TEXTURES */
 const loader = new THREE.TextureLoader();
-const side  = loader.load("card-side.jpg");
-const front = loader.load("card-front.jpg");
-const back  = loader.load("card-back.jpg");
 
-/* MATERIALS */
+const sideTexture = loader.load("card-side.jpg");
+const frontTexture = loader.load("card-front.jpg");
+const backTexture  = loader.load("card-back.jpg");
+
+/* ROTATED SIDE TEXTURE (FOR TOP/BOTTOM) */
+const sideRotated = sideTexture.clone();
+sideRotated.center.set(0.5, 0.5);
+sideRotated.rotation = Math.PI / 2;
+sideRotated.needsUpdate = true;
+
+/* MATERIALS
+   Order:
+   0 right
+   1 left
+   2 top
+   3 bottom
+   4 front
+   5 back
+*/
 const materials = [
-  new THREE.MeshStandardMaterial({ map: side }),
-  new THREE.MeshStandardMaterial({ map: side }),
-  new THREE.MeshStandardMaterial({ map: side }),
-  new THREE.MeshStandardMaterial({ map: side }),
-  new THREE.MeshStandardMaterial({ map: front }),
-  new THREE.MeshStandardMaterial({ map: back })
+  new THREE.MeshStandardMaterial({ map: sideTexture }),
+  new THREE.MeshStandardMaterial({ map: sideTexture }),
+  new THREE.MeshStandardMaterial({ map: sideRotated }),
+  new THREE.MeshStandardMaterial({ map: sideRotated }),
+  new THREE.MeshStandardMaterial({ map: frontTexture }),
+  new THREE.MeshStandardMaterial({ map: backTexture })
 ];
 
 /* CARD BOX */
@@ -159,35 +160,27 @@ const geometry = new THREE.BoxGeometry(2.4, 3.4, 0.6);
 const cardBox = new THREE.Mesh(geometry, materials);
 scene.add(cardBox);
 
-/* ==== MOUSE DRAG ROTATION ==== */
-let isDragging = false;
-let prevX = 0;
-let prevY = 0;
-let velocityX = 0;
-let velocityY = 0;
+/* MOUSE DRAG ROTATION */
+let dragging = false;
+let prevX = 0, prevY = 0;
+let velX = 0, velY = 0;
 
-container.addEventListener("mousedown", (e) => {
-  isDragging = true;
+container.addEventListener("mousedown", e => {
+  dragging = true;
   prevX = e.clientX;
   prevY = e.clientY;
 });
 
-window.addEventListener("mouseup", () => {
-  isDragging = false;
-});
+window.addEventListener("mouseup", () => dragging = false);
 
-container.addEventListener("mousemove", (e) => {
-  if (!isDragging) return;
-
-  const deltaX = e.clientX - prevX;
-  const deltaY = e.clientY - prevY;
-
-  cardBox.rotation.y += deltaX * 0.005;
-  cardBox.rotation.x += deltaY * 0.005;
-
-  velocityX = deltaX * 0.0015;
-  velocityY = deltaY * 0.0015;
-
+container.addEventListener("mousemove", e => {
+  if (!dragging) return;
+  const dx = e.clientX - prevX;
+  const dy = e.clientY - prevY;
+  cardBox.rotation.y += dx * 0.005;
+  cardBox.rotation.x += dy * 0.005;
+  velX = dx * 0.0015;
+  velY = dy * 0.0015;
   prevX = e.clientX;
   prevY = e.clientY;
 });
@@ -199,17 +192,15 @@ window.addEventListener("resize", () => {
   renderer.setSize(container.clientWidth, container.clientHeight);
 });
 
-/* ANIMATION LOOP */
+/* ANIMATE */
 function animate() {
   requestAnimationFrame(animate);
-
-  if (!isDragging) {
-    cardBox.rotation.y += 0.002 + velocityX;
-    cardBox.rotation.x += velocityY;
-    velocityX *= 0.95;
-    velocityY *= 0.95;
+  if (!dragging) {
+    cardBox.rotation.y += 0.002 + velX;
+    cardBox.rotation.x += velY;
+    velX *= 0.95;
+    velY *= 0.95;
   }
-
   renderer.render(scene, camera);
 }
 animate();
