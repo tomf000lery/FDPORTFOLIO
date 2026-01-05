@@ -8,9 +8,8 @@
 <!-- Montserrat -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
-<!-- Three.js -->
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
+<!-- Three.js (stable non-module build) -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
 
 <style>
 * {
@@ -26,7 +25,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 .header {
   padding: 80px 20px 40px;
   text-align: center;
@@ -36,11 +35,10 @@ body {
   max-width: 220px;
 }
 
-/* ===== 3D VIEWER ===== */
+/* 3D VIEWER */
 .viewer-section {
   width: 100%;
   height: 520px;
-  position: relative;
 }
 
 #three-container {
@@ -48,7 +46,7 @@ body {
   height: 100%;
 }
 
-/* ===== DESCRIPTION ===== */
+/* DESCRIPTION */
 .description {
   max-width: 900px;
   margin: 80px auto;
@@ -57,7 +55,7 @@ body {
   line-height: 1.7;
 }
 
-/* ===== MOCKUPS ===== */
+/* MOCKUPS */
 .mockups {
   max-width: 1100px;
   margin: 60px auto;
@@ -69,19 +67,16 @@ body {
 
 .mockups img {
   width: 100%;
-  display: block;
   border-radius: 12px;
 }
 
-/* ===== FULL WIDTH DECK IMAGE ===== */
+/* FULL DECK IMAGE */
 .deck-full {
-  width: 100%;
   margin-top: 100px;
 }
 
 .deck-full img {
   width: 100%;
-  height: auto;
   display: block;
 }
 </style>
@@ -89,36 +84,31 @@ body {
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <img src="fish-logo.png" alt="F.I.S.H logo">
 </div>
 
-<!-- 3D CARD VIEWER -->
 <section class="viewer-section">
   <div id="three-container"></div>
 </section>
 
-<!-- DESCRIPTION -->
 <section class="description">
   <p>Lorem ipsum description placeholder for F.I.S.H.</p>
 </section>
 
-<!-- MOCKUPS -->
 <section class="mockups">
-  <img src="mockup1.jpg" alt="">
-  <img src="mockup2.jpg" alt="">
-  <img src="mockup3.jpg" alt="">
+  <img src="mockup1.jpg">
+  <img src="mockup2.jpg">
+  <img src="mockup3.jpg">
 </section>
 
-<!-- FULL DECK IMAGE -->
 <section class="deck-full">
-  <img src="deck-full.jpg" alt="Full card deck">
+  <img src="deck-full.jpg">
 </section>
 
 <script>
-/* ===== THREE.JS CARD BOX ===== */
-const container = document.getElementById('three-container');
+/* === THREE.JS SCENE === */
+const container = document.getElementById("three-container");
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xffffff);
@@ -127,59 +117,55 @@ const camera = new THREE.PerspectiveCamera(
   45,
   container.clientWidth / container.clientHeight,
   0.1,
-  1000
+  100
 );
-camera.position.set(0, 0, 5);
+camera.position.z = 6;
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(container.clientWidth, container.clientHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
 container.appendChild(renderer.domElement);
 
-/* Lighting */
-scene.add(new THREE.AmbientLight(0xffffff, 0.8));
-const dirLight = new THREE.DirectionalLight(0xffffff, 0.6);
-dirLight.position.set(5, 5, 5);
-scene.add(dirLight);
+/* LIGHTS */
+scene.add(new THREE.AmbientLight(0xffffff, 0.9));
 
-/* Textures */
+const light = new THREE.DirectionalLight(0xffffff, 0.7);
+light.position.set(5, 5, 5);
+scene.add(light);
+
+/* TEXTURES */
 const loader = new THREE.TextureLoader();
+const side = loader.load("card-side.jpg");
+const front = loader.load("card-front.jpg");
+const back = loader.load("card-back.jpg");
 
-// Preload textures
-const sideTexture  = loader.load('card-side.jpg', undefined, undefined, () => console.warn('Side texture failed'));
-const frontTexture = loader.load('card-front.jpg', undefined, undefined, () => console.warn('Front texture failed'));
-const backTexture  = loader.load('card-back.jpg', undefined, undefined, () => console.warn('Back texture failed'));
-
-// Create materials
+/* MATERIALS */
 const materials = [
-  new THREE.MeshStandardMaterial({ map: sideTexture, color: 0xff0000 }), // right
-  new THREE.MeshStandardMaterial({ map: sideTexture, color: 0xff0000 }), // left
-  new THREE.MeshStandardMaterial({ color: 0xff0000 }),                    // top
-  new THREE.MeshStandardMaterial({ color: 0xff0000 }),                    // bottom
-  new THREE.MeshStandardMaterial({ map: frontTexture, color: 0xff0000 }),// front
-  new THREE.MeshStandardMaterial({ map: backTexture, color: 0xff0000 })  // back
+  new THREE.MeshStandardMaterial({ map: side }),
+  new THREE.MeshStandardMaterial({ map: side }),
+  new THREE.MeshStandardMaterial({ map: side }),
+  new THREE.MeshStandardMaterial({ map: side }),
+  new THREE.MeshStandardMaterial({ map: front }),
+  new THREE.MeshStandardMaterial({ map: back })
 ];
 
-/* Box geometry */
+/* CARD BOX */
 const geometry = new THREE.BoxGeometry(2.4, 3.4, 0.6);
 const cardBox = new THREE.Mesh(geometry, materials);
 scene.add(cardBox);
 
-/* Controls */
-const controls = new THREE.OrbitControls(camera, renderer.domElement);
-controls.enableZoom = false;
-controls.enablePan = false;
-controls.rotateSpeed = 0.6;
-
-/* Resize handling */
-window.addEventListener('resize', () => {
+/* RESIZE */
+window.addEventListener("resize", () => {
   camera.aspect = container.clientWidth / container.clientHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(container.clientWidth, container.clientHeight);
 });
 
-/* Render loop */
+/* ANIMATION */
 function animate() {
   requestAnimationFrame(animate);
+  cardBox.rotation.y += 0.003;
+  cardBox.rotation.x += 0.001;
   renderer.render(scene, camera);
 }
 animate();
