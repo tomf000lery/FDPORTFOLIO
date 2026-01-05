@@ -140,17 +140,20 @@ sideRotated.rotation = Math.PI / 2;
 sideRotated.needsUpdate = true;
 
 /* MATERIALS
-   Order of box sides:
+   Box sides order:
    0 = right
-   1 = left (flip 180°)
+   1 = left
    2 = top
-   3 = bottom (flip 180°)
+   3 = bottom
    4 = front
    5 = back
 */
 
-// Right side - normal
+// Right side - flipped 180°
 const rightMat = new THREE.MeshStandardMaterial({ map: sideTexture });
+rightMat.map.center.set(0.5, 0.5);
+rightMat.map.rotation = Math.PI;
+rightMat.map.needsUpdate = true;
 
 // Left side - flipped 180°
 const leftMat = new THREE.MeshStandardMaterial({ map: sideTexture });
@@ -158,13 +161,16 @@ leftMat.map.center.set(0.5, 0.5);
 leftMat.map.rotation = Math.PI;
 leftMat.map.needsUpdate = true;
 
-// Top - normal orientation
+// Top - rotated 90°
 const topMat = new THREE.MeshStandardMaterial({ map: sideTexture });
+topMat.map.center.set(0.5, 0.5);
+topMat.map.rotation = Math.PI / 2;
+topMat.map.needsUpdate = true;
 
-// Bottom - flipped 180°
+// Bottom - rotated 90°
 const bottomMat = new THREE.MeshStandardMaterial({ map: sideTexture });
 bottomMat.map.center.set(0.5, 0.5);
-bottomMat.map.rotation = Math.PI;
+bottomMat.map.rotation = Math.PI / 2;
 bottomMat.map.needsUpdate = true;
 
 // Front / Back
@@ -172,6 +178,7 @@ const frontMat = new THREE.MeshStandardMaterial({ map: frontTexture });
 const backMat  = new THREE.MeshStandardMaterial({ map: backTexture });
 
 const materials = [ rightMat, leftMat, topMat, bottomMat, frontMat, backMat ];
+
 
 
 
