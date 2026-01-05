@@ -140,36 +140,39 @@ sideRotated.rotation = Math.PI / 2;
 sideRotated.needsUpdate = true;
 
 /* MATERIALS
-   Order:
-   0 right
-   1 left (flipped 180)
-   2 top (rotated 90°)
-   3 bottom (rotated 90° + flipped 180)
-   4 front
-   5 back
+   Order of box sides:
+   0 = right
+   1 = left (flip 180°)
+   2 = top
+   3 = bottom (flip 180°)
+   4 = front
+   5 = back
 */
+
+// Right side - normal
 const rightMat = new THREE.MeshStandardMaterial({ map: sideTexture });
 
-// LEFT side flipped 180
+// Left side - flipped 180°
 const leftMat = new THREE.MeshStandardMaterial({ map: sideTexture });
 leftMat.map.center.set(0.5, 0.5);
 leftMat.map.rotation = Math.PI;
 leftMat.map.needsUpdate = true;
 
-// TOP rotated 90°
-const topMat = new THREE.MeshStandardMaterial({ map: sideRotated });
+// Top - normal orientation
+const topMat = new THREE.MeshStandardMaterial({ map: sideTexture });
 
-// BOTTOM rotated 90° + flipped 180°
-const bottomMat = new THREE.MeshStandardMaterial({ map: sideRotated });
+// Bottom - flipped 180°
+const bottomMat = new THREE.MeshStandardMaterial({ map: sideTexture });
 bottomMat.map.center.set(0.5, 0.5);
-bottomMat.map.rotation += Math.PI;
+bottomMat.map.rotation = Math.PI;
 bottomMat.map.needsUpdate = true;
 
-// FRONT & BACK
+// Front / Back
 const frontMat = new THREE.MeshStandardMaterial({ map: frontTexture });
 const backMat  = new THREE.MeshStandardMaterial({ map: backTexture });
 
 const materials = [ rightMat, leftMat, topMat, bottomMat, frontMat, backMat ];
+
 
 
 /* CARD BOX */
