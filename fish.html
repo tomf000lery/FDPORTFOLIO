@@ -91,7 +91,6 @@ body {
 
 <!-- HEADER -->
 <div class="header">
-  <!-- Replace later -->
   <img src="fish-logo.png" alt="F.I.S.H logo">
 </div>
 
@@ -102,10 +101,7 @@ body {
 
 <!-- DESCRIPTION -->
 <section class="description">
-  <!-- Add text later -->
-  <p>
-    Lorem ipsum description placeholder for F.I.S.H.
-  </p>
+  <p>Lorem ipsum description placeholder for F.I.S.H.</p>
 </section>
 
 <!-- MOCKUPS -->
@@ -145,15 +141,22 @@ const dirLight = new THREE.DirectionalLight(0xffffff, 0.6);
 dirLight.position.set(5, 5, 5);
 scene.add(dirLight);
 
-/* Textures (replace later) */
+/* Textures */
 const loader = new THREE.TextureLoader();
+
+// Preload textures
+const sideTexture  = loader.load('card-side.jpg', undefined, undefined, () => console.warn('Side texture failed'));
+const frontTexture = loader.load('card-front.jpg', undefined, undefined, () => console.warn('Front texture failed'));
+const backTexture  = loader.load('card-back.jpg', undefined, undefined, () => console.warn('Back texture failed'));
+
+// Create materials
 const materials = [
-  new THREE.MeshStandardMaterial({ map: loader.load('card-side.jpg') }), // right
-  new THREE.MeshStandardMaterial({ map: loader.load('card-side.jpg') }), // left
-  new THREE.MeshStandardMaterial({ map: loader.load('card-top.jpg') }),  // top (optional)
-  new THREE.MeshStandardMaterial({ map: loader.load('card-top.jpg') }),  // bottom
-  new THREE.MeshStandardMaterial({ map: loader.load('card-front.jpg') }),// front
-  new THREE.MeshStandardMaterial({ map: loader.load('card-back.jpg') })  // back
+  new THREE.MeshStandardMaterial({ map: sideTexture, color: 0xff0000 }), // right
+  new THREE.MeshStandardMaterial({ map: sideTexture, color: 0xff0000 }), // left
+  new THREE.MeshStandardMaterial({ color: 0xff0000 }),                    // top
+  new THREE.MeshStandardMaterial({ color: 0xff0000 }),                    // bottom
+  new THREE.MeshStandardMaterial({ map: frontTexture, color: 0xff0000 }),// front
+  new THREE.MeshStandardMaterial({ map: backTexture, color: 0xff0000 })  // back
 ];
 
 /* Box geometry */
