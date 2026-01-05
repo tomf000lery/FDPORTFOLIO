@@ -139,24 +139,28 @@ sideRotated.center.set(0.5, 0.5);
 sideRotated.rotation = Math.PI / 2;
 sideRotated.needsUpdate = true;
 
-/* MATERIALS - ORIGINAL STATE
-   Box sides order:
-   0 = right
-   1 = left
-   2 = top
-   3 = bottom
-   4 = front
-   5 = back
-*/
+/* MATERIALS - top and bottom rotated 90°, others normal */
 
 const rightMat  = new THREE.MeshStandardMaterial({ map: sideTexture });
 const leftMat   = new THREE.MeshStandardMaterial({ map: sideTexture });
-const topMat    = new THREE.MeshStandardMaterial({ map: sideTexture });
+
+// Top rotated 90°
+const topMat = new THREE.MeshStandardMaterial({ map: sideTexture });
+topMat.map.center.set(0.5, 0.5);
+topMat.map.rotation = Math.PI / 2;
+topMat.map.needsUpdate = true;
+
+// Bottom rotated 90°
 const bottomMat = new THREE.MeshStandardMaterial({ map: sideTexture });
+bottomMat.map.center.set(0.5, 0.5);
+bottomMat.map.rotation = Math.PI / 2;
+bottomMat.map.needsUpdate = true;
+
 const frontMat  = new THREE.MeshStandardMaterial({ map: frontTexture });
 const backMat   = new THREE.MeshStandardMaterial({ map: backTexture });
 
 const materials = [ rightMat, leftMat, topMat, bottomMat, frontMat, backMat ];
+
 
 
 
