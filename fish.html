@@ -25,17 +25,17 @@ body {
   overflow-x: hidden;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 .header {
   padding: 80px 20px 40px;
   text-align: center;
 }
 
 .header img {
-  max-width: 220px;
+  max-width: 150px; /* ~⅓ smaller */
 }
 
-/* 3D VIEWER */
+/* ===== 3D VIEWER ===== */
 .viewer-section {
   width: 100%;
   height: 520px;
@@ -44,9 +44,14 @@ body {
 #three-container {
   width: 100%;
   height: 100%;
+  cursor: grab;
 }
 
-/* DESCRIPTION */
+#three-container:active {
+  cursor: grabbing;
+}
+
+/* ===== DESCRIPTION ===== */
 .description {
   max-width: 900px;
   margin: 80px auto;
@@ -55,7 +60,7 @@ body {
   line-height: 1.7;
 }
 
-/* MOCKUPS */
+/* ===== MOCKUPS ===== */
 .mockups {
   max-width: 1100px;
   margin: 60px auto;
@@ -70,7 +75,7 @@ body {
   border-radius: 12px;
 }
 
-/* FULL DECK IMAGE */
+/* ===== FULL WIDTH DECK IMAGE ===== */
 .deck-full {
   margin-top: 100px;
 }
@@ -126,7 +131,7 @@ renderer.setSize(container.clientWidth, container.clientHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
 container.appendChild(renderer.domElement);
 
-/* LIGHTS */
+/* LIGHTING */
 scene.add(new THREE.AmbientLight(0xffffff, 0.9));
 
 const light = new THREE.DirectionalLight(0xffffff, 0.7);
@@ -135,9 +140,9 @@ scene.add(light);
 
 /* TEXTURES */
 const loader = new THREE.TextureLoader();
-const side = loader.load("card-side.jpg");
+const side  = loader.load("card-side.jpg");
 const front = loader.load("card-front.jpg");
-const back = loader.load("card-back.jpg");
+const back  = loader.load("card-back.jpg");
 
 /* MATERIALS */
 const materials = [
@@ -154,6 +159,39 @@ const geometry = new THREE.BoxGeometry(2.4, 3.4, 0.6);
 const cardBox = new THREE.Mesh(geometry, materials);
 scene.add(cardBox);
 
+/* ==== MOUSE DRAG ROTATION ==== */
+let isDragging = false;
+let prevX = 0;
+let prevY = 0;
+let velocityX = 0;
+let velocityY = 0;
+
+container.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  prevX = e.clientX;
+  prevY = e.clientY;
+});
+
+window.addEventListener("mouseup", () => {
+  isDragging = false;
+});
+
+container.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+
+  const deltaX = e.clientX - prevX;
+  const deltaY = e.clientY - prevY;
+
+  cardBox.rotation.y += deltaX * 0.005;
+  cardBox.rotation.x += deltaY * 0.005;
+
+  velocityX = deltaX * 0.0015;
+  velocityY = deltaY * 0.0015;
+
+  prevX = e.clientX;
+  prevY = e.clientY;
+});
+
 /* RESIZE */
 window.addEventListener("resize", () => {
   camera.aspect = container.clientWidth / container.clientHeight;
@@ -161,11 +199,17 @@ window.addEventListener("resize", () => {
   renderer.setSize(container.clientWidth, container.clientHeight);
 });
 
-/* ANIMATION */
+/* ANIMATION LOOP */
 function animate() {
   requestAnimationFrame(animate);
-  cardBox.rotation.y += 0.003;
-  cardBox.rotation.x += 0.001;
+
+  if (!isDragging) {
+    cardBox.rotation.y += 0.002 + velocityX;
+    cardBox.rotation.x += velocityY;
+    velocityX *= 0.95;
+    velocityY *= 0.95;
+  }
+
   renderer.render(scene, camera);
 }
 animate();
