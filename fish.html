@@ -50,18 +50,35 @@ body {
   line-height: 1.7;
 }
 
+/* MOCKUPS GRID */
 .mockups {
   max-width: 1100px;
   margin: 60px auto;
   padding: 0 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
 }
 
 .mockups img {
   width: 100%;
   border-radius: 12px;
+}
+
+.mockups img:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.mockups img:nth-child(2) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.mockups img:nth-child(3) {
+  grid-column: 2;
+  grid-row: 1 / span 2; /* spans both rows on right */
 }
 
 .deck-full {
@@ -86,19 +103,19 @@ body {
 </section>
 
 <section class="description">
-  <p> In collaboration with an initiative started by former athlete and swimmer Karl Palmqvist—who swam around Gotland, one of Sweden’s largest islands, to raise awareness about the ecocide of the Baltic Sea as well as mental health—this deck of cards was created. Its goal was to raise additional funds for the charity fundraisers initiated by Karl in partnership with Naturskyddsföreningen (The Swedish Society for Nature Conservation) and Suicide Zero. </p>
+  <p>In collaboration with an initiative started by former athlete and swimmer Karl Palmqvist—who swam around Gotland, one of Sweden’s largest islands, to raise awareness about the ecocide of the Baltic Sea as well as mental health—this deck of cards was created. Its goal was to raise additional funds for the charity fundraisers initiated by Karl in partnership with Naturskyddsföreningen (The Swedish Society for Nature Conservation) and Suicide Zero.</p>
 
-   <p> Finns I Sjön & Hav or F.I.S.H (derived from the Swedish name for ’Go Fish’) is a deck of cards. </p>
+  <p>Finns I Sjön & Hav or F.I.S.H (derived from the Swedish name for ’Go Fish’) is a deck of cards.</p>
 </section>
 
 <section class="mockups">
-  <img src="mockup1.jpg">
-  <img src="mockup2.jpg">
-  <img src="mockup3.jpg">
+  <img src="mockup1.jpg" alt="">
+  <img src="mockup2.jpg" alt="">
+  <img src="mockup3.jpg" alt="">
 </section>
 
 <section class="deck-full">
-  <img src="deck-full.jpg">
+  <img src="deck-full.jpg" alt="Full card deck">
 </section>
 
 <script>
@@ -123,13 +140,12 @@ container.appendChild(renderer.domElement);
 /* LIGHTING */
 scene.add(new THREE.AmbientLight(0xffffff, 0.9));
 const light = new THREE.DirectionalLight(0xffffff, 0.7);
-light.position.set(5, 5, 5);
+light.position.set(5,5,5);
 scene.add(light);
 
 /* TEXTURES */
 const loader = new THREE.TextureLoader();
-
-const sideTexture = loader.load("card-side.jpg");
+const sideTexture  = loader.load("card-side.jpg");
 const frontTexture = loader.load("card-front.jpg");
 const backTexture  = loader.load("card-back.jpg");
 
@@ -141,36 +157,28 @@ sideRotated.needsUpdate = true;
 
 // Left side flipped 180°
 const sideLeftFlipped = sideTexture.clone();
-sideLeftFlipped.center.set(0.5, 0.5);
+sideLeftFlipped.center.set(0.5,0.5);
 sideLeftFlipped.rotation = Math.PI;
 sideLeftFlipped.needsUpdate = true;
 
-// Bottom flipped 180° (on top of its 90° rotation)
+// Bottom flipped 180° + 90°
 const sideBottomFlipped = sideTexture.clone();
-sideBottomFlipped.center.set(0.5, 0.5);
+sideBottomFlipped.center.set(0.5,0.5);
 sideBottomFlipped.rotation = Math.PI / 2 + Math.PI;
 sideBottomFlipped.needsUpdate = true;
 
-/* MATERIALS (0:right, 1:left, 2:top, 3:bottom, 4:front, 5:back) */
+/* MATERIALS (0:right,1:left,2:top,3:bottom,4:front,5:back) */
 const materials = [
-  new THREE.MeshStandardMaterial({ map: sideTexture }),      // right (unchanged)
+  new THREE.MeshStandardMaterial({ map: sideTexture }),      // right
   new THREE.MeshStandardMaterial({ map: sideLeftFlipped }),  // left ✅ flipped 180
-  new THREE.MeshStandardMaterial({ map: sideRotated }),      // top (unchanged)
-  new THREE.MeshStandardMaterial({ map: sideBottomFlipped }),// bottom ✅ flipped 180
+  new THREE.MeshStandardMaterial({ map: sideRotated }),      // top
+  new THREE.MeshStandardMaterial({ map: sideBottomFlipped }),// bottom ✅ flipped 180 + 90
   new THREE.MeshStandardMaterial({ map: frontTexture }),     // front
   new THREE.MeshStandardMaterial({ map: backTexture })       // back
 ];
 
-
-
-
-
-
-
-
-
 /* CARD BOX */
-const geometry = new THREE.BoxGeometry(2.4, 3.4, 0.6);
+const geometry = new THREE.BoxGeometry(2.4,3.4,0.6);
 const cardBox = new THREE.Mesh(geometry, materials);
 scene.add(cardBox);
 
@@ -215,7 +223,7 @@ function animate() {
     velX *= 0.95;
     velY *= 0.95;
   }
-  renderer.render(scene, camera);
+  renderer.render(scene,camera);
 }
 animate();
 </script>
