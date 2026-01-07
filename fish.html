@@ -139,11 +139,11 @@ sideRotated.center.set(0.5, 0.5);
 sideRotated.rotation = Math.PI / 2;
 sideRotated.needsUpdate = true;
 
-  // Right side flipped 180°
-const sideRightFlipped = sideTexture.clone();
-sideRightFlipped.center.set(0.5, 0.5);
-sideRightFlipped.rotation = Math.PI;
-sideRightFlipped.needsUpdate = true;
+// Left side flipped 180°
+const sideLeftFlipped = sideTexture.clone();
+sideLeftFlipped.center.set(0.5, 0.5);
+sideLeftFlipped.rotation = Math.PI;
+sideLeftFlipped.needsUpdate = true;
 
 // Bottom flipped 180° (on top of its 90° rotation)
 const sideBottomFlipped = sideTexture.clone();
@@ -151,16 +151,16 @@ sideBottomFlipped.center.set(0.5, 0.5);
 sideBottomFlipped.rotation = Math.PI / 2 + Math.PI;
 sideBottomFlipped.needsUpdate = true;
 
-
 /* MATERIALS (0:right, 1:left, 2:top, 3:bottom, 4:front, 5:back) */
 const materials = [
-  new THREE.MeshStandardMaterial({ map: sideRightFlipped }), // right ✅ flipped 180
-  new THREE.MeshStandardMaterial({ map: sideTexture }),      // left (unchanged)
+  new THREE.MeshStandardMaterial({ map: sideTexture }),      // right (unchanged)
+  new THREE.MeshStandardMaterial({ map: sideLeftFlipped }),  // left ✅ flipped 180
   new THREE.MeshStandardMaterial({ map: sideRotated }),      // top (unchanged)
   new THREE.MeshStandardMaterial({ map: sideBottomFlipped }),// bottom ✅ flipped 180
   new THREE.MeshStandardMaterial({ map: frontTexture }),     // front
   new THREE.MeshStandardMaterial({ map: backTexture })       // back
 ];
+
 
 
 
