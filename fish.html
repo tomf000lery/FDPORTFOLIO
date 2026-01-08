@@ -43,40 +43,38 @@ body {
 }
 
 .description {
-  max-width: 900px;
-  margin: 80px auto;
+  max-width: 720px;             /* narrower = more editorial */
+  margin: 80px auto 90px;       /* top & bottom spacing */
   padding: 0 20px;
-  font-size: 18px;
-  line-height: 1.7;
-}
-
-  .description {
-  max-width: 720px;   /* narrower = more editorial */
-  margin: 90px auto;
-  padding: 0 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;              /* slightly smaller for professional look */
+  line-height: 1.75;            /* good readability */
+  color: #222;                  /* soft dark, not pure black */
 }
 
 .description p {
-  font-size: 17px;
-  line-height: 1.75;
-  margin-bottom: 22px;
-  color: #222;
+  margin-bottom: 22px;          /* space between paragraphs */
+}
+
+.description p:last-child {
+  margin-bottom: 0;             /* remove extra margin at end */
 }
 
 .description .intro {
-  font-size: 19px;
+  font-size: 19px;              /* slightly larger for intro emphasis */
   line-height: 1.8;
   font-weight: 500;
   margin-bottom: 32px;
 }
 
 .description strong {
-  font-weight: 600;
+  font-weight: 600;             /* emphasize bold text */
 }
 
 .description em {
-  font-style: italic;
+  font-style: italic;           /* emphasize italics */
 }
+
 
 
 /* MOCKUPS GRID */
