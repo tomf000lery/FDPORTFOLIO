@@ -19,24 +19,39 @@
 
     /* TOP BAR */
     .topbar {
-      width: 100vw;
-      height: 300px;
+      width: 100%;
+      height: auto;
+      max-height: 400px; /* adjust if needed */
       background-image: url('KPV_topbar.jpg');
       background-size: cover;
       background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* FULL-WIDTH CONTAINERS */
+    .full-width {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
     }
 
     .container {
       max-width: 900px;
       margin: 0 auto;
-      padding: 60px 20px 100px;
+      padding: 40px 20px;
     }
 
-    /* TEXT */
-    .description {
-      font-size: 18px;
-      line-height: 1.7;
-      margin-bottom: 80px;
+    /* IMAGE PLACEHOLDERS */
+    .placeholder-img {
+      display: block;
+      margin: 0 auto 60px;
+      max-width: 100%;
     }
 
     /* FULL-WIDTH PDF */
@@ -48,7 +63,7 @@
       right: 50%;
       margin-left: -50vw;
       margin-right: -50vw;
-      margin-bottom: 100px;
+      margin-bottom: 60px;
     }
 
     .pdf-wrapper iframe {
@@ -57,11 +72,10 @@
       border: none;
     }
 
-    /* SKETCH / CONCEPT IMAGES */
+    /* SKETCHES GRID */
     .sketches {
       max-width: 1200px;
-      margin: 0 auto 120px;
-      padding: 0 20px;
+      margin: 0 auto 60px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
@@ -76,8 +90,7 @@
     .mosaic {
       position: relative;
       max-width: 1200px;
-      margin: 0 auto 140px;
-      padding: 0 20px;
+      margin: 60px auto;
       display: grid;
       grid-template-columns: 2fr 1fr;
       gap: 20px;
@@ -94,37 +107,45 @@
       gap: 20px;
     }
 
-    /* OVERLAY PNG */
     .mosaic-overlay {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 300px; /* adjust later */
+      width: 400px; /* bigger */
       pointer-events: none;
+      z-index: 10;
+    }
+
+    /* VIDEO ABOVE LOGO */
+    .mm-video {
+      display: block;
+      margin: 40px auto 20px;
+      max-width: 600px;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
     }
 
     /* LOGO BOTTOM */
     .logo {
       display: flex;
       justify-content: center;
-      margin-bottom: 80px;
+      margin-bottom: 60px;
     }
 
     .logo embed {
-      width: 200px;
-      height: 200px;
+      width: 120px; /* smaller */
+      height: 120px;
       border: none;
     }
 
-    /* MOBILE */
     @media (max-width: 768px) {
       .mosaic {
         grid-template-columns: 1fr;
       }
-
       .mosaic-overlay {
-        width: 220px;
+        width: 250px;
       }
     }
   </style>
@@ -137,14 +158,15 @@
 
   <div class="container">
 
-    <!-- TEXT (ADD LATER) -->
-    <div class="description">
-      <!-- Your text here -->
-    </div>
+    <!-- DESCRIPTION PNG -->
+    <img src="kpv_description.png" alt="KPV Description" class="placeholder-img">
+
+    <!-- SMALL IMAGE 500x300 -->
+    <img src="kpv_ts.png" alt="KPV TS" class="placeholder-img">
 
   </div>
 
-  <!-- PDF -->
+  <!-- FULL-WIDTH PDF -->
   <div class="pdf-wrapper">
     <iframe
       src="KPV_typespec.pdf#toolbar=0&navpanes=0&scrollbar=0"
@@ -152,30 +174,42 @@
     </iframe>
   </div>
 
-  <!-- SKETCHES / CONCEPT -->
-  <div class="sketches">
-    <!-- Add images later -->
-    <!--
-    <img src="sketch1.jpg">
-    <img src="sketch2.jpg">
-    -->
+  <div class="container">
+    <!-- SMALL IMAGE 500x300 -->
+    <img src="kpv_concept.png" alt="KPV Concept" class="placeholder-img">
+
+    <!-- SKETCHES (3 images) -->
+    <div class="sketches">
+      <img src="sketch1.jpg" alt="Sketch 1">
+      <img src="sketch2.jpg" alt="Sketch 2">
+      <img src="sketch3.jpg" alt="Sketch 3">
+    </div>
+
+    <!-- SMALL IMAGE 500x300 -->
+    <img src="kpv_results.png" alt="KPV Results" class="placeholder-img">
   </div>
 
-  <!-- IMAGE MOSAIC -->
+  <!-- MOSAIC SECTION -->
   <div class="mosaic">
     <div class="mosaic-left">
-      <img src="MM1.jpg" alt="">
+      <img src="MM1.jpg" alt="MM1">
     </div>
 
     <div class="mosaic-right">
-      <img src="MM2.jpg" alt="">
-      <img src="MM3.jpg" alt="">
+      <img src="MM2.jpg" alt="MM2">
+      <img src="MM3.jpg" alt="MM3">
     </div>
 
-    <img src="KPV_text.png" class="mosaic-overlay" alt="">
+    <!-- OVERLAY TEXT -->
+    <img src="KPV_text.png" class="mosaic-overlay" alt="KPV Text">
   </div>
 
-  <!-- LOGO -->
+  <!-- VIDEO ABOVE LOGO -->
+  <video class="mm-video" autoplay muted loop playsinline>
+    <source src="MM_video.mov" type="video/mp4">
+  </video>
+
+  <!-- LOGO BOTTOM -->
   <div class="logo">
     <embed src="logoKPV.pdf" type="application/pdf">
   </div>
