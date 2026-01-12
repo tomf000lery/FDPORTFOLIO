@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kungliga Postverket</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: white;
+      color: black;
+      overflow-x: hidden;
+    }
+
+    /* TOP BAR */
+    .topbar {
+      width: 100vw;
+      height: 300px;
+      background-image: url('KPV_topbar.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 20px 100px;
+    }
+
+    /* TEXT */
+    .description {
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 80px;
+    }
+
+    /* FULL-WIDTH PDF */
+    .pdf-wrapper {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      margin-bottom: 100px;
+    }
+
+    .pdf-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* SKETCH / CONCEPT IMAGES */
+    .sketches {
+      max-width: 1200px;
+      margin: 0 auto 120px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .sketches img {
+      width: 100%;
+      display: block;
+    }
+
+    /* MOSAIC SECTION */
+    .mosaic {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto 140px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+
+    .mosaic-left img,
+    .mosaic-right img {
+      width: 100%;
+      display: block;
+    }
+
+    .mosaic-right {
+      display: grid;
+      gap: 20px;
+    }
+
+    /* OVERLAY PNG */
+    .mosaic-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px; /* adjust later */
+      pointer-events: none;
+    }
+
+    /* LOGO BOTTOM */
+    .logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 80px;
+    }
+
+    .logo embed {
+      width: 200px;
+      height: 200px;
+      border: none;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .mosaic {
+        grid-template-columns: 1fr;
+      }
+
+      .mosaic-overlay {
+        width: 220px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar"></div>
+
+  <div class="container">
+
+    <!-- TEXT (ADD LATER) -->
+    <div class="description">
+      <!-- Your text here -->
+    </div>
+
+  </div>
+
+  <!-- PDF -->
+  <div class="pdf-wrapper">
+    <iframe
+      src="KPV_typespec.pdf#toolbar=0&navpanes=0&scrollbar=0"
+      loading="lazy">
+    </iframe>
+  </div>
+
+  <!-- SKETCHES / CONCEPT -->
+  <div class="sketches">
+    <!-- Add images later -->
+    <!--
+    <img src="sketch1.jpg">
+    <img src="sketch2.jpg">
+    -->
+  </div>
+
+  <!-- IMAGE MOSAIC -->
+  <div class="mosaic">
+    <div class="mosaic-left">
+      <img src="MM1.jpg" alt="">
+    </div>
+
+    <div class="mosaic-right">
+      <img src="MM2.jpg" alt="">
+      <img src="MM3.jpg" alt="">
+    </div>
+
+    <img src="KPV_text.png" class="mosaic-overlay" alt="">
+  </div>
+
+  <!-- LOGO -->
+  <div class="logo">
+    <embed src="logoKPV.pdf" type="application/pdf">
+  </div>
+
+</body>
+</html>
