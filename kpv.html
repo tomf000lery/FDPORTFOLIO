@@ -17,17 +17,17 @@
       overflow-x: hidden;
     }
 
-    /* TOP BAR */
+    /* ================= TOP BAR ================= */
     .topbar {
       width: 100vw;
       height: 60vh;
-      min-height: 300px;
+      min-height: 320px;
       background-image: url('KPV_topbar.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
 
-      transform: translateY(-40px);
+      transform: translateY(-60px);
       opacity: 0;
       animation: topbarSlide 1.2s ease-out forwards;
     }
@@ -39,51 +39,52 @@
       }
     }
 
-    /* FULL WIDTH HELPER */
-    .full-width {
-      width: 100vw;
-      position: relative;
-      left: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
-      display: block;
-    }
-
+    /* ================= CONTAINERS ================= */
     .container {
       max-width: 900px;
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 60px 20px;
     }
 
-    /* CENTERED IMAGES */
     .placeholder-img {
       display: block;
-      margin: 0 auto 60px;
+      margin: 0 auto 80px;
       max-width: 100%;
     }
 
-    /* SKETCHES GRID */
-    .sketches {
-      max-width: 1200px;
-      margin: 0 auto 60px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+    /* ================= FULL WIDTH IMAGE ================= */
+    .full-width {
+      width: 100vw;
+      display: block;
+      margin: 0 auto 120px;
     }
 
-    .sketches img {
+    /* ================= SKETCHES (BIG & SIDE BY SIDE) ================= */
+    .sketches-full {
+      width: 100vw;
+      max-width: 1600px;
+      margin: 0 auto 120px;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .sketches-full img {
       width: 100%;
+      height: auto;
       display: block;
     }
 
-    /* MOSAIC SECTION */
+    /* ================= MOSAIC ================= */
     .mosaic {
       position: relative;
-      max-width: 1200px;
-      margin: 80px auto;
+      max-width: 1400px;
+      margin: 140px auto;
+      padding: 0 40px;
       display: grid;
       grid-template-columns: 2fr 1fr;
-      gap: 20px;
+      gap: 30px;
     }
 
     .mosaic-left img,
@@ -94,35 +95,35 @@
 
     .mosaic-right {
       display: grid;
-      gap: 20px;
+      gap: 30px;
     }
 
-    /* LARGE OVERLAY TEXT */
+    /* BIG OVERLAY TEXT */
     .mosaic-overlay {
       position: absolute;
       top: 50%;
-      left: 57%;
+      left: 65%;                 /* pushes it over MM2/MM3 */
       transform: translate(-50%, -50%);
       width: 1200px;
-      max-width: 90%;
-      pointer-events: none;
+      max-width: 95%;
       z-index: 10;
+      pointer-events: none;
     }
 
-    /* VIDEO */
+    /* ================= VIDEO ================= */
     .mm-video {
       display: block;
-      margin: 120px auto 40px;
-      max-width: 600px;
+      margin: 160px auto 80px;
+      max-width: 700px;
       width: 100%;
       border-radius: 12px;
     }
 
-    /* LOGO BOTTOM */
+    /* ================= LOGO ================= */
     .logo {
       display: flex;
       justify-content: center;
-      margin: 280px 0;
+      margin: 320px 0;
     }
 
     .logo img {
@@ -130,23 +131,23 @@
       height: auto;
     }
 
-    /* MOBILE */
+    /* ================= MOBILE ================= */
     @media (max-width: 768px) {
+      .sketches-full {
+        grid-template-columns: 1fr;
+      }
+
       .mosaic {
         grid-template-columns: 1fr;
       }
 
       .mosaic-overlay {
-        width: 300px;
+        width: 320px;
         left: 50%;
       }
 
-      .sketches {
-        grid-template-columns: 1fr;
-      }
-
       .logo img {
-        width: 220px;
+        width: 260px;
       }
     }
   </style>
@@ -157,24 +158,29 @@
   <!-- TOP BAR -->
   <div class="topbar"></div>
 
+  <!-- DESCRIPTION + TS -->
   <div class="container">
     <img src="kpv_description.png" alt="KPV Description" class="placeholder-img">
     <img src="kpv_ts.png" alt="KPV TS" class="placeholder-img">
   </div>
 
-  <!-- FULL WIDTH TYPESPEC IMAGE -->
+  <!-- FULL WIDTH TYPESPEC -->
   <img src="KPV_typespec.jpg" alt="KPV Typespec" class="full-width">
 
+  <!-- CONCEPT -->
   <div class="container">
     <img src="kpv_concept.png" alt="KPV Concept" class="placeholder-img">
+  </div>
 
-    <!-- SKETCHES -->
-    <div class="sketches">
-      <img src="sketch1.jpg" alt="Sketch 1">
-      <img src="sketch2.jpg" alt="Sketch 2">
-      <img src="sketch3.jpg" alt="Sketch 3">
-    </div>
+  <!-- BIG SKETCHES -->
+  <div class="sketches-full">
+    <img src="sketch1.jpg" alt="Sketch 1">
+    <img src="sketch2.jpg" alt="Sketch 2">
+    <img src="sketch3.jpg" alt="Sketch 3">
+  </div>
 
+  <!-- RESULTS -->
+  <div class="container">
     <img src="kpv_results.png" alt="KPV Results" class="placeholder-img">
   </div>
 
@@ -183,12 +189,10 @@
     <div class="mosaic-left">
       <img src="MM1.JPG" alt="MM1">
     </div>
-
     <div class="mosaic-right">
       <img src="MM2.jpg" alt="MM2">
       <img src="MM3.jpg" alt="MM3">
     </div>
-
     <img src="KPV_text.png" class="mosaic-overlay" alt="KPV Text">
   </div>
 
