@@ -5,154 +5,127 @@
   <title>CC Subsite</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Montserrat font -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-
   <style>
     body {
       margin: 0;
-      font-family: 'Montserrat', sans-serif;
+      font-family: Arial, sans-serif;
       background: white;
       color: black;
-      overflow-x: hidden;
     }
 
-    /* ================= TOP BAR ================= */
+    /* TOPBAR */
     .topbar {
       width: 100vw;
-      height: 200px;
-      background-image: url('CCtn.png');
+      height: 200px; /* adjust as needed */
+      background-image: url('CCtn.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
     }
 
-    /* ================= CONTAINER ================= */
-    .container {
+    /* DESCRIPTION + GIFS SECTION */
+    .desc-section {
       max-width: 900px;
-      margin: 0 auto;
-      padding: 60px 20px;
-    }
-
-    /* ================= DESCRIPTION + GIFS ================= */
-    .description {
-      font-size: 18px;
-      line-height: 1.7;
-      margin-bottom: 60px;
-    }
-
-    .gif-row {
-      display: flex;
-      flex-wrap: wrap;
+      margin: 60px auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-auto-rows: auto;
       gap: 40px;
-      margin-bottom: 60px;
+      align-items: center;
     }
 
-    .gif-row img {
-      width: 30%;
-      max-width: 300px;
+    .desc-text {
+      grid-column: 1 / 2;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .desc-gif {
+      max-width: 100%;
       display: block;
+      border-radius: 12px;
     }
 
-    /* Alternate layout zig-zag */
-    .gif-row:nth-child(even) {
-      flex-direction: row-reverse;
+    /* Zig-zag layout */
+    .desc-row:nth-child(even) .desc-text {
+      grid-column: 2 / 3;
+    }
+    .desc-row:nth-child(even) .desc-gif {
+      grid-column: 1 / 2;
     }
 
-    /* ================= YOUTUBE VIDEO ================= */
+    /* VIDEO SECTION */
     .video-wrapper {
-      width: 100%;
       max-width: 900px;
-      margin: 0 auto 80px;
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 ratio */
-      height: 0;
+      margin: 60px auto;
+      text-align: center;
     }
 
     .video-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
-      height: 100%;
-      border: none;
+      height: 500px;
     }
 
-    /* ================= GET THAT CHEESE ================= */
-    .gtc {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 120px;
-    }
-
-    .gtc img {
+    /* GET THAT CHEESE BUTTON */
+    .gtc-btn {
+      display: block;
       width: 50px;
       height: 30px;
-      cursor: pointer;
+      margin: 60px auto;
     }
 
-    /* ================= MOBILE ================= */
-    @media (max-width: 768px) {
-      .gif-row {
-        flex-direction: column;
-        gap: 40px;
-      }
-
-      .gif-row:nth-child(even) {
-        flex-direction: column;
-      }
-
-      .gif-row img {
-        width: 80%;
-        max-width: none;
-        margin: 0 auto;
-      }
-
-      .gtc img {
-        width: 80px;
-        height: 48px;
-      }
+    .gtc-btn img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
   </style>
 </head>
-
 <body>
 
-  <!-- TOP BAR -->
+  <!-- TOPBAR -->
   <div class="topbar"></div>
 
   <!-- DESCRIPTION + GIFS -->
-  <div class="container">
-    <div class="description">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo dui non mi sollicitudin, ac suscipit nisl tempus.</p>
-      <p>Phasellus euismod, arcu sed laoreet congue, velit mi lacinia nisi, sit amet malesuada elit odio non libero.</p>
-      <p>Curabitur at sapien vel lacus lacinia tempor. Sed eget metus ut turpis efficitur tincidunt.</p>
+  <div class="desc-section">
+
+    <!-- Row 1 -->
+    <div class="desc-row">
+      <div class="desc-text">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <img src="cheese.gif" alt="Cheese Gif" class="desc-gif">
     </div>
 
-    <div class="gif-row">
-      <img src="cheese.gif" alt="Cheese GIF">
+    <!-- Row 2 -->
+    <div class="desc-row">
+      <div class="desc-text">
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </div>
+      <img src="mouse.gif" alt="Mouse Gif" class="desc-gif">
     </div>
 
-    <div class="gif-row">
-      <img src="mouse.gif" alt="Mouse GIF">
+    <!-- Row 3 -->
+    <div class="desc-row">
+      <div class="desc-text">
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      </div>
+      <img src="fatcat.gif" alt="Fatcat Gif" class="desc-gif">
     </div>
 
-    <div class="gif-row">
-      <img src="fatcat.gif" alt="Fat Cat GIF">
-    </div>
   </div>
 
-  <!-- YOUTUBE VIDEO -->
+  <!-- VIDEO -->
   <div class="video-wrapper">
-    <iframe src="https://www.youtube.com/embed/VIDEO_ID?rel=0&autoplay=0&mute=1" title="YouTube video" allowfullscreen></iframe>
+    <!-- Replace with your YouTube embed later -->
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
   </div>
 
-  <!-- GET THAT CHEESE -->
-  <div class="gtc">
-    <a href="https://chasethecheese.com" target="_blank">
-      <img src="GTC.png" alt="GET THAT CHEESE">
-    </a>
-  </div>
+  <!-- GET THAT CHEESE BUTTON -->
+  <a href="https://chasethecheese.com" class="gtc-btn" target="_blank">
+    <img src="GTC.png" alt="Get That Cheese">
+  </a>
 
 </body>
 </html>
+
