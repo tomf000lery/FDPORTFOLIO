@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CC Subsite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Montserrat font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: white;
+      color: black;
+      overflow-x: hidden;
+    }
+
+    /* ================= TOP BAR ================= */
+    .topbar {
+      width: 100vw;
+      height: 200px;
+      background-image: url('CCtn.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* ================= CONTAINER ================= */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    /* ================= DESCRIPTION + GIFS ================= */
+    .description {
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 60px;
+    }
+
+    .gif-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .gif-row img {
+      width: 30%;
+      max-width: 300px;
+      display: block;
+    }
+
+    /* Alternate layout zig-zag */
+    .gif-row:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    /* ================= YOUTUBE VIDEO ================= */
+    .video-wrapper {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto 80px;
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 ratio */
+      height: 0;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ================= GET THAT CHEESE ================= */
+    .gtc {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 120px;
+    }
+
+    .gtc img {
+      width: 50px;
+      height: 30px;
+      cursor: pointer;
+    }
+
+    /* ================= MOBILE ================= */
+    @media (max-width: 768px) {
+      .gif-row {
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .gif-row:nth-child(even) {
+        flex-direction: column;
+      }
+
+      .gif-row img {
+        width: 80%;
+        max-width: none;
+        margin: 0 auto;
+      }
+
+      .gtc img {
+        width: 80px;
+        height: 48px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar"></div>
+
+  <!-- DESCRIPTION + GIFS -->
+  <div class="container">
+    <div class="description">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo dui non mi sollicitudin, ac suscipit nisl tempus.</p>
+      <p>Phasellus euismod, arcu sed laoreet congue, velit mi lacinia nisi, sit amet malesuada elit odio non libero.</p>
+      <p>Curabitur at sapien vel lacus lacinia tempor. Sed eget metus ut turpis efficitur tincidunt.</p>
+    </div>
+
+    <div class="gif-row">
+      <img src="cheese.gif" alt="Cheese GIF">
+    </div>
+
+    <div class="gif-row">
+      <img src="mouse.gif" alt="Mouse GIF">
+    </div>
+
+    <div class="gif-row">
+      <img src="fatcat.gif" alt="Fat Cat GIF">
+    </div>
+  </div>
+
+  <!-- YOUTUBE VIDEO -->
+  <div class="video-wrapper">
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID?rel=0&autoplay=0&mute=1" title="YouTube video" allowfullscreen></iframe>
+  </div>
+
+  <!-- GET THAT CHEESE -->
+  <div class="gtc">
+    <a href="https://chasethecheese.com" target="_blank">
+      <img src="GTC.png" alt="GET THAT CHEESE">
+    </a>
+  </div>
+
+</body>
+</html>
