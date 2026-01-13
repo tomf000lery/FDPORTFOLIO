@@ -59,19 +59,20 @@
       margin: 0 auto 120px;
     }
 
-    /* ================= SKETCHES (BIG & SIDE BY SIDE) ================= */
+    /* ================= SKETCHES (CENTERED & FIT) ================= */
     .sketches-full {
-      width: 100vw;
-      max-width: 1600px;
-      margin: 0 auto 120px;
-      padding: 0 40px;
+      width: 95%;                     /* slightly smaller to prevent overflow */
+      max-width: 1500px;
+      margin: 0 auto 120px;           /* centers sketches */
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 30px;
+      justify-items: center;           /* centers individual images */
     }
 
     .sketches-full img {
       width: 100%;
+      max-width: 100%;
       height: auto;
       display: block;
     }
@@ -102,7 +103,7 @@
     .mosaic-overlay {
       position: absolute;
       top: 50%;
-      left: 65%;                 /* pushes it over MM2/MM3 */
+      left: 65%;
       transform: translate(-50%, -50%);
       width: 1200px;
       max-width: 95%;
@@ -135,6 +136,7 @@
     @media (max-width: 768px) {
       .sketches-full {
         grid-template-columns: 1fr;
+        width: 95%;
       }
 
       .mosaic {
