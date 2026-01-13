@@ -46,6 +46,16 @@
       padding: 60px 20px;
     }
 
+    /* ================= DESCRIPTION IMAGE ================= */
+    .description-img {
+      display: block;
+      margin: 60px auto 100px; /* space above and below */
+      width: 85%;              /* smaller than full width */
+      max-width: 900px;
+      height: auto;
+    }
+
+    /* ================= SMALL PLACEHOLDER IMAGE ================= */
     .placeholder-img {
       display: block;
       margin: 0 auto 80px;
@@ -61,13 +71,13 @@
 
     /* ================= SKETCHES (CENTERED & FIT) ================= */
     .sketches-full {
-      width: 95%;                     /* slightly smaller to prevent overflow */
+      width: 95%;                     
       max-width: 1500px;
-      margin: 0 auto 120px;           /* centers sketches */
+      margin: 0 auto 120px;           
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 30px;
-      justify-items: center;           /* centers individual images */
+      justify-items: center;           
     }
 
     .sketches-full img {
@@ -162,7 +172,7 @@
 
   <!-- DESCRIPTION + TS -->
   <div class="container">
-    <img src="kpv_description.png" alt="KPV Description" class="placeholder-img">
+    <img src="kpv_description.png" alt="KPV Description" class="description-img">
     <img src="kpv_ts.png" alt="KPV TS" class="placeholder-img">
   </div>
 
