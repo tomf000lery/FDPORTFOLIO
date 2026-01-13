@@ -13,45 +13,50 @@
       color: black;
     }
 
-    /* TOPBAR */
+    /* ================= TOPBAR ================= */
     .topbar {
-      width: 100vw;
-      height: 200px; /* adjust as needed */
+      width: 100%;
+      height: 250px; /* adjust height if needed */
       background-image: url('CCtn.jpg');
-      background-size: cover;
+      background-size: 100% 100%; /* stretch to fill */
       background-position: center;
       background-repeat: no-repeat;
     }
 
-    /* DESCRIPTION + GIFS SECTION */
-    .desc-section {
+    /* ================= DESCRIPTION + GIFS ================= */
+    .desc-wrapper {
+      position: relative;
       max-width: 900px;
       margin: 60px auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-auto-rows: auto;
-      gap: 40px;
-      align-items: center;
+      text-align: center;
     }
 
     .desc-text {
-      grid-column: 1 / 2;
       font-size: 18px;
       line-height: 1.6;
+      margin-bottom: 80px;
     }
 
-    .desc-gif {
-      max-width: 100%;
-      display: block;
-      border-radius: 12px;
+    /* GIFS zig-zag around text */
+    .gif-top-left {
+      position: absolute;
+      top: -20px;
+      left: 0;
+      max-width: 150px;
     }
 
-    /* Zig-zag layout */
-    .desc-row:nth-child(even) .desc-text {
-      grid-column: 2 / 3;
+    .gif-middle-right {
+      position: absolute;
+      top: 100px; /* middle of text */
+      right: 0;
+      max-width: 150px;
     }
-    .desc-row:nth-child(even) .desc-gif {
-      grid-column: 1 / 2;
+
+    .gif-bottom-left {
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      max-width: 150px;
     }
 
     /* VIDEO SECTION */
@@ -69,15 +74,21 @@
     /* GET THAT CHEESE BUTTON */
     .gtc-btn {
       display: block;
-      width: 50px;
-      height: 30px;
+      text-align: center;
       margin: 60px auto;
+      font-size: 20px;
+      font-weight: bold;
+      color: #0055ff; /* blue text */
+      text-decoration: underline;
     }
 
-    .gtc-btn img {
-      width: 100%;
-      height: auto;
-      display: block;
+    @media (max-width: 768px) {
+      .gif-top-left, .gif-middle-right, .gif-bottom-left {
+        position: static;
+        display: block;
+        margin: 20px auto;
+        max-width: 120px;
+      }
     }
   </style>
 </head>
@@ -87,43 +98,26 @@
   <div class="topbar"></div>
 
   <!-- DESCRIPTION + GIFS -->
-  <div class="desc-section">
+  <div class="desc-wrapper">
+    <img src="cheese.gif" class="gif-top-left" alt="Cheese Gif">
+    <img src="mouse.gif" class="gif-middle-right" alt="Mouse Gif">
+    <img src="fatcat.gif" class="gif-bottom-left" alt="Fatcat Gif">
 
-    <!-- Row 1 -->
-    <div class="desc-row">
-      <div class="desc-text">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      </div>
-      <img src="cheese.gif" alt="Cheese Gif" class="desc-gif">
+    <div class="desc-text">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
     </div>
-
-    <!-- Row 2 -->
-    <div class="desc-row">
-      <div class="desc-text">
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      </div>
-      <img src="mouse.gif" alt="Mouse Gif" class="desc-gif">
-    </div>
-
-    <!-- Row 3 -->
-    <div class="desc-row">
-      <div class="desc-text">
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      </div>
-      <img src="fatcat.gif" alt="Fatcat Gif" class="desc-gif">
-    </div>
-
   </div>
 
   <!-- VIDEO -->
   <div class="video-wrapper">
-    <!-- Replace with your YouTube embed later -->
     <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
   </div>
 
   <!-- GET THAT CHEESE BUTTON -->
   <a href="https://chasethecheese.com" class="gtc-btn" target="_blank">
-    <img src="GTC.png" alt="Get That Cheese">
+    Click here to play
   </a>
 
 </body>
