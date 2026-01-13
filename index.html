@@ -2,227 +2,250 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Kungliga Postverket</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fahed Dehchar</title>
 
   <!-- Montserrat -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: white;
-      color: black;
-      overflow-x: hidden;
-    }
-
-    /* TOP BAR */
-    .topbar {
-      width: 100vw;
-      height: 60vh;
-      min-height: 300px;
-      background-image: url('KPV_topbar.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-
-      transform: translateY(-40px);
-      opacity: 0;
-      animation: topbarSlide 1.2s ease-out forwards;
-    }
-
-    @keyframes topbarSlide {
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    /* FULL WIDTH HELPER */
-    .full-width {
-      width: 100vw;
-      position: relative;
-      left: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
-      display: block;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    /* IMAGE PLACEHOLDERS */
-    .placeholder-img {
-      display: block;
-      margin: 0 auto 60px;
-      max-width: 100%;
-    }
-
-    /* DOUBLE-SIZED DESCRIPTION IMAGE */
-    .description-img {
-      width: 200%;   /* double the width */
-      max-width: none;
-      height: auto;
-      display: block;
-      margin: 0 auto 60px;
-    }
-
-    /* SKETCHES GRID */
-    .sketches {
-      max-width: 1140px;   /* 5% smaller to fit better */
-      margin: 0 auto 60px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .sketches img {
-      width: 100%;
-      display: block;
-    }
-
-    /* MOSAIC SECTION */
-    .mosaic {
-      position: relative;
-      max-width: 1200px;
-      margin: 80px auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 20px;
-    }
-
-    .mosaic-left img,
-    .mosaic-right img {
-      width: 100%;
-      display: block;
-    }
-
-    .mosaic-right {
-      display: grid;
-      gap: 20px;
-    }
-
-    /* BIG OVERLAY TEXT */
-    .mosaic-overlay {
-      position: absolute;
-      top: 50%;
-      left: 57%;  /* adjust horizontal position */
-      transform: translate(-50%, -50%);
-      width: 1200px;
-      max-width: 95%;
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    /* VIDEO ABOVE LOGO */
-    .mm-video {
-      display: block;
-      margin: 120px auto 40px;
-      max-width: 600px;
-      width: 100%;
-      border-radius: 12px;
-    }
-
-    /* LOGO BOTTOM */
-    .logo {
-      display: flex;
-      justify-content: center;
-      margin: 280px 0;
-    }
-
-    .logo img {
-      width: 720px;
-      height: auto;
-    }
-
-    /* MOBILE */
-    @media (max-width: 768px) {
-      .mosaic {
-        grid-template-columns: 1fr;
-      }
-
-      .mosaic-overlay {
-        width: 300px;
-        left: 50%;
-      }
-
-      .sketches {
-        grid-template-columns: 1fr;
-        max-width: 95%;
-      }
-
-      .logo img {
-        width: 220px;
-      }
-
-      .description-img {
-        width: 150%; /* smaller on mobile to fit */
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <!-- TOP BAR -->
-  <div class="topbar"></div>
-
-  <div class="container">
-    <!-- DOUBLE-SIZED DESCRIPTION PNG -->
-    <div class="full-width">
-      <img src="kpv_description.png" alt="KPV Description" class="description-img">
-    </div>
-
-    <!-- SMALL IMAGE 500x300 -->
-    <img src="kpv_ts.png" alt="KPV TS" class="placeholder-img">
+  <!-- Top Bar -->
+  <div class="topbar" id="topbar">
+    <h1>Fahed Dehchar</h1>
   </div>
 
-  <!-- FULL WIDTH TYPESPEC IMAGE -->
-  <img src="KPV_typespec.jpg" alt="KPV Typespec" class="full-width">
+  <!-- HERO REEL -->
 
-  <div class="container">
-    <!-- SMALL IMAGE 500x300 -->
-    <img src="kpv_concept.png" alt="KPV Concept" class="placeholder-img">
+<section class="hero-reel">
+  <div class="hero-video-wrapper">
+    <iframe
+      src="https://www.youtube.com/embed/stlL3egCfIg?autoplay=1&mute=1&loop=1&controls=0&rel=0&modestbranding=1&showinfo=0&playsinline=1&playlist=stlL3egCfIg"
+      frameborder="0"
+      allow="autoplay; fullscreen"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
 
-    <!-- SKETCHES -->
-    <div class="sketches">
-      <img src="sketch1.jpg" alt="Sketch 1">
-      <img src="sketch2.jpg" alt="Sketch 2">
-      <img src="sketch3.jpg" alt="Sketch 3">
+
+
+  <!-- ABOUT SECTION -->
+  <section class="about-section">
+    <div class="about-inner">
+      <div class="about-text">
+        <h2>Who's That?</h2>
+
+        <p><strong>
+          I think it’s through storytelling that you best can communicate anything – whether it’s ideas,
+          an emotion or a brand. I use it as my tool to craft lasting impressions and to spark conversation.
+        </strong></p>
+
+        <p>
+          My name is Fahed Dehchar – I'm a born-and-raised renaissance man from Stockholm. 
+            But jokes aside and to be more specific: I am an illustrator, a graphic designer, animator, filmmaker and writer.
+          I work both digitally and analog and my dream is to one day run my own publishing studio.
+        </p>
+
+        <p>
+          Feel free to hit me up if you want to collaborate, need help with a project or want to bounce ideas!
+        </p>
+      </div>
+
+      <div class="about-portrait">
+        <div class="portrait-square">
+          <video autoplay muted loop playsinline>
+            <source src="portrait.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
     </div>
 
-    <!-- SMALL IMAGE 500x300 -->
-    <img src="kpv_results.png" alt="KPV Results" class="placeholder-img">
+    <div class="contact-block">
+      <h3>Contact</h3>
+      <p><strong>Email:</strong> fahed.dehchar@gmail.com</p>
+      <p><strong>Phone:</strong> +46 73 354 11 93</p>
+    </div>
+  </section>
+
+  </style>
+</head>
+<body>
+
+<!-- WORKS GRID -->
+<section class="works-grid-section">
+  <h2 class="grid-title">Selected Works</h2>
+
+  <!-- CATEGORY 1: CONCEPT DESIGN -->
+  <div class="works-category">
+    <h3 class="category-title">Concept Design</h3>
+    <div class="works-grid">
+
+      <!-- 5innen PDF/info square -->
+   <a class="work-square" href="5innen.html">
+  <div class="square-thumb" style="background-image: url('5innentn.PNG');"></div>
+  <span class="placeholder-label">5innen</span>
+</a>
+
+
+
+      <!-- Antventure PDF/info square -->
+<a class="work-square" href="antventure.html">
+  <div class="square-thumb" style="background-image: url('antventuretn.jpg');"></div>
+  <span class="placeholder-label">Antventure</span>
+</a>
+
+     <!-- F.I.S.H subpage square -->
+<a class="work-square" href="fish.html">
+  <div class="square-thumb" style="background-image: url('FISHtn.jpg');"></div>
+  <span class="placeholder-label">F.I.S.H</span>
+</a>
+
+
+      <!-- Placeholder square -->
+      <div class="work-square placeholder">
+        <span class="placeholder-label">Keyboard Warrior</span>
+      </div>
+
+      <!-- Chase the Cheese video square -->
+      <a class="work-square" href="#"
+         data-video="https://www.youtube.com/embed/VIDEO_ID"
+         data-title="Chase the Cheese"
+         data-description="Video description here">
+        <div class="square-thumb" style="background-image: url('CCtn.jpg');"></div>
+      </a>
+
+    </div>
   </div>
 
-  <!-- MOSAIC -->
-  <div class="mosaic">
-    <div class="mosaic-left">
-      <img src="MM1.JPG" alt="MM1">
+  <!-- CATEGORY 2: MUSIC VIDEOS -->
+  <div class="works-category">
+    <h3 class="category-title">Music Videos</h3>
+    <div class="works-grid">
+
+      <!-- ENEMI video -->
+      <a class="work-square" href="#"
+         data-video="https://www.youtube.com/embed/6VDtdjAB3Aw"
+         data-title="LUJAIN - ENEMI"
+         data-description="In collaboration with Lujain for the release of her EP 'Vanguard' I produced this 1.5 minute long fight-scene visualizer for the song ENEMI.">
+        <div class="square-thumb" style="background-image: url('ENEMItn.png');"></div>
+      </a>
+
+      <!-- DET OSAGDA video -->
+      <a class="work-square" href="#"
+   data-video="https://www.youtube.com/embed/7WwnRqQLVBk"
+   data-title="Det Osagda - Kristin Rosendahl"
+   data-description='In a collaboration between Beckmans College of Design x The Royal College of Music in Stockholm I created a minute-long visualizer for one of Kristin Rosendahls epic symphony; "Det Osagda".'>
+  <div class="square-thumb" style="background-image: url('DETOSAGDAtn.png');"></div>
+</a>
+
+
+    </div>
+  </div>
+
+  <!-- CATEGORY 3: SHORT FILM -->
+  <div class="works-category">
+    <h3 class="category-title">Short Film</h3>
+    <div class="works-grid">
+
+      <a class="work-square" href="#"
+         data-video="https://www.youtube.com/embed/X7d4j2ZaKD8"
+         data-title="The Boot-Licker Agenda"
+         data-description="Made during a course where the assignment was to communicate a thought through any chosen artform. Perhaps controversial but I chose to formulate my thoughts on the (ethical) question about if billionaires should exist or not. This is the end result."> 
+         <div class="square-thumb" style="background-image: url('TBLAtn.png');"></div>
+      </a>
+
+      <a class="work-square" href="#"
+         data-video="https://www.youtube.com/embed/Kg_Hz3ugPvg"
+         data-title="VI, NI OCH DEM"
+         data-description="For an assignment in school we were tasked with curating 100 pictures regarding any subject. I chose to include this work in my portfolio to showcase my ability in writing and storytelling.">
+        <div class="square-thumb" style="background-image: url('VINIOCHDEMtn.png');"></div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- CATEGORY 4: GRAPHIC DESIGN -->
+<div class="works-category">
+  <h3 class="category-title">Graphic Design</h3>
+  <div class="works-grid">
+
+    <!-- Kungliga Postverket square -->
+    <a class="work-square" href="kpv.html">
+  <div class="square-thumb" style="background-image: url('KPV_topbar.jpg');"></div>
+  <span class="placeholder-label">Kungliga Postverket</span>
+</a>
+
+
+    <!-- Hover zoom effect -->
+    <style>
+      .work-square:hover .square-thumb {
+        transform: scale(1.05);
+      }
+    </style>
+
+    <!-- C2NC square (unchanged) -->
+    <div class="work-square" data-pdf="C2NC.pdf" data-type="pdf">
+      <div class="square-thumb" style="background-image: url('c2nctn.jpg'); background-size: cover; background-position: center;"></div>
+      <span class="placeholder-label">C2NC</span>
     </div>
 
-    <div class="mosaic-right">
-      <img src="MM2.jpg" alt="MM2">
-      <img src="MM3.jpg" alt="MM3">
-    </div>
-
-    <!-- OVERLAY TEXT -->
-    <img src="KPV_text.png" class="mosaic-overlay" alt="KPV Text">
   </div>
+</div>
 
-  <!-- VIDEO -->
-  <video class="mm-video" autoplay muted loop playsinline>
-    <source src="MM_video.mov" type="video/mp4">
-  </video>
 
-  <!-- LOGO -->
-  <div class="logo">
-    <img src="KPV_logo.jpg" alt="KPV Logo">
+</section>
+
+
+<!-- VIDEO LIGHTBOX -->
+<div id="video-lightbox" class="video-lightbox">
+  <div class="lightbox-content">
+    <span class="close-btn" id="lightbox-close">&times;</span>
+    <h2 class="lightbox-title"></h2>
+    <iframe class="lightbox-video" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <p class="lightbox-description"></p>
   </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const squares = document.querySelectorAll('a.work-square[data-video]');
+  const lightbox = document.getElementById('video-lightbox');
+  const lightboxVideo = lightbox.querySelector('.lightbox-video');
+  const lightboxTitle = lightbox.querySelector('.lightbox-title');
+  const lightboxDescription = lightbox.querySelector('.lightbox-description');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  squares.forEach(square => {
+    square.addEventListener('click', e => {
+      e.preventDefault();
+      const videoSrc = square.dataset.video;
+      const title = square.dataset.title;
+      const description = square.dataset.description;
+
+      if (!videoSrc) return;
+
+      lightboxVideo.src = videoSrc + "?autoplay=1&rel=0";
+      lightboxTitle.textContent = title;
+      lightboxDescription.textContent = description;
+      lightbox.style.display = 'flex';
+    });
+  });
+
+  lightboxClose.addEventListener('click', () => {
+    lightboxVideo.src = "";
+    lightbox.style.display = 'none';
+  });
+
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) {
+      lightboxVideo.src = "";
+      lightbox.style.display = 'none';
+    }
+  });
+});
+</script>
 
 </body>
 </html>
