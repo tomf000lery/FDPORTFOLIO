@@ -8,82 +8,64 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: white;
-      color: black;
+      font-family: Helvetica, Arial, sans-serif;
+      background: black;
+      color: white;
+      overflow-x: hidden;
     }
 
     /* ================= CONTAINER ================= */
     .container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 80px 30px;
+      padding: 100px 40px;
     }
 
     /* ================= LOGO ================= */
     .logo {
       text-align: center;
-      margin-bottom: 80px;
+      margin-bottom: 100px;
     }
 
     .logo img {
-      max-width: 300px;
+      max-width: 320px;
       width: 100%;
       height: auto;
     }
 
     /* ================= TEXT ================= */
     .description {
-      max-width: 700px;
-      margin: 0 auto 120px;
+      max-width: 720px;
+      margin: 0 auto 140px;
       font-size: 18px;
-      line-height: 1.7;
+      line-height: 1.8;
       text-align: center;
     }
 
-    /* ================= GALLERY ================= */
-    .gallery-wrapper {
-      max-width: 1200px;
+    /* ================= GRID ================= */
+    .grid {
+      max-width: 1400px;
       margin: 0 auto;
-    }
-
-    .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(2, auto);
-      gap: 30px;
-      margin-bottom: 60px;
+      gap: 40px;
     }
 
-    .gallery-grid img {
+    .grid img {
       width: 100%;
       height: auto;
       display: block;
     }
 
-    /* ================= ARROWS ================= */
-    .gallery-controls {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-bottom: 120px;
-    }
-
-    .arrow {
-      cursor: pointer;
-      font-size: 32px;
-      user-select: none;
-      transition: opacity 0.2s ease;
-    }
-
-    .arrow:hover {
-      opacity: 0.6;
-    }
-
     /* ================= MOBILE ================= */
     @media (max-width: 768px) {
-      .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .container {
+        padding: 80px 20px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
       }
     }
   </style>
@@ -107,80 +89,17 @@
       <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
     </div>
 
-    <!-- GALLERY -->
-    <div class="gallery-wrapper">
-
-      <div class="gallery-grid" id="galleryGrid">
-        <!-- Images injected via JS -->
-      </div>
-
-      <!-- ARROWS -->
-      <div class="gallery-controls">
-        <div class="arrow" onclick="prevSet()">&#8592;</div>
-        <div class="arrow" onclick="nextSet()">&#8594;</div>
-      </div>
-
+    <!-- 6-IMAGE GRID -->
+    <div class="grid">
+      <img src="shirt1.jpg" alt="T-shirt 1">
+      <img src="shirt2.jpg" alt="T-shirt 2">
+      <img src="shirt3.jpg" alt="T-shirt 3">
+      <img src="shirt4.jpg" alt="T-shirt 4">
+      <img src="shirt5.jpg" alt="T-shirt 5">
+      <img src="shirt6.jpg" alt="T-shirt 6">
     </div>
 
   </div>
-
-  <script>
-    // ===== IMAGE SETS =====
-    const imageSets = [
-      // SET 1: T-shirts
-      [
-        'shirt1.jpg',
-        'shirt2.jpg',
-        'shirt3.jpg',
-        'shirt4.jpg',
-        'shirt5.jpg',
-        'shirt6.jpg'
-      ],
-      // SET 2: Close-ups
-      [
-        'closeup1.jpg',
-        'closeup2.jpg',
-        'closeup3.jpg',
-        'closeup4.jpg',
-        'closeup5.jpg',
-        'closeup6.jpg'
-      ],
-      // SET 3: Logos / Emblems
-      [
-        'logo1.jpg',
-        'logo2.jpg',
-        'logo3.jpg',
-        'logo4.jpg',
-        'logo5.jpg',
-        'logo6.jpg'
-      ]
-    ];
-
-    let currentSet = 0;
-    const grid = document.getElementById('galleryGrid');
-
-    function renderSet() {
-      grid.innerHTML = '';
-      imageSets[currentSet].forEach(src => {
-        const img = document.createElement('img');
-        img.src = src;
-        grid.appendChild(img);
-      });
-    }
-
-    function nextSet() {
-      currentSet = (currentSet + 1) % imageSets.length;
-      renderSet();
-    }
-
-    function prevSet() {
-      currentSet = (currentSet - 1 + imageSets.length) % imageSets.length;
-      renderSet();
-    }
-
-    // Initial render
-    renderSet();
-  </script>
 
 </body>
 </html>
