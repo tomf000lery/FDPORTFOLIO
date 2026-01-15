@@ -14,43 +14,59 @@
       overflow-x: hidden;
     }
 
-    /* ================= TOPBAR ================= */
+    /* ================= TOPBAR (PARALLAX) ================= */
     .topbar {
+      position: relative;
       width: 100%;
-      height: 280px; /* professional height */
+      height: 320px;
+      overflow: hidden;
+      margin-bottom: 120px;
+    }
+
+    .topbar::before {
+      content: "";
+      position: absolute;
+      inset: 0;
       background-image: url('CCtn.jpg');
       background-size: cover;
-      background-position: center;
+      background-position: center top;
       background-repeat: no-repeat;
-      box-shadow: inset 0 -5px 20px rgba(0,0,0,0.2); /* subtle depth */
-      margin-bottom: 100px; /* space below topbar */
+      transform: translateY(-10%);
+      will-change: transform;
+    }
+
+    /* Parallax effect */
+    body {
+      perspective: 1px;
+    }
+
+    .topbar::before {
+      transform: translateZ(-1px) scale(1.4);
     }
 
     /* ================= DESCRIPTION + GIFS ================= */
     .desc-section {
       max-width: 1200px;
-      margin: 0 auto 160px;
+      margin: 0 auto 180px;
       padding: 0 40px;
       display: grid;
-      grid-template-columns: 200px auto 200px; /* left GIF, text, right GIF */
+      grid-template-columns: 200px auto 200px;
+      gap: 40px;
       align-items: start;
-      gap: 40px; /* horizontal gap between text and gifs */
-      position: relative;
     }
 
     .desc-text {
-      max-width: 600px; /* text column width */
-      margin: 0 auto;   /* center middle column */
-      text-align: left; /* readable alignment */
+      max-width: 600px;
+      margin: 0 auto;
       font-size: 18px;
-      line-height: 1.7;
-      padding: 20px 0;  /* vertical spacing */
+      line-height: 1.8;
+      text-align: left;
     }
 
     .gif-column {
       display: flex;
       flex-direction: column;
-      gap: 100px; /* vertical gap between GIFs */
+      gap: 120px;
     }
 
     .gif-column img {
@@ -62,7 +78,8 @@
     /* ================= VIDEO ================= */
     .video-wrapper {
       max-width: 900px;
-      margin: 160px auto 120px;
+      margin: 160px auto 140px;
+      padding: 0 20px;
       text-align: center;
     }
 
@@ -75,7 +92,7 @@
     .gtc-link {
       display: block;
       text-align: center;
-      margin: 160px auto 200px;
+      margin: 160px auto 220px;
       font-size: 20px;
       font-weight: bold;
       color: #0055ff;
@@ -84,6 +101,11 @@
 
     /* ================= MOBILE ================= */
     @media (max-width: 768px) {
+      .topbar {
+        height: 220px;
+        margin-bottom: 80px;
+      }
+
       .desc-section {
         grid-template-columns: 1fr;
         gap: 60px;
@@ -93,21 +115,15 @@
         flex-direction: row;
         justify-content: center;
         gap: 40px;
-        margin-bottom: 40px;
       }
 
       .desc-text {
-        max-width: 95%;
         text-align: center;
+        max-width: 95%;
       }
 
       .video-wrapper {
-        margin: 120px auto 80px;
-      }
-
-      .topbar {
-        height: 200px;
-        margin-bottom: 80px;
+        margin: 120px auto;
       }
     }
   </style>
@@ -129,9 +145,16 @@
 
     <!-- TEXT -->
     <div class="desc-text">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      <p>
+        Tasked with creating a single service site, I made Chase the Cheese.
+        Inspired by games like Snake and Tetris – I wanted to create a game that
+        supposedly never ends.
+      </p>
+
+      <p>
+        Welcome to the game inspired by life. Chase the cheese and see how much
+        you can collect, before the fat cat tax Max gets his paws on you.
+      </p>
     </div>
 
     <!-- RIGHT GIF -->
@@ -143,7 +166,11 @@
 
   <!-- VIDEO -->
   <div class="video-wrapper">
-    <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+    <iframe
+      src="https://www.youtube.com/embed/VIDEO_ID"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
   </div>
 
   <!-- CLICK TO PLAY -->
