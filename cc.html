@@ -14,40 +14,25 @@
       overflow-x: hidden;
     }
 
-    /* ================= TOPBAR (PARALLAX) ================= */
-    .topbar {
-      position: relative;
+    /* ================= LOGO ================= */
+    .logo {
+      display: flex;
+      justify-content: center;
+      margin: 100px auto 140px;
+      padding: 0 20px;
+    }
+
+    .logo img {
+      max-width: 420px;
       width: 100%;
-      height: 320px;
-      overflow: hidden;
-      margin-bottom: 120px;
-    }
-
-    .topbar::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: url('CCtn.jpg');
-      background-size: cover;
-      background-position: center top;
-      background-repeat: no-repeat;
-      transform: translateY(-10%);
-      will-change: transform;
-    }
-
-    /* Parallax effect */
-    body {
-      perspective: 1px;
-    }
-
-    .topbar::before {
-      transform: translateZ(-1px) scale(1.4);
+      height: auto;
     }
 
     /* ================= DESCRIPTION + GIFS ================= */
     .desc-section {
+      position: relative;
       max-width: 1200px;
-      margin: 0 auto 180px;
+      margin: 0 auto 80px;
       padding: 0 40px;
       display: grid;
       grid-template-columns: 200px auto 200px;
@@ -75,12 +60,20 @@
       display: block;
     }
 
+    /* Fatcat adjustment */
+    .fatcat {
+      max-width: 220px;           /* bigger */
+      margin-left: 40px;          /* push slightly right */
+      margin-top: -40px;          /* pull down closer to video */
+    }
+
     /* ================= VIDEO ================= */
     .video-wrapper {
       max-width: 900px;
-      margin: 160px auto 140px;
+      margin: 80px auto 140px;    /* closer to text */
       padding: 0 20px;
       text-align: center;
+      position: relative;
     }
 
     .video-wrapper iframe {
@@ -101,14 +94,14 @@
 
     /* ================= MOBILE ================= */
     @media (max-width: 768px) {
-      .topbar {
-        height: 220px;
-        margin-bottom: 80px;
+      .logo {
+        margin: 60px auto 80px;
       }
 
       .desc-section {
         grid-template-columns: 1fr;
         gap: 60px;
+        margin-bottom: 40px;
       }
 
       .gif-column {
@@ -117,13 +110,19 @@
         gap: 40px;
       }
 
+      .gif-column img,
+      .fatcat {
+        max-width: 120px;
+        margin: 0;
+      }
+
       .desc-text {
         text-align: center;
         max-width: 95%;
       }
 
       .video-wrapper {
-        margin: 120px auto;
+        margin: 80px auto 120px;
       }
     }
   </style>
@@ -131,8 +130,10 @@
 
 <body>
 
-  <!-- TOPBAR -->
-  <div class="topbar"></div>
+  <!-- LOGO -->
+  <div class="logo">
+    <img src="CClogo.png" alt="Chase the Cheese Logo">
+  </div>
 
   <!-- DESCRIPTION + GIFS -->
   <div class="desc-section">
@@ -140,7 +141,7 @@
     <!-- LEFT GIFS -->
     <div class="gif-column">
       <img src="cheese.gif" alt="Cheese Gif">
-      <img src="fatcat.gif" alt="Fat Cat Gif">
+      <img src="fatcat.gif" alt="Fat Cat Gif" class="fatcat">
     </div>
 
     <!-- TEXT -->
