@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>C2NC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: white;
+      color: black;
+    }
+
+    /* ================= CONTAINER ================= */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 30px;
+    }
+
+    /* ================= LOGO ================= */
+    .logo {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .logo img {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+    }
+
+    /* ================= TEXT ================= */
+    .description {
+      max-width: 700px;
+      margin: 0 auto 120px;
+      font-size: 18px;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    /* ================= GALLERY ================= */
+    .gallery-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, auto);
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ================= ARROWS ================= */
+    .gallery-controls {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 120px;
+    }
+
+    .arrow {
+      cursor: pointer;
+      font-size: 32px;
+      user-select: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .arrow:hover {
+      opacity: 0.6;
+    }
+
+    /* ================= MOBILE ================= */
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="c2nclogo.png" alt="C2NC Logo">
+    </div>
+
+    <!-- TEXT -->
+    <div class="description">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="gallery-wrapper">
+
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- Images injected via JS -->
+      </div>
+
+      <!-- ARROWS -->
+      <div class="gallery-controls">
+        <div class="arrow" onclick="prevSet()">&#8592;</div>
+        <div class="arrow" onclick="nextSet()">&#8594;</div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    // ===== IMAGE SETS =====
+    const imageSets = [
+      // SET 1: T-shirts
+      [
+        'shirt1.jpg',
+        'shirt2.jpg',
+        'shirt3.jpg',
+        'shirt4.jpg',
+        'shirt5.jpg',
+        'shirt6.jpg'
+      ],
+      // SET 2: Close-ups
+      [
+        'closeup1.jpg',
+        'closeup2.jpg',
+        'closeup3.jpg',
+        'closeup4.jpg',
+        'closeup5.jpg',
+        'closeup6.jpg'
+      ],
+      // SET 3: Logos / Emblems
+      [
+        'logo1.jpg',
+        'logo2.jpg',
+        'logo3.jpg',
+        'logo4.jpg',
+        'logo5.jpg',
+        'logo6.jpg'
+      ]
+    ];
+
+    let currentSet = 0;
+    const grid = document.getElementById('galleryGrid');
+
+    function renderSet() {
+      grid.innerHTML = '';
+      imageSets[currentSet].forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        grid.appendChild(img);
+      });
+    }
+
+    function nextSet() {
+      currentSet = (currentSet + 1) % imageSets.length;
+      renderSet();
+    }
+
+    function prevSet() {
+      currentSet = (currentSet - 1 + imageSets.length) % imageSets.length;
+      renderSet();
+    }
+
+    // Initial render
+    renderSet();
+  </script>
+
+</body>
+</html>
