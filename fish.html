@@ -18,6 +18,7 @@ body {
   overflow-x: hidden;
 }
 
+/* ================= HEADER ================= */
 .header {
   padding: 80px 20px 40px;
   text-align: center;
@@ -27,6 +28,7 @@ body {
   max-width: 150px;
 }
 
+/* ================= THREE VIEWER ================= */
 .viewer-section {
   width: 100%;
   height: 520px;
@@ -42,42 +44,36 @@ body {
   cursor: grabbing;
 }
 
+/* ================= DESCRIPTION ================= */
 .description {
-  max-width: 720px;             /* narrower = more editorial */
-  margin: 80px auto 90px;       /* top & bottom spacing */
+  max-width: 720px;
+  margin: 80px auto 90px;
   padding: 0 20px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 17px;              /* slightly smaller for professional look */
-  line-height: 1.75;            /* good readability */
-  color: #222;                  /* soft dark, not pure black */
+  font-size: 17px;
+  line-height: 1.75;
+  color: #222;
 }
 
 .description p {
-  margin-bottom: 22px;          /* space between paragraphs */
+  margin-bottom: 22px;
 }
 
 .description p:last-child {
-  margin-bottom: 0;             /* remove extra margin at end */
+  margin-bottom: 0;
 }
 
 .description .intro {
-  font-size: 19px;              /* slightly larger for intro emphasis */
+  font-size: 19px;
   line-height: 1.8;
   font-weight: 500;
   margin-bottom: 32px;
 }
 
-.description strong {
-  font-weight: 600;             /* emphasize bold text */
-}
-
 .description em {
-  font-style: italic;           /* emphasize italics */
+  font-style: italic;
 }
 
-
-
-/* MOCKUPS GRID */
+/* ================= MOCKUPS ================= */
 .mockups {
   max-width: 1100px;
   margin: 60px auto;
@@ -93,71 +89,80 @@ body {
   border-radius: 12px;
 }
 
-.mockups img:nth-child(1) {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.mockups img:nth-child(2) {
-  grid-column: 1;
-  grid-row: 2;
-}
-
 .mockups img:nth-child(3) {
   grid-column: 2;
-  grid-row: 1 / span 2; /* spans both rows on right */
+  grid-row: 1 / span 2;
 }
 
+/* ================= DECK FULL (PROGRESSIVE) ================= */
 .deck-full {
   margin-top: 100px;
 }
 
-.deck-full img {
+.progressive-img {
   width: 100%;
   display: block;
+  filter: blur(14px);
+  transform: scale(1.02);
+  transition: filter 1s ease, transform 1s ease;
+}
+
+.progressive-img.loaded {
+  filter: blur(0);
+  transform: scale(1);
 }
 </style>
 </head>
 
 <body>
 
+<!-- ================= HEADER ================= -->
 <div class="header">
   <img src="fish-logo.png" alt="F.I.S.H logo">
 </div>
 
+<!-- ================= THREE VIEWER ================= -->
 <section class="viewer-section">
   <div id="three-container"></div>
 </section>
 
+<!-- ================= DESCRIPTION ================= -->
 <section class="description">
   <p class="intro">
     I created this deck of cards in collaboration with an initiative started by former athlete and swimmer Karl Palmqvist.
   </p>
 
   <p>
-    Karl swam around Gotland, Sweden’s largest island, to raise awareness about the ecocide of the Baltic Sea and mental health. The deck’s goal was to raise additional funds for the charity initiated by Karl called <em>Gotland Runt</em> in partnership with Naturskyddsföreningen (The Swedish Society for Nature Conservation) and Suicide Zero.
+    Karl swam around Gotland, Sweden’s largest island, to raise awareness about the ecocide of the Baltic Sea and mental health.
+    The deck’s goal was to raise additional funds for the charity initiated by Karl called
+    <em>Gotland Runt</em> in partnership with Naturskyddsföreningen and Suicide Zero.
   </p>
 
   <p>
-    <em>Finns I Sjön och Hav</em>, or <em>F.I.S.H</em> (derived from the Swedish name for the card game “Go Fish”), is a deck of cards with very silly illustrations.
-  </p>
-
-  <p>
-   The reason why is because neuroscience has proven that people remember things better when they release dopamine.  <em>These</em> are topics we want people to remember. So the point of the cards, the reason they look this goofy, is to (hopefully) make someone atleast chuckle.
+    <em>Finns I Sjön och Hav</em>, or <em>F.I.S.H</em>, is a deck of cards with very silly illustrations.
+    The reason is simple: neuroscience shows that dopamine improves memory retention.
+    These are topics we want people to remember.
   </p>
 </section>
 
-
+<!-- ================= MOCKUPS ================= -->
 <section class="mockups">
   <img src="mockup1.jpg" alt="">
   <img src="mockup2.jpg" alt="">
   <img src="mockup3.jpg" alt="">
 </section>
 
+<!-- ================= DECK FULL (PROGRESSIVE LOAD) ================= -->
 <section class="deck-full">
-  <img src="deck-full.jpg" alt="Full card deck" loading="lazy">
+  <img
+    src="deck-full-blur.jpg"
+    data-full="deck-full.jpg"
+    alt="Full card deck"
+    class="progressive-img"
+  >
 </section>
 
+<!-- ================= THREE.JS ================= -->
 <script>
 const container = document.getElementById("three-container");
 
@@ -189,40 +194,37 @@ const sideTexture  = loader.load("card-side.jpg");
 const frontTexture = loader.load("card-front.jpg");
 const backTexture  = loader.load("card-back.jpg");
 
-/* ROTATED SIDE TEXTURE (FOR TOP/BOTTOM) */
+/* ROTATED SIDE TEXTURES */
 const sideRotated = sideTexture.clone();
 sideRotated.center.set(0.5, 0.5);
 sideRotated.rotation = Math.PI / 2;
 sideRotated.needsUpdate = true;
 
-// Left side flipped 180°
 const sideLeftFlipped = sideTexture.clone();
 sideLeftFlipped.center.set(0.5,0.5);
 sideLeftFlipped.rotation = Math.PI;
 sideLeftFlipped.needsUpdate = true;
 
-// Bottom flipped 180° + 90°
 const sideBottomFlipped = sideTexture.clone();
 sideBottomFlipped.center.set(0.5,0.5);
 sideBottomFlipped.rotation = Math.PI / 2 + Math.PI;
 sideBottomFlipped.needsUpdate = true;
 
-/* MATERIALS (0:right,1:left,2:top,3:bottom,4:front,5:back) */
+/* MATERIALS */
 const materials = [
-  new THREE.MeshStandardMaterial({ map: sideTexture }),      // right
-  new THREE.MeshStandardMaterial({ map: sideLeftFlipped }),  // left ✅ flipped 180
-  new THREE.MeshStandardMaterial({ map: sideRotated }),      // top
-  new THREE.MeshStandardMaterial({ map: sideBottomFlipped }),// bottom ✅ flipped 180 + 90
-  new THREE.MeshStandardMaterial({ map: frontTexture }),     // front
-  new THREE.MeshStandardMaterial({ map: backTexture })       // back
+  new THREE.MeshStandardMaterial({ map: sideTexture }),
+  new THREE.MeshStandardMaterial({ map: sideLeftFlipped }),
+  new THREE.MeshStandardMaterial({ map: sideRotated }),
+  new THREE.MeshStandardMaterial({ map: sideBottomFlipped }),
+  new THREE.MeshStandardMaterial({ map: frontTexture }),
+  new THREE.MeshStandardMaterial({ map: backTexture })
 ];
 
-/* CARD BOX */
 const geometry = new THREE.BoxGeometry(2.4,3.4,0.6);
 const cardBox = new THREE.Mesh(geometry, materials);
 scene.add(cardBox);
 
-/* MOUSE DRAG ROTATION */
+/* DRAG ROTATION */
 let dragging = false;
 let prevX = 0, prevY = 0;
 let velX = 0, velY = 0;
@@ -254,7 +256,7 @@ window.addEventListener("resize", () => {
   renderer.setSize(container.clientWidth, container.clientHeight);
 });
 
-/* ANIMATE */
+/* ANIMATION */
 function animate() {
   requestAnimationFrame(animate);
   if (!dragging) {
@@ -263,9 +265,22 @@ function animate() {
     velX *= 0.95;
     velY *= 0.95;
   }
-  renderer.render(scene,camera);
+  renderer.render(scene, camera);
 }
 animate();
+</script>
+
+<!-- ================= PROGRESSIVE IMAGE SCRIPT ================= -->
+<script>
+document.querySelectorAll('.progressive-img').forEach(img => {
+  const fullImg = new Image();
+  fullImg.src = img.dataset.full;
+
+  fullImg.onload = () => {
+    img.src = img.dataset.full;
+    img.classList.add('loaded');
+  };
+});
 </script>
 
 </body>
