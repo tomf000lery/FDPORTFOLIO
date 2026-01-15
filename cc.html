@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: white;
+      background: cheese;
       color: black;
       overflow-x: hidden;
     }
@@ -18,12 +18,12 @@
     .logo {
       display: flex;
       justify-content: center;
-      margin: 100px auto 140px;
+      margin: 120px auto 160px;
       padding: 0 20px;
     }
 
     .logo img {
-      max-width: 420px;
+      max-width: 620px;     /* BIGGER logo */
       width: 100%;
       height: auto;
     }
@@ -35,7 +35,7 @@
       margin: 0 auto 80px;
       padding: 0 40px;
       display: grid;
-      grid-template-columns: 200px auto 200px;
+      grid-template-columns: 220px auto 220px;
       gap: 40px;
       align-items: start;
     }
@@ -55,25 +55,24 @@
     }
 
     .gif-column img {
-      max-width: 150px;
+      max-width: 170px;
       height: auto;
       display: block;
     }
 
-    /* Fatcat adjustment */
+    /* BIG FATCAT */
     .fatcat {
-      max-width: 220px;           /* bigger */
-      margin-left: 40px;          /* push slightly right */
-      margin-top: -40px;          /* pull down closer to video */
+      max-width: 300px;     /* MUCH bigger */
+      margin-left: 50px;    /* nudge right */
+      margin-top: -20px;    /* closer to video */
     }
 
     /* ================= VIDEO ================= */
     .video-wrapper {
       max-width: 900px;
-      margin: 80px auto 140px;    /* closer to text */
+      margin: 80px auto 140px;
       padding: 0 20px;
       text-align: center;
-      position: relative;
     }
 
     .video-wrapper iframe {
@@ -95,7 +94,11 @@
     /* ================= MOBILE ================= */
     @media (max-width: 768px) {
       .logo {
-        margin: 60px auto 80px;
+        margin: 80px auto 100px;
+      }
+
+      .logo img {
+        max-width: 360px;
       }
 
       .desc-section {
@@ -112,7 +115,7 @@
 
       .gif-column img,
       .fatcat {
-        max-width: 120px;
+        max-width: 140px;
         margin: 0;
       }
 
@@ -181,4 +184,3 @@
 
 </body>
 </html>
-
