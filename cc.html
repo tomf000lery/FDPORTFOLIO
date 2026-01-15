@@ -27,20 +27,24 @@
 
     /* ================= DESCRIPTION + GIFS ================= */
     .desc-section {
-      max-width: 1200px;
-      margin: 0 auto 180px;
-      padding: 0 40px;
-      display: grid;
-      grid-template-columns: 1fr 2fr 1fr;
-      gap: 60px;
-      align-items: start;
-    }
+  max-width: 1200px;
+  margin: 0 auto 180px;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* middle column auto for text */
+  gap: 60px;
+  align-items: start;
+}
 
-    .desc-text {
-      text-align: center;
-      font-size: 18px;
-      line-height: 1.7;
-    }
+.desc-text {
+  max-width: 600px;  /* text won’t stretch too wide */
+  margin: 0 auto;    /* center horizontally */
+  text-align: left;  /* easier to read than center */
+  font-size: 18px;
+  line-height: 1.7;
+  padding: 20px 0;   /* vertical space from gifs */
+}
+
 
     .gif-column {
       display: flex;
