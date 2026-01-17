@@ -18,7 +18,7 @@
     .logo {
       display: flex;
       justify-content: center;
-      margin: 120px auto 160px;
+      margin: 120px auto 140px;
       padding: 0 20px;
     }
 
@@ -30,9 +30,8 @@
 
     /* ================= DESCRIPTION + GIFS ================= */
     .desc-section {
-      position: relative;
       max-width: 1200px;
-      margin: 0 auto 80px;
+      margin: 0 auto 60px;
       padding: 0 40px;
       display: grid;
       grid-template-columns: 220px auto 220px;
@@ -45,7 +44,6 @@
       margin: 0 auto;
       font-size: 18px;
       line-height: 1.8;
-      text-align: left;
     }
 
     .gif-column {
@@ -57,10 +55,8 @@
     .gif-column img {
       max-width: 170px;
       height: auto;
-      display: block;
     }
 
-    /* BIG FATCAT */
     .fatcat {
       max-width: 300px;
       margin-left: 50px;
@@ -69,24 +65,27 @@
 
     /* ================= VIDEO ================= */
     .video-wrapper {
-      max-width: 720px;
-      margin: 80px auto 140px;
+      display: flex;
+      justify-content: center;
+      margin: 60px auto 120px;
       padding: 0 20px;
-      text-align: center;
     }
 
     .video-wrapper video {
-      width: 100%;
-      height: auto;
-      max-height: 60vh;
+      height: 80vh;              /* key fix */
+      max-height: 80vh;
+      aspect-ratio: 9 / 16;      /* forces portrait */
+      width: auto;
+      max-width: 100%;
       border-radius: 12px;
+      background: black;
     }
 
     /* ================= CLICK TO PLAY ================= */
     .gtc-link {
       display: block;
       text-align: center;
-      margin: 160px auto 220px;
+      margin: 120px auto 200px;
       font-size: 20px;
       font-weight: bold;
       color: #0055ff;
@@ -95,10 +94,6 @@
 
     /* ================= MOBILE ================= */
     @media (max-width: 768px) {
-      .logo {
-        margin: 80px auto 100px;
-      }
-
       .logo img {
         max-width: 360px;
       }
@@ -106,7 +101,6 @@
       .desc-section {
         grid-template-columns: 1fr;
         gap: 60px;
-        margin-bottom: 40px;
       }
 
       .gif-column {
@@ -123,11 +117,10 @@
 
       .desc-text {
         text-align: center;
-        max-width: 95%;
       }
 
-      .video-wrapper {
-        margin: 80px auto 120px;
+      .video-wrapper video {
+        height: 75vh;
       }
     }
   </style>
@@ -143,27 +136,23 @@
   <!-- DESCRIPTION + GIFS -->
   <div class="desc-section">
 
-    <!-- LEFT GIFS -->
     <div class="gif-column">
       <img src="cheese.gif" alt="Cheese Gif">
       <img src="fatcat.gif" alt="Fat Cat Gif" class="fatcat">
     </div>
 
-    <!-- TEXT -->
     <div class="desc-text">
       <p>
         Tasked with creating a single service site, I made Chase the Cheese.
         Inspired by games like Snake and Tetris – I wanted to create a game that
         supposedly never ends.
       </p>
-
       <p>
         Welcome to the game inspired by life. Chase the cheese and see how much
         you can collect, before the fat cat tax Max gets his paws on you.
       </p>
     </div>
 
-    <!-- RIGHT GIF -->
     <div class="gif-column">
       <img src="mouse.gif" alt="Mouse Gif">
     </div>
